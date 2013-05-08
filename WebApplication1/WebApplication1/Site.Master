@@ -1,8 +1,9 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
+﻿    <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
+<link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='Stylesheet' type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
@@ -11,38 +12,108 @@
 </head>
 <body>
     <form runat="server">
-    <div class="page">
-        <div class="header">
+
+    <div class="header">
             <div class="title">
-                <h1>
-                    Mi aplicación PENE.NET
-                </h1>
+                <h3>
+              
+                   <a href="#" title="Sticky Notes" style="text-decoration:none;color:white"></a>
+                </h3>
+                
+               
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
+
+                        <asp:Panel ID="Panel2" runat="server" CssClass="default_panel">
+                        
+
+                            <asp:ContentPlaceHolder ID="MainContent2" runat="server"/>
+                            <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu1" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                   
+
+                            </asp:Menu>
+
+                          </asp:Panel>
+
+                     
+                       
                     </AnonymousTemplate>
                     <LoggedInTemplate>
-                        Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
+                        <asp:Panel ID="Panel1" runat="server" CssClass="default_panel">
+                        
+                                Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                                <br />
+                                [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Exit" LogoutPageUrl="~/"/> ]
+
+                        </asp:Panel>
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
-                    </Items>
-                </asp:Menu>
-            </div>
+            
         </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-        </div>
-        <div class="clear">
-        </div>
+   
+   
+    <div class="page">
+        
+        
+            <div class="marcobotones">
+
+
+             <asp:LoginView ID="LoginView2" runat="server" EnableViewState="false">
+                    <LoggedInTemplate>
+
+                      <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+                        <Items>
+                             <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Notes.aspx" Text="Notes"/>
+                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Friends.aspx" Text="Friends"/>
+                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Groups.aspx" Text="Groups"/>
+                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Events.aspx" Text="Events"/>
+                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Categories.aspx" Text="Categories"/>
+                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Profile.aspx" Text="Profile"/>
+                                    <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+
+                     </Items>
+                    </asp:Menu>
+                   </LoggedInTemplate>
+
+
+                     <AnonymousTemplate>
+
+                      <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+                        <Items>
+                                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Notes"/>
+                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Friends"/>
+                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Groups"/>
+                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Events"/>
+                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Categories"/>
+                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Profile"/>
+                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="About"/>
+                     </Items>
+                    </asp:Menu>
+
+                    </AnonymousTemplate>
+                </asp:LoginView>
+
+             </div>
+             
+            
+            <div class="main">
+            
+
+                         <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                 
+                  
+                
+                
+
+
+             </div>
+         
+
     </div>
     <div class="footer">
         

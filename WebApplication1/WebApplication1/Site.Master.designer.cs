@@ -31,13 +31,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
         
         /// <summary>
-        /// Control NavigationMenu.
+        /// Control LoginView2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu NavigationMenu;
+        protected global::System.Web.UI.WebControls.LoginView LoginView2;
         
         /// <summary>
         /// Control MainContent.

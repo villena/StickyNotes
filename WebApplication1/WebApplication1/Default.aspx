@@ -5,13 +5,33 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        ASP.NET
+        welcome
     </h2>
-    <p>
-        Para obtener más información acerca de ASP.NET, visite <a href="http://www.asp.net" title="Sitio web de ASP.NET">www.asp.net</a>.
-    </p>
-    <p>
-        También puede encontrar <a href="http://go.microsoft.com/fwlink/?LinkID=152368"
-            title="Documentación de ASP.NET en MSDN">documentación sobre ASP.NET en MSDN</a>.
-    </p>
+    <asp:Panel ID="Panel1" CssClass="default_panel" runat="server">
+          Recent changes
+    </asp:Panel>
+
+    <asp:Panel ID="Panel2" runat="server" CssClass="tablon">
+    </asp:Panel>
+   
+    
 </asp:Content>
+
+  
+
+<asp:Content ID="LoginForm" runat="server" ContentPlaceHolderID="MainContent2">
+    <asp:Label ID="Label1" runat="server" Text="User"></asp:Label>
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+      <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
+    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+    
+    <asp:Button ID="Button3" runat="server" Text="Button" />
+        
+      
+</asp:Content>
+ 
+
+
+  
+
+               
