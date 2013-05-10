@@ -9,7 +9,7 @@
 
 
 
-public partial class  Notes{
+public partial class  {
     
     /// <summary>
     /// Control Button2.

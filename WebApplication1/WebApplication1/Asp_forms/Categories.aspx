@@ -8,7 +8,7 @@
     </h2>
 
     <asp:Panel ID="Panel1" CssClass="default_panel" runat="server">
-        <asp:Button ID="Button1" CssClass="search_button" runat="server" Text="Search" />
+        <asp:Button ID="Button1" CssClass="button white" runat="server" Text="Search" />
         <asp:TextBox ID="TextBox3" CssClass="search_textbox" runat="server"></asp:TextBox>
         
     </asp:Panel>
@@ -26,7 +26,7 @@
       <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
     
-    <asp:Button ID="Button3" runat="server" Text="Button" />
+    <asp:Button ID="Button3" runat="server" Text="Button" CssClass="button white"/>
         
       
 </asp:Content>

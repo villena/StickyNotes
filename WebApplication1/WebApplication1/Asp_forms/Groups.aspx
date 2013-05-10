@@ -11,7 +11,7 @@
                   <br />
                   <br />
                   
-                  <asp:Button ID="Button1" runat="server" CssClass="cssbutton" Text="New Group" />
+                  <asp:Button ID="Button1" runat="server" CssClass="button white" Text="New Group" />
                   <asp:Panel ID="Panel1" runat="server">
                   List of groups (not implemented yet)
                      </asp:Panel>
@@ -24,7 +24,7 @@
       <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
     
-    <asp:Button ID="Button3" runat="server" Text="Button" />
+    <asp:Button ID="Button3" runat="server" Text="Button" CssClass="button white"/>
         
       
 </asp:Content>
