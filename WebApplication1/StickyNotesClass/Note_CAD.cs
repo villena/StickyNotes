@@ -18,17 +18,17 @@ namespace SickyNotesClass
 
         public bool addNote(Note_Class notec)
         {
-
+            return false;
         }
 
         public bool deleteNote(Note_Class notec)
         {
-
+            return false;
         }
 
         public bool modifyNote(string text)
         {
-
+            return false;
         }
 
         

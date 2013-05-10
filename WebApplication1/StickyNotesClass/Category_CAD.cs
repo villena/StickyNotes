@@ -23,7 +23,7 @@ namespace SickyNotesClass
 
         public Category_Class obtainCategoria(int id)
         {
-
+            return categoria;
         }
     }
 }
