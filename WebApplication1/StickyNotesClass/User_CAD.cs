@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
-using System.Data.SqlTypes;
 
 
 namespace SickyNotesClass
@@ -22,12 +18,12 @@ namespace SickyNotesClass
 
         public bool addFriendCad(string nick)
         {
-            
+            //NO SE COMO CONTROLAR LOS AMIGOS
         }
 
         public bool deleteFriendCad(string nick)
         {
-
+            //LO MISMO QUE ANTES
         }
 
         public bool addUserCad(User_Class userc)
