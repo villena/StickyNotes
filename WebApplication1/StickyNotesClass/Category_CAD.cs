@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SickyNotesClass
+namespace StickyNotesClass
 {
     public class Category_CAD
     {
@@ -18,17 +18,12 @@ namespace SickyNotesClass
 
         public bool addCategoria(Category_Class categoria)
         {
-            //String connection = "Base de datos";
-            //SqlConnection con = new SqlConnection(connection);
-            //string sql = "INSERT INTO CATEGORIES VALUES "()";
-            //SqlCommand cmd = new SqlCommand(sql,con);
-
             return false;
         }
 
         public Category_Class obtainCategoria(int id)
         {
-
+            return categoria;
         }
     }
 }

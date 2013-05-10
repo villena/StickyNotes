@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SickyNotesClass
+namespace StickyNotesClass
 {
     public class Party_Class
     {
