@@ -9,7 +9,7 @@
 
 
 
-public partial class  {
+public partial class  Profile{
     
     /// <summary>
     /// Control Panel1.

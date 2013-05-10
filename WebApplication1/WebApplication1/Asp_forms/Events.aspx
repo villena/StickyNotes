@@ -9,7 +9,7 @@
 
     <asp:Panel ID="Panel1" CssClass="default_panel" runat="server">
         <p align="Right">
-        <asp:Button ID="Button1" runat="server" Text="Add Event" CssClass="button white"/>
+        <asp:Button ID="Button1" runat="server" CssClass="button" Text="Add Event" />
             &nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="TextBox3" CssClass="search_textbox" runat="server"></asp:TextBox>
         </p>
@@ -29,7 +29,7 @@
       <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
     <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
     
-    <asp:Button ID="Button3" runat="server" Text="Button" CssClass="button white"/>
+    <asp:Button ID="Button3" runat="server" Text="Button" />
         
       
 </asp:Content>
