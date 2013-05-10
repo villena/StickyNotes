@@ -33,7 +33,7 @@ namespace SickyNotesClass
 
         public Events_Class obtainEvent(int id)
         {
-            return myEvent;
+
         }
     }
 }

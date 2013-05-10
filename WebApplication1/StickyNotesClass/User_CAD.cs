@@ -22,32 +22,32 @@ namespace SickyNotesClass
 
         public bool addFriendCad(string nick)
         {
-            return false;
+            
         }
 
         public bool deleteFriendCad(string nick)
         {
-            return false;
+
         }
 
         public bool addUserCad(User_Class userc)
         {
-            return false;
+
         }
 
         public bool deleteUserCad(User_Class userc)
         {
-            return false;
+
         }
 
         public bool changePassCad(User_Class userc)
         {
-            return false;
+
         }
 
         public bool updateUserCad(User_Class userc)
         {
-            return false;
+
         }
 
         public void showDataUserCad(User_Class userc)
@@ -57,7 +57,7 @@ namespace SickyNotesClass
 
         public User_Class getUser(int id)
         {
-            return userc;
+
         }
 
         

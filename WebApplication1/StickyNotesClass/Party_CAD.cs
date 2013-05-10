@@ -29,7 +29,8 @@ namespace SickyNotesClass
 
         public Party_Class obtainData()
         {
-            return myParty;
+            //myParty.Users = this.obtainUsers();
+            //myParty.Notes = this.obtainNotes();
         }
 
         public List<Note_Class> obtainNotes()
@@ -39,17 +40,16 @@ namespace SickyNotesClass
 
         public List<User_Class> obtainUsers()
         {
-            return myUsers;
+            return myNotes;
         }
 
         public bool update(Party_Class myParty)
         {
-            return false;
+
         }
 
         public bool deleteParty(Party_Class myParty)
         {
-            return false;
         }
     }
 }
