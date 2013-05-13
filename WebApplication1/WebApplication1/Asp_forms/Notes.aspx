@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Acerca de nosotros" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Notes.aspx.cs"  %>
+    CodeBehind="Notes.aspx.cs"  Inherits="WebApplication1.Notes"%>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -8,12 +8,14 @@
         MY NOTES
     </h2>
    <p>
-      
-       <asp:Button ID="Button2" runat="server" Text="New Note" />
-
-    <asp:Panel ID="Panel1" runat="server" CssClass="tablon">
-    </asp:Panel>
+       <asp:TextBox ID="DescripcionNota" runat="server"></asp:TextBox>
+       <asp:Button ID="CreateNoteButton" runat="server" Text="New Note" CssClass="button white" OnClick="Create_Note"/>
+       
     </p>
+
+    <div id="placeholder" runat="server" class="tablon">
+    <!-- here is where the dinamically created elements will be placed -->
+    </div>
 </asp:Content>
 
 <asp:Content ID="LoginForm" runat="server" ContentPlaceHolderID="MainContent2">

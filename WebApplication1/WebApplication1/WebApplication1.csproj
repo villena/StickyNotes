@@ -176,7 +176,12 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\StickyNotesClass\StickyNotesClass.csproj">
+      <Project>{EAB19997-CFAA-435E-AF6B-A43714635C07}</Project>
+      <Name>StickyNotesClass</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />

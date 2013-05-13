@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{8ECC73C0-85F4-4F7E-825B-57177555F036}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EAB19997-CFAA-435E-AF6B-A43714635C07} = {EAB19997-CFAA-435E-AF6B-A43714635C07}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickyNotesClass", "StickyNotesClass\StickyNotesClass.csproj", "{EAB19997-CFAA-435E-AF6B-A43714635C07}"
 EndProject

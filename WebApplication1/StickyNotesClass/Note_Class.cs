@@ -11,7 +11,7 @@ namespace StickyNotesClass
         private char type;
         private int category;
         private string text;
-        private int date;
+        private string date;
 
         //Constructor
         public Note_Class()
@@ -20,7 +20,7 @@ namespace StickyNotesClass
             type = ' ';
             category = -1;
             text = "";
-            date = -1;
+            date = "dd/mm/yyyy";
         }
 
         public int Id
@@ -45,6 +45,12 @@ namespace StickyNotesClass
         {
             get { return text; }
             set { text = value; }
+        }
+
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
         }
 
         //Add new note
@@ -97,5 +103,10 @@ namespace StickyNotesClass
         }
 
 
+
+        public void addNote(string p)
+        {
+            
+        }
     }
 }
