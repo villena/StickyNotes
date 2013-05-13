@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace StickyNotesClass
 {
@@ -12,6 +14,13 @@ namespace StickyNotesClass
         {
             get { return id; }
             set { id = value; }
+        }
+
+        private string surname;
+        public string Surname
+        {
+            get { return surname; }
+            set { surname = value; }
         }
 
         private string nick;
@@ -116,8 +125,8 @@ namespace StickyNotesClass
         //Add new friend
         public bool addFriend(string nick)
         {
-            User_CAD u = new User_CAD("../../hada_database/Database");
-            if (u.addFriendCad(nick))
+            User_CAD u = new User_CAD();
+            if (u.addFriendCad(nick, this.nick))
             {
                 return true;
             }
@@ -129,8 +138,8 @@ namespace StickyNotesClass
         //Delete friend
         public bool deleteFriend(string nick)
         {
-            User_CAD u = new User_CAD("../../hada_database/Database");
-            if (u.deleteFriendCad(nick))
+            User_CAD u = new User_CAD();
+            if (u.deleteFriendCad(nick, this.nick))
             {
                 return true;
             }
@@ -142,7 +151,7 @@ namespace StickyNotesClass
         //Add user
         public bool addUser()
         {
-            User_CAD u = new User_CAD("../../hada_database/Database");
+            User_CAD u = new User_CAD();
             if (u.addUserCad(this))
             {
                 return true;
@@ -155,7 +164,7 @@ namespace StickyNotesClass
         //Delete user
         public bool deleteUser()
         {
-            User_CAD u = new User_CAD("../../hada_database/Database");
+            User_CAD u = new User_CAD();
             if (u.deleteUserCad(this))
             {
                 return true;
@@ -166,9 +175,17 @@ namespace StickyNotesClass
             }
         }
 
+        //Obtain all the data of one user by his nick
+        public User_Class getUser(string nick)
+        {
+            User_CAD u = new User_CAD();
+            return u.getUser(nick);
+        }
+
+        //Obtain all the data of one user by his id
         public User_Class getUser(int id)
         {
-            User_CAD u = new User_CAD("../../hada_database/Database");
+            User_CAD u = new User_CAD();
             return u.getUser(id);
         }
         //Recovery pass
@@ -179,7 +196,7 @@ namespace StickyNotesClass
         //Change the pass
         public bool changePass(string new_pass)
         {
-            User_CAD u = new User_CAD("../../hada_database/Database");
+            User_CAD u = new User_CAD();
             if (u.changePassCad(this))
             {
                 return true;
@@ -192,7 +209,7 @@ namespace StickyNotesClass
         //Update user
         public bool updateUser()
         {
-            User_CAD u = new User_CAD("../../hada_database/Database");
+            User_CAD u = new User_CAD();
             if (u.updateUserCad(this))
             {
                 return true;
