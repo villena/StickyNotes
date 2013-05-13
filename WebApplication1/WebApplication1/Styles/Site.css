@@ -273,9 +273,10 @@ h3:hover
     margin-bottom: auto;
     margin-top: auto;
     max-width: 80%;
-    text-align: center;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 2%;
+    
 
     /* Bordes redondeados para Mozilla */
     -moz-border-radius-bottomleft: 3px;
