@@ -103,11 +103,5 @@ namespace StickyNotesClass
             return str;
         }
 
-
-
-        public void addNote(string p)
-        {
-            
-        }
     }
 }

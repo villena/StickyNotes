@@ -28,7 +28,7 @@ namespace WebApplication1
             /* Create note with the button 'New Note' */
             Note_Class note = new Note_Class();
             note.Text = DescripcionNota.Text;
-            note.Date = DateTime.Now.ToLongDateString();
+            note.Date = DateTime.Now.ToShortDateString();
 
             /* Label that contains the note info */
             if (note.Text != "")
