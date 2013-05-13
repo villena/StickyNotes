@@ -10,6 +10,13 @@ namespace WebApplication1
 {
     public partial class Notes : System.Web.UI.Page
     {
+        public int i;
+
+        protected void increaseCounter()
+        {
+            i++;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             /* Falta implementar las notas del usuario */
@@ -17,6 +24,7 @@ namespace WebApplication1
 
         protected void Create_Note(object sender, EventArgs e)
         {
+            
             /* Create note with the button 'New Note' */
             Note_Class note = new Note_Class();
             note.Text = DescripcionNota.Text;
@@ -26,14 +34,17 @@ namespace WebApplication1
             if (note.Text != "")
             {
                 Label l = new Label();
-                l.Text = note.Text;
+                l.Text = i.ToString();
                 l.CssClass = "postit";
+                l.ID = "label" + i;
+                increaseCounter();
+
                 placeholder.Controls.Add(l); 
+                
             }
-            
 
             /* Add note in the Database */
-            note.addNote(note.Text);
+            note.addNote();
         }
 
     }

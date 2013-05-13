@@ -23,6 +23,7 @@ namespace StickyNotesClass
             date = "dd/mm/yyyy";
         }
 
+
         public int Id
         {
             get { return id; }
