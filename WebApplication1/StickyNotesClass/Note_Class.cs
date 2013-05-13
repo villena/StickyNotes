@@ -56,7 +56,7 @@ namespace StickyNotesClass
         //Add new note
         public bool addNote()
         {
-            Note_CAD u = new Note_CAD("../../hada_database/Database");
+            Note_CAD u = new Note_CAD();
             if (u.addNote(this)) 
             {
                 return true;
@@ -69,7 +69,7 @@ namespace StickyNotesClass
         //Delete friend
         public bool deleteNote()
         {
-            Note_CAD u = new Note_CAD("../../hada_database/Database");
+            Note_CAD u = new Note_CAD();
             if (u.deleteNote(this))
             {
                 return true;
@@ -83,7 +83,7 @@ namespace StickyNotesClass
         //Modify text
         public bool modifyNote(string text)
         {
-            Note_CAD u = new Note_CAD("../../hada_database/Database");
+            Note_CAD u = new Note_CAD();
             if (u.modifyNote(text))
             {
                 return true;

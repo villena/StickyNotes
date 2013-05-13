@@ -23,10 +23,14 @@ namespace WebApplication1
             note.Date = DateTime.Now.ToLongDateString();
 
             /* Label that contains the note info */
-            Label l = new Label();
-            l.Text = note.Text;
-            l.CssClass = "postit";
-            placeholder.Controls.Add(l);
+            if (note.Text != "")
+            {
+                Label l = new Label();
+                l.Text = note.Text;
+                l.CssClass = "postit";
+                placeholder.Controls.Add(l); 
+            }
+            
 
             /* Add note in the Database */
             note.addNote(note.Text);
