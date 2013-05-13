@@ -19,11 +19,17 @@ namespace StickyNotesClass
 
         public bool createParty(Party_Class party)
         {
+            //String connection = "Base de datos";
+            //SqlConnection con = new SqlConnection(connection);
+            //string nombre = textbox_nombre.text;
+            //string sql = "INSERT INTO PARTY VALUES (" + ID + "," + nombre + ")";
+            //SqlCommand cmd = new SqlCommand(sql,con);
             return false;
         }
 
         public bool addUser(User_Class user)
         {
+            //NECESITO TABLAS
             return false;
         }
 
@@ -36,21 +42,36 @@ namespace StickyNotesClass
 
         public List<Note_Class> obtainNotes()
         {
+            //METODO READER, RELEER.
             return myNotes;
         }
 
         public List<User_Class> obtainUsers()
         {
+            //String connection = "Base de datos";
+            //SqlConnection con = new SqlConnection(connection);
+            //string sql = "SELECT * FROM nOTES WHERE (PERTENEZCAN AL GRUPO)";
+            //SqlCommand cmd = new SqlCommand(sql,con);
             return myUsers;
         }
 
         public bool update(Party_Class myParty)
         {
+            //String connection = "Base de datos";
+            //SqlConnection con = new SqlConnection(connection);
+            //string sql = "UPDATE 
+            //SqlCommand cmd = new SqlCommand(sql,con);
+
             return false;
         }
 
         public bool deleteParty(Party_Class myParty)
         {
+
+            //String connection = "Base de datos";
+            //SqlConnection con = new SqlConnection(connection);
+            //string sql = "DELETE FROM PARTY WHERE nombre = myParty.nombre;
+            //SqlCommand cmd = new SqlCommand(sql,con);
             return false;
         }
     }

@@ -18,21 +18,30 @@ namespace StickyNotesClass
 
         public void addEvent(Events_Class item)
         {
+            //String connection = "Base de datos";
+            //SqlConnection con = new SqlConnection(connection);
+            //string sql = "INSERT INTO EVENTS VALUES "()";
+            //SqlCommand cmd = new SqlCommand(sql,con);
 
         }
 
         public void updateEvent(Events_Class item)
         {
-
+            //SENTENCIA UPDATE
         }
 
         public void deleteEvent(Events_Class item)
         {
+            //String connection = "Base de datos";
+            //SqlConnection con = new SqlConnection(connection);
+            //string sql = "DELETE FROM EVENTS WHERE id = item.id;
+            //SqlCommand cmd = new SqlCommand(sql,con);
 
         }
 
         public Events_Class obtainEvent(int id)
         {
+            //METODO READER, RELEER.
             return myEvent;
         }
     }
