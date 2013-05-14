@@ -82,10 +82,10 @@ namespace StickyNotesClass
         }
 
         //Modify text
-        public bool modifyNote(string text)
+        public bool modifyNote(Note_Class notec)
         {
             Note_CAD u = new Note_CAD();
-            if (u.modifyNote(text))
+            if (u.modifyNote(notec))
             {
                 return true;
             }
