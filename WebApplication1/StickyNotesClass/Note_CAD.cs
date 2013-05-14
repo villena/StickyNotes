@@ -16,12 +16,10 @@ namespace StickyNotesClass
         private string database;
 
         public Note_CAD()
-        {
-           
-            
+        {                
         }
 
-        public bool addNote(Note_Class notec)
+        public bool addNote(Note_Class notec,int id)
         {
             bool insertado = false;
 
@@ -32,9 +30,9 @@ namespace StickyNotesClass
             {
                 con.Open();
                 string sql = "INSERT INTO NOTES (KIND,CREATION_DATE,TEXT)  VALUES (" + "'a'" + "," + "'" + notec.Date + "'" + "," + "'" + notec.Text + "'" + ")";
-                //string sql = "INSERT INTO NOTES (KIND,CREATION_DATE,TEXT)  VALUES ('a','11/03/2013','Javi es un cabronazo')";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
+                insertado = true;
             }
             catch (Exception ex)
             {
@@ -49,24 +47,53 @@ namespace StickyNotesClass
 
         public bool deleteNote(Note_Class notec)
         {
-            //String connection = "Base de datos";
-            //SqlConnection con = new SqlConnection(connection);
-            //string sql = "DELETE FROM NOTES WHERE id = notec.id;
-            //SqlCommand cmd = new SqlCommand(sql,con);
-            return false;
+            bool borrado = false;
+
+            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                con.Open();
+                string sql = "DELETE FROM NOTES WHERE id = notec.id";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                borrado = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return borrado;
         }
 
-        public bool modifyNote(string text)
+        public bool modifyNote(Note_Class notec)
         {
+            bool modificacion = false;
 
-            //NO tengo muy claro como modificar la nota
+            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+            SqlConnection con = new SqlConnection(connection);
 
-            //String connection = "Base de datos";
-            //SqlConnection con = new SqlConnection(connection);
-            //string sql = ""s;
-            //SqlCommand cmd = new SqlCommand(sql,con);
+            try
+            {
+                string sql = "UPDATE NOTAS SET TEXT = " + "'" + notec.Id + "'" + "WHERE ID =" + notec.Id +")";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                modificacion = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                con.Close();
+            }
 
-            return false;
+            return modificacion;
         }
 
         
