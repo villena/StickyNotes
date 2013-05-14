@@ -12,22 +12,12 @@ namespace WebApplication1
 {
     public partial class Notes : System.Web.UI.Page
     {
-        public int i;
-
-        protected void increaseCounter()
-        {
-            i++;
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             /* Falta implementar las notas del usuario */
-
-
-
             String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
             SqlConnection con = new SqlConnection(connection);
-
             con.Open();
             string sql = "SELECT TEXT FROM NOTES";
             SqlCommand cmd = new SqlCommand(sql, con);
