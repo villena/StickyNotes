@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using StickyNotesClass;
 
 namespace WebApplication1
 {
@@ -11,6 +12,13 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            User_Class usuario_sesion = new User_Class();
+            usuario_sesion = usuario_sesion.getUser("PROTIVE");
+
+            Image1.ImageUrl = usuario_sesion.Image_url;
+            Label3.Text = usuario_sesion.Name;
+            Label4.Text = usuario_sesion.Surname;
+            Label5.Text = usuario_sesion.Email;
 
         }
     }
