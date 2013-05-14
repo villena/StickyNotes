@@ -15,11 +15,12 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             /* Falta implementar las notas del usuario */
             String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
             SqlConnection con = new SqlConnection(connection);
             con.Open();
-            string sql = "SELECT * FROM NOTES";
+            string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader reader = cmd.ExecuteReader();
             StringBuilder htmlStr = new StringBuilder("");
@@ -44,7 +45,7 @@ namespace WebApplication1
 
         protected void Create_Note(object sender, EventArgs e)
         {
-            
+            Response.AppendHeader("Refresh", "10;URL=Notes.aspx");
             /* Create note with the button 'New Note' */
             Note_Class note = new Note_Class();
             note.Text = DescripcionNota.Text;
@@ -52,6 +53,7 @@ namespace WebApplication1
 
             /* Add note in the Database */
             note.addNote(1);
+            
         }
 
     }
