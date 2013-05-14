@@ -19,7 +19,7 @@ namespace WebApplication1
             String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
             SqlConnection con = new SqlConnection(connection);
             con.Open();
-            string sql = "SELECT TEXT FROM NOTES";
+            string sql = "SELECT * FROM NOTES";
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader reader = cmd.ExecuteReader();
             StringBuilder htmlStr = new StringBuilder("");
@@ -28,7 +28,9 @@ namespace WebApplication1
             {
                 htmlStr.Append("<div class = 'postit'>");
                 htmlStr.Append(reader["TEXT"]);
+                htmlStr.Append("<br><br>");
                 htmlStr.Append("<b>");
+                htmlStr.Append(reader["CREATION_DATE"]);
                 htmlStr.Append("</b>");
                 htmlStr.Append("</div>");
             }
