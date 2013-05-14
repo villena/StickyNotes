@@ -39,7 +39,6 @@ namespace WebApplication1
                 htmlStr.Append("<div class = 'postit'>");
                 htmlStr.Append(reader["TEXT"]);
                 htmlStr.Append("<b>");
-                htmlStr.Append(reader["CREATION_DATE"].ToString());
                 htmlStr.Append("</b>");
                 htmlStr.Append("</div>");
             }
