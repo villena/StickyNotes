@@ -19,7 +19,7 @@ namespace StickyNotesClass
         {                
         }
 
-        public bool addNote(Note_Class notec)
+        public bool addNote(Note_Class notec,int id)
         {
             bool insertado = false;
 

@@ -55,10 +55,10 @@ namespace StickyNotesClass
         }
 
         //Add new note
-        public bool addNote()
+        public bool addNote(int id)
         {
             Note_CAD u = new Note_CAD();
-            if (u.addNote(this)) 
+            if (u.addNote(this,id)) 
             {
                 return true;
             }
