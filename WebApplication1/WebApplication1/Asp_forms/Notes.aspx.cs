@@ -51,7 +51,7 @@ namespace WebApplication1
             note.Date = DateTime.Now.ToShortDateString();
 
             /* Add note in the Database */
-            /*note.addNote();*/
+            note.addNote(1);
         }
 
     }
