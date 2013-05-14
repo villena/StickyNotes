@@ -38,6 +38,9 @@ namespace WebApplication1
             {
                 htmlStr.Append("<div class = 'postit'>");
                 htmlStr.Append(reader["TEXT"]);
+                htmlStr.Append("<b>");
+                htmlStr.Append(reader["CREATION_DATE"].ToString());
+                htmlStr.Append("</b>");
                 htmlStr.Append("</div>");
             }
 
@@ -57,7 +60,7 @@ namespace WebApplication1
             note.Date = DateTime.Now.ToShortDateString();
 
             /* Add note in the Database */
-            note.addNote();
+            /*note.addNote();*/
         }
 
     }
