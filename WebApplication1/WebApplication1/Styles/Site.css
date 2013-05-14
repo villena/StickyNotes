@@ -622,3 +622,29 @@ div.accountInfo
     background: linear-gradient(top,  #efefef, #f8f8f8);
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef', endColorstr='#f8f8f8');
 }
+
+
+.textarea
+{
+    width: 200px;
+    height: 90px;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+    padding: 8px;
+    font-weight: 200;
+    font-size: 15px;
+    font-family: Verdana;
+    box-shadow: 1px 1px 5px #CCC;
+}
+.textarea:hover
+{
+    width: 200px;
+    height: 90px;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    padding: 8px;
+    font-weight: 200;
+    font-size: 15px;
+    font-family: Verdana;
+    box-shadow: 1px 1px 5px #CCC;
+}
