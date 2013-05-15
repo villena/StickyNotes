@@ -31,6 +31,7 @@
                             <asp:Label ID="PasswordLabel" runat="server" Text="Pass:"></asp:Label>
                             <asp:TextBox ID="Password" TextMode="Password" runat="server"></asp:TextBox>
                             <asp:Button ID="Button1" runat="server" Text="Sign In" onclick="Login_Master"/>
+                            <asp:Button ID="Button2" runat="server" Text="Log out" onclick = "LogOut_Master" Visible="False" />
                     
                         </p>
                         <asp:Label ID="Label1" runat="server" Text=""></asp:Label>

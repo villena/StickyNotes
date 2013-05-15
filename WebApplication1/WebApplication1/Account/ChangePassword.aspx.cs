@@ -11,7 +11,12 @@ namespace WebApplication1.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+            if (userCookie == null)
+            {
+                Response.Redirect("../Account/Login.aspx");
+            }
         }
     }
 }

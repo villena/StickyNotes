@@ -12,13 +12,22 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            User_Class usuario_sesion = new User_Class();
-            usuario_sesion = usuario_sesion.getUser("PROTIVE");
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+            if (userCookie == null)
+            {
+                Response.Redirect("../Account/Login.aspx");
+            }
+            else
+            {
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser("PROTIVE");
 
-            Image1.ImageUrl = usuario_sesion.Image_url;
-            Label3.Text = usuario_sesion.Name;
-            Label4.Text = usuario_sesion.Surname;
-            Label5.Text = usuario_sesion.Email;
+                Image1.ImageUrl = usuario_sesion.Image_url;
+                Label3.Text = usuario_sesion.Name;
+                Label4.Text = usuario_sesion.Surname;
+                Label5.Text = usuario_sesion.Email;
+            }
 
         }
     }

@@ -51,6 +51,7 @@ namespace WebApplication1
                     PasswordLabel.Visible = false;
                     Password.Visible = false;
                     Button1.Visible = false;
+                    Button2.Visible = true;
 
                 }
                 else
@@ -63,6 +64,25 @@ namespace WebApplication1
             {
                 Label1.Text = "No existe el usuario";
             }
+        }
+        protected void LogOut_Master(object sender, EventArgs e)
+        {
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+            if (userCookie != null)
+            {
+                userCookie.Expires = DateTime.Now.AddMonths(-1);
+                Response.Cookies.Add(userCookie);
+            }
+
+            Label1.Text = "";
+
+            UserLabel.Visible = true;
+            UserName.Visible = true;
+            PasswordLabel.Visible = true;
+            Password.Visible = true;
+            Button1.Visible = true;
+            Button2.Visible = false;
         }
     }
 }

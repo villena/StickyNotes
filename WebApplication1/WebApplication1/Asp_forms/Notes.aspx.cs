@@ -15,31 +15,38 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            /* Falta implementar las notas del usuario */
-            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
-            SqlConnection con = new SqlConnection(connection);
-            con.Open();
-            string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            StringBuilder htmlStr = new StringBuilder("");
-
-            while (reader.Read())
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+            if (userCookie == null)
             {
-                htmlStr.Append("<div class = 'postit'>");
-                htmlStr.Append(reader["TEXT"]);
-                htmlStr.Append("<br><br>");
-                htmlStr.Append("<b>");
-                htmlStr.Append(reader["CREATION_DATE"]);
-                htmlStr.Append("</b>");
-                htmlStr.Append("</div>");
+                Response.Redirect("../Account/Login.aspx");
             }
+            else
+            {
+                /* Falta implementar las notas del usuario */
+                String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+                SqlConnection con = new SqlConnection(connection);
+                con.Open();
+                string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                StringBuilder htmlStr = new StringBuilder("");
 
-            reader.Close();
-            con.Close();
-            NotasPrueba.Text = htmlStr.ToString();
+                while (reader.Read())
+                {
+                    htmlStr.Append("<div class = 'postit'>");
+                    htmlStr.Append(reader["TEXT"]);
+                    htmlStr.Append("<br><br>");
+                    htmlStr.Append("<b>");
+                    htmlStr.Append(reader["CREATION_DATE"]);
+                    htmlStr.Append("</b>");
+                    htmlStr.Append("</div>");
+                }
 
+                reader.Close();
+                con.Close();
+                NotasPrueba.Text = htmlStr.ToString();
+            }
             
         }
 
