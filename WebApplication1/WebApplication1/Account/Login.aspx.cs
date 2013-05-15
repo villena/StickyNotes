@@ -45,13 +45,15 @@ namespace WebApplication1.Account
                 if (myUser.Pass == myUser2.Pass)
                 {
 
-                    userCookie = new HttpCookie("UserId", myUser.Nick);
+                    userCookie = new HttpCookie("UserID", myUser.Nick);
                     userCookie.Expires = DateTime.Now.AddMonths(1);
                     Response.Cookies.Add(userCookie);
                     Label1.Text = (string)refUrl;
+                    //Label1.Text = userCookie.Value;
                     if (refUrl != null)
                     {
                         Response.Redirect((string)refUrl);
+                        //Label1.Text = userCookie.Value;
                     }
                 }
                 else

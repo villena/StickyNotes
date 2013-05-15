@@ -12,6 +12,26 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+            if (userCookie == null)
+            {
+
+            }
+            else
+            {
+                User_Class myUser = new User_Class();
+                myUser = myUser.getUser(userCookie.Value);
+
+                Label1.Text = "Welcome " + myUser.Nick;
+                UserLabel.Visible = false;
+                UserName.Visible = false;
+                PasswordLabel.Visible = false;
+                Password.Visible = false;
+                Button1.Visible = false;
+                Button2.Visible = true;
+            }
+
             if (!IsPostBack)
             {
                 if (ViewState["RefUrl"] != null) ViewState["RefUrl"] = Request.UrlReferrer.ToString();
@@ -42,7 +62,7 @@ namespace WebApplication1
                 if (myUser.Pass == myUser2.Pass)
                 {
 
-                    userCookie = new HttpCookie("UserId", myUser.Nick);
+                    userCookie = new HttpCookie("UserID", myUser.Nick);
                     userCookie.Expires = DateTime.Now.AddMonths(1);
                     Response.Cookies.Add(userCookie);
                     Label1.Text = "Welcome " + myUser.Nick;
