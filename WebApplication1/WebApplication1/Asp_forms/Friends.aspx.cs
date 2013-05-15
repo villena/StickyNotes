@@ -24,9 +24,19 @@ namespace WebApplication1
                 usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
                 if(RadioButtonList1.SelectedItem.Text == "Only my friends") {
+                    List<User_Class> lista = new List<User_Class>();
                     usuario_sesion.getFriends();
 
-                    if (usuario_sesion.Friends.Count() == 0)
+                    if (Request.QueryString["cadena"] != null)
+                    {
+                        lista = filterFriends(Request.QueryString["cadena"], usuario_sesion.Friends);
+                    }
+                    else
+                    {
+                        lista = usuario_sesion.Friends;
+                    }
+
+                    if (lista.Count() == 0)
                     {
                         Label label = new Label();
                         label.Attributes.Add("style", "float:center; margin-left:50px;");
@@ -35,40 +45,14 @@ namespace WebApplication1
                         Panel2.Controls.Add(label);
                     }
 
-                    for (int j = 0; j < usuario_sesion.Friends.Count(); j++)
+                    for (int j = 0; j < lista.Count(); j++)
                     {
-                        Panel p = new Panel();
-                        p.CssClass = "postit";
-                        p.Height = 100;
-                        p.ID = "panelF" + j;
+                        Panel p = createPanel();
                         Panel2.Controls.Add(p);
-
-                        Image i = new Image();
-                        i.Attributes.Add("style", "float:left; max-width: auto; max-height: 75px; border: 5px groove brown;");
-                        i.ID = "ImageF" + j;
-                        i.ImageUrl = usuario_sesion.Friends.ElementAt(j).Image_url.ToString();
-                        p.Controls.Add(i);
-
-                        Label label = new Label();
-                        label.Attributes.Add("style", "clear:both; margin-left:50px;");
-                        label.ID = "LabelF" + j;
-                        label.Text = usuario_sesion.Friends.ElementAt(j).Name + "<br />";
-                        p.Controls.Add(label);
-
-                        Button profile = new Button();
-                        profile.ID = "ButtonP" + j;
-                        profile.Text = "Ver Perfil";
-                        profile.Attributes.Add("style", "margin-left:400px");
-                        profile.PostBackUrl = "../Aux_asp_forms/Friend_Profile.aspx?id="+usuario_sesion.Friends.ElementAt(j).Id.ToString();
-                        p.Controls.Add(profile);
-
-                        Button del = new Button();
-                        del.ID = "ButtonD" + j;
-                        del.Text = "Delete Friend";
-                        del.Attributes.Add("style", "margin-left:400px");
-                        del.PostBackUrl = "../Aux_asp_forms/User_Deleted.aspx?id=" + usuario_sesion.Friends.ElementAt(j).Id.ToString();
-
-                        p.Controls.Add(del);
+                        p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
+                        p.Controls.Add(createLabel(lista.ElementAt(j).Name));
+                        p.Controls.Add(createPrfButton(lista.ElementAt(j).Id));
+                        p.Controls.Add(createDelButton(lista.ElementAt(j).Id));
                     }
                 }
 
@@ -79,57 +63,103 @@ namespace WebApplication1
 
                     for (int j = 0; j < lista.Count(); j++)
                     {
-                        Panel p = new Panel();
-                        p.CssClass = "postit";
-                        p.Height = 100;
-                        p.ID = "panelF" + j;
+                        Panel p = createPanel();
                         Panel2.Controls.Add(p);
-
-                        Image i = new Image();
-                        i.Attributes.Add("style", "float:left; max-width: auto; max-height: 75px; border: 5px groove brown;");
-                        i.ID = "ImageF" + j;
-                        i.ImageUrl = lista.ElementAt(j).Image_url;
-                        p.Controls.Add(i);
-
-                        Label label = new Label();
-                        label.Attributes.Add("style", "clear:both; margin-left:50px;");
-                        label.ID = "LabelF" + j;
-                        label.Text = lista.ElementAt(j).Name + "<br />";
-                        p.Controls.Add(label);
+                        p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
+                        p.Controls.Add(createLabel(lista.ElementAt(j).Name));
 
                         if (usuario_sesion.isFriend(lista.ElementAt(j).Id))
                         {
-                            Button profile = new Button();
-                            profile.ID = "ButtonP" + j;
-                            profile.Text = "Ver Perfil";
-                            profile.Attributes.Add("style", "margin-left:400px");
-                            profile.PostBackUrl = "../Aux_asp_forms/Friend_Profile.aspx?id=" + lista.ElementAt(j).Id.ToString();
-                            p.Controls.Add(profile);
+                            p.Controls.Add(createPrfButton(lista.ElementAt(j).Id));
                         }
 
                         if (!usuario_sesion.isFriend(lista.ElementAt(j).Id))
                         {
-                            Button add = new Button();
-                            add.ID = "ButtonA" + j;
-                            add.Text = "Add Friend";
-                            add.Attributes.Add("style", "margin-left:400px");
-                            add.PostBackUrl = "../Aux_asp_forms/User_Added.aspx?id=" + lista.ElementAt(j).Id.ToString();
-
-                            p.Controls.Add(add);
+                            p.Controls.Add(createAddButton(lista.ElementAt(j).Id));
                         }
                         else
                         {
-                            Button del = new Button();
-                            del.ID = "ButtonD" + j;
-                            del.Text = "Delete Friend";
-                            del.Attributes.Add("style", "margin-left:400px");
-                            del.PostBackUrl = "../Aux_asp_forms/User_Deleted.aspx?id=" + lista.ElementAt(j).Id.ToString();
-
-                            p.Controls.Add(del);
+                            p.Controls.Add(createDelButton(lista.ElementAt(j).Id));
                         }
                     }
                 }
             }
+        }
+
+        protected Label createLabel(string name)
+        {
+            Label label = new Label();
+            label.Attributes.Add("style", "clear:both; margin-left:50px;");
+            label.Text = name + "<br />";
+
+            return label;
+        }
+
+        protected Panel createPanel()
+        {
+            Panel p = new Panel();
+            p.CssClass = "postit";
+            p.Height = 100;
+
+            return p;
+        }
+
+        protected Image createImage(string image_url)
+        {
+            Image i = new Image();
+            i.Attributes.Add("style", "float:left; max-width: auto; max-height: 75px; border: 5px groove brown;");
+            i.ImageUrl = image_url;
+
+            return i;
+        }
+
+        protected Button createAddButton(int id)
+        {
+            Button add = new Button();
+            add.Text = "Add Friend";
+            add.Attributes.Add("style", "float:right; clear:left;");
+            add.PostBackUrl = "../Aux_asp_forms/User_Added.aspx?id=" + id.ToString();
+
+            return add;
+        }
+
+        protected Button createDelButton(int id)
+        {
+            Button del = new Button();
+            del.Text = "Delete Friend";
+            del.Attributes.Add("style", "float:right; clear:left;");
+            del.PostBackUrl = "../Aux_asp_forms/User_Deleted.aspx?id=" + id.ToString();
+
+            return del;
+        }
+
+        protected Button createPrfButton(int id)
+        {
+            Button profile = new Button();
+            profile.Text = "Ver Perfil";
+            profile.Attributes.Add("style", "float:right; clear:both;");
+            profile.PostBackUrl = "../Aux_asp_forms/Friend_Profile.aspx?id=" + id.ToString();
+
+            return profile;
+        }
+
+        protected List<User_Class> filterFriends(string string_comp, List<User_Class> lista)
+        {
+            List<User_Class> resultado = new List<User_Class>();
+            for (int i = 0; i < lista.Count(); i++)
+            {
+                string cadena_comp;
+                cadena_comp = lista.ElementAt(i).Name + " " + lista.ElementAt(i).Surname +
+                    " " + lista.ElementAt(i).Nick;
+                if (cadena_comp.Contains(string_comp)) resultado.Add(lista.ElementAt(i));
+            }
+
+            return resultado;
+        }
+
+        protected void SearchFriend(object sender, EventArgs e)
+        {
+            Response.Redirect("./Friends.aspx?cadena=" + TextBox3.Text.ToString());
         }
     }
 }
