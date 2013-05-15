@@ -252,6 +252,13 @@ namespace StickyNotesClass
             this.updateUser();
         }
 
+        public bool existeUsuario(string nick)
+        {
+            User_CAD u = new User_CAD();
+
+            return u.Existe_Usuario(nick);
+        }
+
         //Show all the data
         public override string ToString()
         {
