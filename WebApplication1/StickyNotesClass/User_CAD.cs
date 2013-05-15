@@ -20,14 +20,14 @@ namespace StickyNotesClass
 
         }
 
-        public bool addFriendCad(string nick1, string nick2)
+        public bool addFriendCad(int id1, int id2)
         {
             bool added = false;
             SqlConnection c = new SqlConnection(db);
             try
             {
                 c.Open();
-                SqlCommand com = new SqlCommand("INSERT INTO US_REL VALUES ('" + nick2 + "', '" + nick1 + "')", c);
+                SqlCommand com = new SqlCommand("INSERT INTO US_REL VALUES (" + id2 + ", " + id1 + ")", c);
                 com.ExecuteNonQuery();
                 added = true;
             }
@@ -38,14 +38,14 @@ namespace StickyNotesClass
             return added;
         }
 
-        public bool deleteFriendCad(string nick1, string nick2)
+        public bool deleteFriendCad(int id1, int id2)
         {
             bool deleted = false;
             SqlConnection c = new SqlConnection(db);
             try
             {
                 c.Open();
-                SqlCommand com = new SqlCommand("DELETE FROM US_REL WHERE UID1 = '" + nick1 + "' AND UID2 = '" + nick2 +"'", c);
+                SqlCommand com = new SqlCommand("DELETE FROM US_REL WHERE UID1 = " + id2 + " AND UID2 = " + id1, c);
                 com.ExecuteNonQuery();
                 deleted = true;
             }
@@ -136,7 +136,7 @@ namespace StickyNotesClass
             return updated;
         }
 
-        public User_Class getUser(string nick)
+        public User_Class getUserCAD(string nick)
         {
             User_Class userc = new User_Class();
             SqlConnection c = new SqlConnection(db);
@@ -151,6 +151,7 @@ namespace StickyNotesClass
                     userc.Nick = dr["NICK"].ToString();
                     userc.Email = dr["EMAIL"].ToString();
                     userc.Name = dr["NAME"].ToString();
+                    userc.Surname = dr["SURNAME"].ToString();
                     userc.Pass = dr["PASS"].ToString();
                     userc.Gender = char.Parse(dr["GENDER"].ToString());
                     userc.Entry_date = dr["ENTRY_DATE"].ToString();
@@ -167,14 +168,14 @@ namespace StickyNotesClass
             return userc;
         }
 
-        public User_Class getUser(int id)
+        public User_Class getUserCAD(int id)
         {
             User_Class userc = new User_Class();
             SqlConnection c = new SqlConnection(db);
             try
             {
                 c.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM USERS WHERE ID = '" + id + "'", c);
+                SqlCommand com = new SqlCommand("SELECT * FROM USERS WHERE ID = " + id, c);
                 SqlDataReader dr = com.ExecuteReader();
                 if (dr.Read())
                 {
@@ -182,6 +183,7 @@ namespace StickyNotesClass
                     userc.Nick = dr["NICK"].ToString();
                     userc.Email = dr["EMAIL"].ToString();
                     userc.Name = dr["NAME"].ToString();
+                    userc.Surname = dr["SURNAME"].ToString();
                     userc.Pass = dr["PASS"].ToString();
                     userc.Gender = char.Parse(dr["GENDER"].ToString());
                     userc.Entry_date = dr["ENTRY_DATE"].ToString();
@@ -198,7 +200,7 @@ namespace StickyNotesClass
             return userc;
         }
 
-        public bool Existe_Usuario(string nick)
+        public bool Existe_UsuarioCAD(string nick)
         {
             bool found = false;
             SqlConnection c = new SqlConnection(db);
@@ -219,6 +221,74 @@ namespace StickyNotesClass
                 c.Close();
             }
             return found;
+        }
+
+        public List<User_Class> getFriendsCAD(int id)
+        {
+            List<User_Class> fr = new List<User_Class>();
+            SqlConnection c = new SqlConnection(db);
+            try
+            {
+                c.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM US_REL WHERE UID1 = " + id, c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                while(dr.Read()) {
+                    fr.Add(getUserCAD(int.Parse(dr["UID2"].ToString())));
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                c.Close();
+            }
+            return fr;
+        }
+
+        public List<User_Class> getAllUserCAD(int id)
+        {
+            List<User_Class> fr = new List<User_Class>();
+            SqlConnection c = new SqlConnection(db);
+            try
+            {
+                c.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM USERS WHERE ID != " + id, c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    fr.Add(getUserCAD(int.Parse(dr["ID"].ToString())));
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                c.Close();
+            }
+            return fr;
+        }
+
+        public bool isFriendCAD(int id1, int id2)
+        {
+            bool friend = false;
+            SqlConnection c = new SqlConnection(db);
+            try
+            {
+                c.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM US_REL WHERE UID1 = " + id2 + " and UID2 = " + id1, c);
+                SqlDataReader dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    dr.Close();
+                    friend = true;
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                c.Close();
+            }
+            return friend;
         }
     }
 }

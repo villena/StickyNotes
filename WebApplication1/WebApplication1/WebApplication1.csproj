@@ -66,6 +66,9 @@
     <Content Include="Asp_forms\Groups.aspx" />
     <Content Include="Asp_forms\Notes.aspx" />
     <Content Include="Asp_forms\Profile.aspx" />
+    <Content Include="Aux_asp_forms\Friend_Profile.aspx" />
+    <Content Include="Aux_asp_forms\User_Added.aspx" />
+    <Content Include="Aux_asp_forms\User_Deleted.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -136,6 +139,27 @@
     </Compile>
     <Compile Include="Asp_forms\Events.aspx.designer.cs">
       <DependentUpon>Events.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aux_asp_forms\Friend_Profile.aspx.cs">
+      <DependentUpon>Friend_Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aux_asp_forms\Friend_Profile.aspx.designer.cs">
+      <DependentUpon>Friend_Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aux_asp_forms\User_Added.aspx.cs">
+      <DependentUpon>User_Added.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aux_asp_forms\User_Added.aspx.designer.cs">
+      <DependentUpon>User_Added.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aux_asp_forms\User_Deleted.aspx.cs">
+      <DependentUpon>User_Deleted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aux_asp_forms\User_Deleted.aspx.designer.cs">
+      <DependentUpon>User_Deleted.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

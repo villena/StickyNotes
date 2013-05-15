@@ -86,7 +86,7 @@ namespace StickyNotesClass
             set { notes = value; }
         }
 
-        private List<Party_Class>parties;
+        private List<Party_Class> parties;
         public List<Party_Class> Parties
         {
             get { return parties; }
@@ -103,10 +103,10 @@ namespace StickyNotesClass
         private List<Events_Class> events;
         public List<Events_Class> Events
         {
-            get{return events;}
-            set{events=value;}
+            get { return events; }
+            set { events = value; }
         }
-            
+
 
         //Constructor
         public User_Class()
@@ -123,10 +123,10 @@ namespace StickyNotesClass
         }
 
         //Add new friend
-        public bool addFriend(string nick)
+        public bool addFriend(int idf)
         {
             User_CAD u = new User_CAD();
-            if (u.addFriendCad(nick, this.nick))
+            if (u.addFriendCad(idf, Id))
             {
                 return true;
             }
@@ -136,10 +136,10 @@ namespace StickyNotesClass
             }
         }
         //Delete friend
-        public bool deleteFriend(string nick)
+        public bool deleteFriend(int idf)
         {
             User_CAD u = new User_CAD();
-            if (u.deleteFriendCad(nick, this.nick))
+            if (u.deleteFriendCad(idf, Id))
             {
                 return true;
             }
@@ -179,19 +179,19 @@ namespace StickyNotesClass
         public User_Class getUser(string nick)
         {
             User_CAD u = new User_CAD();
-            return u.getUser(nick);
+            return u.getUserCAD(nick);
         }
 
         //Obtain all the data of one user by his id
         public User_Class getUser(int id)
         {
             User_CAD u = new User_CAD();
-            return u.getUser(id);
+            return u.getUserCAD(id);
         }
         //Recovery pass
         public string recoverPass()
         {
-           return this.Pass;
+            return this.Pass;
         }
         //Change the pass
         public bool changePass(string new_pass)
@@ -252,11 +252,11 @@ namespace StickyNotesClass
             this.updateUser();
         }
 
-        public bool existeUsuario(string nick)
+        //Obtain a Friend List
+        public void getFriends()
         {
-            User_CAD u = new User_CAD();
-
-            return u.Existe_Usuario(nick);
+            User_CAD userc = new User_CAD();
+            friends = userc.getFriendsCAD(Id);
         }
 
         //Show all the data
@@ -265,6 +265,36 @@ namespace StickyNotesClass
             string str;
             str = nick + "\n" + email + "\n" + name + "\n" + gender + "\n" + entry_date + "\n" + birth_date + "\n" + image_url;
             return str;
+        }
+
+        //Obtail a list with all the user less youself
+        public List<User_Class> getAllUser()
+        {
+            User_CAD userc = new User_CAD();
+            List<User_Class> lista = new List<User_Class>();
+            lista = userc.getAllUserCAD(Id);
+
+            return lista;
+        }
+
+        //Comprove if one nick is your friend
+        public bool isFriend(int idf)
+        {
+            User_CAD userc = new User_CAD();
+            return userc.isFriendCAD(idf, Id);
+        }
+
+        public bool existeUsuario(string nick)
+        {
+            User_CAD userc = new User_CAD();
+            if (userc.Existe_UsuarioCAD(nick))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

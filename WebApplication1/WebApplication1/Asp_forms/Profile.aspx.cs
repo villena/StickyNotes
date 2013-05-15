@@ -21,7 +21,7 @@ namespace WebApplication1
             else
             {
                 User_Class usuario_sesion = new User_Class();
-                usuario_sesion = usuario_sesion.getUser("PROTIVE");
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
                 Image1.ImageUrl = usuario_sesion.Image_url;
                 Label3.Text = usuario_sesion.Name;
