@@ -93,6 +93,7 @@ namespace WebApplication1
             {
                 userCookie.Expires = DateTime.Now.AddMonths(-1);
                 Response.Cookies.Add(userCookie);
+                Response.Redirect(Request.RawUrl);
             }
 
             Label1.Text = "";
