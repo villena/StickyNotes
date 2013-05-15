@@ -55,6 +55,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Account\Register2.aspx" />
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register2.aspx.cs">
+      <DependentUpon>Register2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register2.aspx.designer.cs">
+      <DependentUpon>Register2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asp_forms\Categories.aspx.cs">
       <DependentUpon>Categories.aspx</DependentUpon>

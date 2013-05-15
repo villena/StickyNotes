@@ -11,7 +11,8 @@
         
         
             Please login to continue.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Sign up here</asp:HyperLink>
+        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="False" 
+                NavigateUrl="~/Account/Register2.aspx">Sign up here</asp:HyperLink>
     </p>
   
        

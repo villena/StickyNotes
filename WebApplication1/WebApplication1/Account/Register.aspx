@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
  <h2>
-                        Create a new account
+                        No deberias estar viendo esta pagina
  </h2>
  <asp:Panel ID="Panel1" runat="server" CssClass="default_panel">
     <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="false" OnCreatedUser="RegisterUser_CreatedUser">

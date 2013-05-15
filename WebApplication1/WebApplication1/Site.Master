@@ -61,8 +61,7 @@
             <div class="marcobotones">
 
 
-             <asp:LoginView ID="LoginView2" runat="server" EnableViewState="false">
-                    <LoggedInTemplate>
+            
 
                       <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
                         <Items>
@@ -77,25 +76,10 @@
 
                      </Items>
                     </asp:Menu>
-                   </LoggedInTemplate>
+                 
 
 
-                     <AnonymousTemplate>
-
-                      <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
-                        <Items>
-                                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Notes"/>
-                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Friends"/>
-                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Groups"/>
-                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Events"/>
-                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Categories"/>
-                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Profile"/>
-                                    <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="About"/>
-                     </Items>
-                    </asp:Menu>
-
-                    </AnonymousTemplate>
+                   
                 </asp:LoginView>
 
              </div>
