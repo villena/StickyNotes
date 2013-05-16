@@ -22,8 +22,9 @@ namespace WebApplication1
             {
                 User_Class usuario_sesion = new User_Class();
                 usuario_sesion = usuario_sesion.getUser(userCookie.Value);
+                if (Request.QueryString["all"] == "yes" && RadioButtonList1.Items[1].Selected) RadioButtonList1.Items[1].Selected = true;
 
-                if(RadioButtonList1.SelectedItem.Text == "Only my friends") {
+                if(RadioButtonList1.Text == "Only my friends") {
                     List<User_Class> lista = new List<User_Class>();
                     usuario_sesion.getFriends();
 
@@ -56,10 +57,17 @@ namespace WebApplication1
                     }
                 }
 
-                else if (RadioButtonList1.SelectedItem.Text == "All Users")
+                else if (RadioButtonList1.Text == "All Users")
                 {
                     List<User_Class> lista = new List<User_Class>();
-                    lista = usuario_sesion.getAllUser();
+                    if (Request.QueryString["cadena"] != null)
+                    {
+                        lista = filterFriends(Request.QueryString["cadena"], usuario_sesion.getAllUser());
+                    }
+                    else
+                    {
+                        lista = usuario_sesion.getAllUser();
+                    }
 
                     for (int j = 0; j < lista.Count(); j++)
                     {
@@ -159,7 +167,14 @@ namespace WebApplication1
 
         protected void SearchFriend(object sender, EventArgs e)
         {
-            Response.Redirect("./Friends.aspx?cadena=" + TextBox3.Text.ToString());
+            if (RadioButtonList1.Text == "Only my friends")
+            {
+                Response.Redirect("./Friends.aspx?all=&cadena=" + TextBox3.Text);
+            }
+            else
+            {
+                Response.Redirect("./Friends.aspx?all=yes&cadena=" + TextBox3.Text);
+            }
         }
     }
 }
