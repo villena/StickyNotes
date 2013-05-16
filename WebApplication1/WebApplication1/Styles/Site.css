@@ -8,8 +8,9 @@ body
     background-attachment:fixed;
     background-size: cover;
     font-size: .80em;
-    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
-    margin: 0px;
+    /*font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+   */
+     margin: 0px;
     padding: 0px;
     color: #696969;
 
@@ -138,11 +139,12 @@ h5, h6
     padding: 0px;
 
     width: 100%;
-    height:112px;
+    height:100px;
     min-width:400px;
     top: 0px;
     left: 0px;
 }
+
 
 .header h1
 {
@@ -507,10 +509,10 @@ div.accountInfo
 .title
 { 
 
-    background-image: url("../Images/logo.png");
+    background-image: url("../Images/logo_actualizado.png");
     background-repeat: no-repeat;
-    background-size: 150px;
-    margin-left: 12px;
+    background-size: 380px;
+    margin-left: 30px;
     max-width: 100%;
     min-width: 50%;
     min-height:100%;
