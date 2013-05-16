@@ -95,6 +95,15 @@ namespace StickyNotesClass
             }
         }
 
+        public Note_Class getNote(int id)
+        {
+            Note_CAD ncad = new Note_CAD();
+
+            Note_Class note = ncad.getNote(id);
+
+            return note;
+        }
+
         //Show all the data
         public override string ToString()
         {

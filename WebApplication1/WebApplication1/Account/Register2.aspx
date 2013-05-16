@@ -89,7 +89,7 @@
                         <p class="submitButton">
                             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
-                            <asp:Button ID="CreateUserButton" runat="server" Text="Sign Up"  ValidationGroup="RegisterUserValidationGroup" 
+                            <asp:Button ID="CreateUserButton" runat="server" CssClass="button white" Text="Sign Up"  ValidationGroup="RegisterUserValidationGroup" 
                                 OnClick="SignUp_Click"/>
                         </p>
                     </div>

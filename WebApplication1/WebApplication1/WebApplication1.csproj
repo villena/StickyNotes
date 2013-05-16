@@ -61,6 +61,8 @@
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="Asp_forms\Categories.aspx" />
+    <Content Include="Asp_forms\Deletenote.aspx" />
+    <Content Include="Asp_forms\Editnotes.aspx" />
     <Content Include="Asp_forms\Events.aspx" />
     <Content Include="Asp_forms\Friends.aspx" />
     <Content Include="Asp_forms\Groups.aspx" />
@@ -132,6 +134,20 @@
     </Compile>
     <Compile Include="Asp_forms\Categories.aspx.designer.cs">
       <DependentUpon>Categories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asp_forms\Deletenote.aspx.cs">
+      <DependentUpon>Deletenote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asp_forms\Deletenote.aspx.designer.cs">
+      <DependentUpon>Deletenote.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asp_forms\Editnotes.aspx.cs">
+      <DependentUpon>Editnotes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asp_forms\Editnotes.aspx.designer.cs">
+      <DependentUpon>Editnotes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asp_forms\Events.aspx.cs">
       <DependentUpon>Events.aspx</DependentUpon>

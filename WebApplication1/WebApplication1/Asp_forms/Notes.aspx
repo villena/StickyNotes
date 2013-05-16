@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        MY NOTES
+        my notes
     </h2>
    <p>
        <asp:TextBox ID="DescripcionNota" TextMode = "multiline" CssClass="textarea" runat="server"></asp:TextBox>
@@ -14,7 +14,10 @@
     </p>
 
     <div id="placeholder" runat="server" class="tablon">
-    <asp:Label ID="NotasPrueba" runat="server"></asp:Label>
+   <!-- <asp:Label ID="NotasPrueba" runat="server"></asp:Label> -->
+        <asp:Panel ID="Panel1" runat="server" CssClass="defaultPanel">
+           
+        </asp:Panel>
     <!-- here is where the dinamically created elements will be placed -->
     </div>
 </asp:Content>

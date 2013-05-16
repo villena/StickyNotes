@@ -60,8 +60,11 @@ namespace StickyNotesClass
             try
             {
                 con.Open();
-                string sql = "DELETE FROM NOTES WHERE id = notec.id";
-                SqlCommand cmd = new SqlCommand(sql, con);
+                string sql1 = "DELETE FROM US_NO_REL WHERE NID=" + notec.Id;
+                string sql2 = "DELETE FROM NOTES WHERE ID =" + notec.Id;
+                SqlCommand cmd1 = new SqlCommand(sql1, con);
+                SqlCommand cmd = new SqlCommand(sql2, con);
+                cmd1.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
                 borrado = true;
             }
@@ -85,7 +88,8 @@ namespace StickyNotesClass
 
             try
             {
-                string sql = "UPDATE NOTAS SET TEXT = " + "'" + notec.Id + "'" + "WHERE ID =" + notec.Id + ")";
+                con.Open();
+                string sql = "UPDATE NOTES SET TEXT = " + "'" + notec.Text + "'" + "WHERE ID =" + notec.Id;
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 modificacion = true;
@@ -132,6 +136,40 @@ namespace StickyNotesClass
             }
 
             return id;
+
+        }
+
+
+        public Note_Class getNote(int id)
+        {
+            Note_Class note = new Note_Class();
+
+            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                con.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM NOTES WHERE ID=" + id, con);
+                SqlDataReader dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+
+                    note.Id = id;
+                    note.Type = Convert.ToChar(dr["KIND"]);
+                    note.Date = dr["CREATION_DATE"].ToString();
+                    note.Text = dr["TEXT"].ToString();
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                con.Close();
+            }
+            return note;
+
+
+
 
         }
     }

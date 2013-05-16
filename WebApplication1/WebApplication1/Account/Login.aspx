@@ -41,7 +41,7 @@
                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
               
                 <p class="submitButton">
-                    <asp:Button ID="LoginButton" runat="server" Text="Sign In" ValidationGroup="LoginUserValidationGroup" onclick="Login_Click"/>
+                    <asp:Button ID="LoginButton" runat="server" Text="Sign In" CssClass="button white" ValidationGroup="LoginUserValidationGroup" onclick="Login_Click"/>
                 </p>
                 
             </div>
