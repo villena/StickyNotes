@@ -37,7 +37,7 @@ namespace StickyNotesClass
         }
         
         //Constructor
-        public Party_Class()
+        public Party_Class(int id)
         {
             id = -1;
             name = "";
@@ -47,7 +47,7 @@ namespace StickyNotesClass
      
 
         //Añadir usuario
-        public void addUser(User_Class myUser)
+        public void addUser(User_Class myUser, int id)
         {
             users.Add(myUser);
             this.update();
@@ -55,7 +55,7 @@ namespace StickyNotesClass
 
         public void update()
         {
-            Party_CAD item = new Party_CAD("../database");
+            Party_CAD item = new Party_CAD();
 
             item.update(this);
 
@@ -64,13 +64,13 @@ namespace StickyNotesClass
         //Crear grupo
         public void createParty()
         {
-            Party_CAD item = new Party_CAD("../database");
+            Party_CAD item = new Party_CAD();
             item.createParty(this);
         }
 
         public void deleteParty()
         {
-            Party_CAD item = new Party_CAD("../database");
+            Party_CAD item = new Party_CAD();
             item.deleteParty(this);
         }
 
