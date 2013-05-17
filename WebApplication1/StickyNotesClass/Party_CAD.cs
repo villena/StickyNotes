@@ -15,7 +15,7 @@ namespace StickyNotesClass
         private Party_Class myParty;
         private List<Note_Class> myNotes;
         private List<User_Class> myUsers;
-        private string conection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+        private string connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
 
         public Party_CAD()
         {
@@ -25,7 +25,7 @@ namespace StickyNotesClass
         {
             bool creada;
 
-            SqlConnection con = new SqlConnection(conection);
+            SqlConnection con = new SqlConnection(connection);
 
             try
             {
@@ -52,7 +52,7 @@ namespace StickyNotesClass
         {
             bool añadido;
 
-            SqlConnection con = new SqlConnection(conection);
+            SqlConnection con = new SqlConnection(connection);
 
             try
             {
@@ -80,7 +80,7 @@ namespace StickyNotesClass
         public Party_Class obtainData(int id)
         {
 
-            SqlConnection con = new SqlConnection(conection);
+            SqlConnection con = new SqlConnection(connection);
 
             try
             {
@@ -106,14 +106,14 @@ namespace StickyNotesClass
             return myParty;
         }
 
-        public List<Note_Class> obtainNotes(int id)
+        public List<Note_Class> obtainNotes(int id_party)
         {
-            SqlConnection con = new SqlConnection(conection);
+            SqlConnection con = new SqlConnection(connection);
 
             try
             {
                 con.Open();
-                string sql = "SELECT * FROM NOTE WHERE ID =" + id;
+                string sql = "SELECT * FROM   WHERE ID =" + id_party;
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -133,36 +133,84 @@ namespace StickyNotesClass
                 con.Close();
             }
 
-            return myParty;
             return myNotes;
         }
 
-        public List<User_Class> obtainUsers()
+        public List<User_Class> obtainUsers(int party_id)
         {
-            //String connection = "Base de datos";
-            //SqlConnection con = new SqlConnection(connection);
-            //string sql = "SELECT * FROM nOTES WHERE (PERTENEZCAN AL GRUPO)";
-            //SqlCommand cmd = new SqlCommand(sql,con);
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                con.Open();
+                string sql = "SELECT * FROM US_PA_REL WHERE PID =" + party_id + ")";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    User_Class userTemp = new User_Class();
+                    userTemp.Id = int.Parse(reader["ID"].ToString());
+                    userTemp.Nick = reader["NICK"].ToString();
+                    userTemp.Email = reader["EMAIL"].ToString();
+                    userTemp.Name = reader["NAME"].ToString();
+                    userTemp.Surname = reader["SURNAME"].ToString();
+                    userTemp.Pass = reader["PASS"].ToString();
+                    userTemp.Gender = char.Parse(reader["GENDER"].ToString());
+                    userTemp.Entry_date = reader["ENTRY_DATE"].ToString();
+                    userTemp.Birth_date = reader["BIRTH_DATE"].ToString();
+                    userTemp.Image_url = reader["IMAGE_URL"].ToString();
+
+                    myUsers.Add(userTemp);
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                con.Close();
+            }
+
             return myUsers;
         }
 
         public bool update(Party_Class myParty)
         {
-            //String connection = "Base de datos";
-            //SqlConnection con = new SqlConnection(connection);
-            //string sql = "UPDATE 
-            //SqlCommand cmd = new SqlCommand(sql,con);
+            SqlConnection con = new SqlConnection(connection);
+            string sql = "UPDATE 
+            SqlCommand cmd = new SqlCommand(sql,con);
 
             return false;
         }
 
         public bool deleteParty(Party_Class myParty)
         {
+            bool borrado;
 
-            //String connection = "Base de datos";
-            //SqlConnection con = new SqlConnection(connection);
-            //string sql = "DELETE FROM PARTY WHERE nombre = myParty.nombre;
-            //SqlCommand cmd = new SqlCommand(sql,con);
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                string sql1 = "DELETE FROM PARTY WHERE ID =" + myParty.Id + ")";
+                string sql2 = "DELETE FROM US_PA_REL WHERE ID =" + myParty.Id + ")";
+                SqlCommand cmd1 = new SqlCommand(sql1,con);
+                SqlCommand cmd2 = new SqlCommand(sql2,con);
+
+                cmd1.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+
+                borrado = true;
+            }
+            catch (Exception ex) 
+            {
+                borrado = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+
             return false;
         }
     }
