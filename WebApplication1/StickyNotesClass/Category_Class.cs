@@ -37,14 +37,14 @@ namespace StickyNotesClass
 
         public void addCategoria(String name)
         {
-            Category_CAD item = new Category_CAD("../database");
+            Category_CAD item = new Category_CAD();
 
             item.addCategoria(this);
         }
 
         public Category_Class getCategoria(int id)
         {
-            Category_CAD item = new Category_CAD("../database");
+            Category_CAD item = new Category_CAD();
             return item.obtainCategoria(id);
         }
 

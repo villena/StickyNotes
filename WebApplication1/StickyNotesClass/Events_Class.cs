@@ -8,7 +8,7 @@ namespace StickyNotesClass
     public class Events_Class
     {
         private int id;
-        private int date;
+        private string date;
         private string description;
         private string location;
 
@@ -18,7 +18,7 @@ namespace StickyNotesClass
             set{id = value;}
         }
 
-        public int Date
+        public string Date
         {
             get { return date; }
             set { date = value; }
@@ -40,32 +40,32 @@ namespace StickyNotesClass
         public Events_Class()
         {
             id = -1;
-            date = -1;
+            date = "";
             description = "";
             location = "";
         }
 
         public void addEvent()
         {
-            Events_CAD item = new Events_CAD("../database");
+            Events_CAD item = new Events_CAD();
             item.addEvent(this);
         }
 
         public void updateEven()
         {
-            Events_CAD item = new Events_CAD("../database");
+            Events_CAD item = new Events_CAD();
             item.updateEvent(this);
         }
 
         public void deleteEvent()
         {
-            Events_CAD item = new Events_CAD("../database");
+            Events_CAD item = new Events_CAD();
             item.deleteEvent(this);
         }
 
         public Events_Class getEvent(int myId)
         {
-            Events_CAD item = new Events_CAD("../database");
+            Events_CAD item = new Events_CAD();
             return item.obtainEvent(myId);
         }
 

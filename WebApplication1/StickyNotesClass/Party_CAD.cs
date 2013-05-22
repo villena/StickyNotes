@@ -79,7 +79,6 @@ namespace StickyNotesClass
 
         public Party_Class obtainData(int id)
         {
-
             SqlConnection con = new SqlConnection(connection);
 
             try
@@ -113,17 +112,23 @@ namespace StickyNotesClass
             try
             {
                 con.Open();
-                string sql = "SELECT * FROM   WHERE ID =" + id_party;
+                string sql = "SELECT * FROM NOTES WHERE PARTY_ID =" + id_party;
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    myParty.Id = id;
-                    myParty.Name = reader["NAME"].ToString();
+                    Note_Class notaAux = new Note_Class();
+                    
+                    notaAux.Id = int.Parse(reader["ID"].ToString());
+                    notaAux.Type = Convert.ToChar(reader["KIND"]);
+                    notaAux.Date = reader["CREATION_DATE"].ToString();
+                    notaAux.Text = reader["TEXT"].ToString();
 
-                    myNotes.Add(my
+                    myNotes.Add(notaAux);
                 }
+
+                con.Close();
             }
             catch (Exception ex)
             {
@@ -175,11 +180,29 @@ namespace StickyNotesClass
 
         public bool update(Party_Class myParty)
         {
+
+            bool actualizado; 
+
             SqlConnection con = new SqlConnection(connection);
-            string sql = "UPDATE 
+            string sql = "UPDATE PARTY SET NAME = " + myParty.Name + "WHERE ID = " +  myParty.Id;
             SqlCommand cmd = new SqlCommand(sql,con);
 
-            return false;
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                actualizado = true;
+            }
+            catch (Exception ex)
+            {
+                actualizado = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return actualizado;
         }
 
         public bool deleteParty(Party_Class myParty)
@@ -209,9 +232,7 @@ namespace StickyNotesClass
                 con.Close();
             }
 
-
-
-            return false;
+            return borrado;
         }
     }
 }
