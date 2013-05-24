@@ -20,9 +20,10 @@ namespace WebApplication1
             }
             else
             {
+                if (Request.QueryString["all"] == "yes") RadioButtonList1.Items[1].Selected = true;
+                else RadioButtonList1.Items[0].Selected = true;
                 User_Class usuario_sesion = new User_Class();
                 usuario_sesion = usuario_sesion.getUser(userCookie.Value);
-                if (Request.QueryString["all"] == "yes" && RadioButtonList1.Items[1].Selected) RadioButtonList1.Items[1].Selected = true;
 
                 if(RadioButtonList1.Text == "Only my friends") {
                     List<User_Class> lista = new List<User_Class>();
@@ -167,13 +168,25 @@ namespace WebApplication1
 
         protected void SearchFriend(object sender, EventArgs e)
         {
-            if (RadioButtonList1.Text == "Only my friends")
+            if (RadioButtonList1.Items[1].Selected)
             {
-                Response.Redirect("./Friends.aspx?all=&cadena=" + TextBox3.Text);
+                Response.Redirect("./Friends.aspx?all=yes&cadena=" + TextBox3.Text);
             }
             else
             {
-                Response.Redirect("./Friends.aspx?all=yes&cadena=" + TextBox3.Text);
+                Response.Redirect("./Friends.aspx?all=no&cadena=" + TextBox3.Text);
+            }
+        }
+
+        protected void SearchAll(object sender, EventArgs e)
+        {
+            if (RadioButtonList1.Items[1].Selected)
+            {
+                Response.Redirect("./Friends.aspx?all=yes&cadena=");
+            }
+            else
+            {
+                Response.Redirect("./Friends.aspx?all=no&cadena=");
             }
         }
     }

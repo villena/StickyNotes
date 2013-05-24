@@ -24,9 +24,13 @@ namespace WebApplication1
                 usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
                 Image1.ImageUrl = usuario_sesion.Image_url;
-                Label3.Text = usuario_sesion.Name;
-                Label4.Text = usuario_sesion.Surname;
-                Label5.Text = usuario_sesion.Email;
+                Label1.Text = usuario_sesion.Nick;
+                Label2.Text = usuario_sesion.Name;
+                Label3.Text = usuario_sesion.Surname;
+                Label4.Text = usuario_sesion.Email;
+                Label5.Text = usuario_sesion.Gender.ToString();
+                Label6.Text = usuario_sesion.Entry_date;
+                Label7.Text = usuario_sesion.Birth_date;
             }
 
         }
