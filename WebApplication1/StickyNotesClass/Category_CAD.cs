@@ -64,9 +64,9 @@ namespace StickyNotesClass
                 {
                     categoria.Id = id;
                     categoria.Nombre = reader["NAME"].ToString();
-                }          
+                }
             }
-            catch (Exception ex){}
+            catch (Exception ex) { }
             finally
             {
                 con.Close();
@@ -74,6 +74,32 @@ namespace StickyNotesClass
 
             return categoria;
 
+        }
+
+        public List<Category_Class> Categories()
+        {
+            List<Category_Class> list = new List<Category_Class>();
+            SqlConnection c = new SqlConnection(conection);
+            try
+            {
+                c.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM CATEGORY", c);
+                SqlDataReader reader = com.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Category_Class category = new Category_Class();
+                    category.Id = int.Parse(reader["ID"].ToString());
+                    category.Nombre = reader["NAME"].ToString();
+                    list.Add(category);
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                c.Close();
+            }
+            return list;
         }
     }
 }

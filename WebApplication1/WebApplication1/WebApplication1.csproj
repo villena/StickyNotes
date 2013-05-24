@@ -66,6 +66,7 @@
     <Content Include="Asp_forms\Groups.aspx" />
     <Content Include="Asp_forms\Notes.aspx" />
     <Content Include="Asp_forms\Profile.aspx" />
+    <Content Include="Aux_asp_forms\Category_Notes.aspx" />
     <Content Include="Aux_asp_forms\Friend_Profile.aspx" />
     <Content Include="Aux_asp_forms\User_Added.aspx" />
     <Content Include="Aux_asp_forms\User_Deleted.aspx" />
@@ -141,6 +142,13 @@
     </Compile>
     <Compile Include="Asp_forms\Events.aspx.designer.cs">
       <DependentUpon>Events.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aux_asp_forms\Category_Notes.aspx.cs">
+      <DependentUpon>Category_Notes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aux_asp_forms\Category_Notes.aspx.designer.cs">
+      <DependentUpon>Category_Notes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aux_asp_forms\Friend_Profile.aspx.cs">
       <DependentUpon>Friend_Profile.aspx</DependentUpon>

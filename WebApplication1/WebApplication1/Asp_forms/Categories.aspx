@@ -8,14 +8,15 @@
     </h2>
 
     <asp:Panel ID="Panel1" CssClass="default_panel" runat="server">
-        <asp:Button ID="Button1" CssClass="search_button" runat="server" Text="Search" />
+        <p align="Right">
         <asp:TextBox ID="TextBox3" CssClass="search_textbox" runat="server"></asp:TextBox>
-        
+        </p>
+        <p align="right">
+            &nbsp;</p>
     </asp:Panel>
-    <asp:Panel ID="Panel2" CssClass="default_panel" runat="server">
-
-        (Notes sharing category)
-    </asp:Panel>
+    <br />
+    <br />
+    <asp:Panel ID="Panel2" CssClass="tablon" runat="server"></asp:Panel>
 
 
 </asp:Content>

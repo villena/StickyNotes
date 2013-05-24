@@ -7,26 +7,27 @@ namespace StickyNotesClass
 {
     public class Category_Class
     {
+
         private List<Note_Class> notes;
         private string nombre;
         private int id;
 
         public List<Note_Class> Notes
         {
-            get{return notes;}
-            set{notes = value;}
+            get { return notes; }
+            set { notes = value; }
         }
 
         public string Nombre
         {
-            get { return nombre;}
-            set { nombre = value;}
+            get { return nombre; }
+            set { nombre = value; }
         }
 
         public int Id
         {
             get { return id; }
-            set{id = value;}
+            set { id = value; }
         }
 
         public Category_Class()
@@ -48,7 +49,14 @@ namespace StickyNotesClass
             return item.obtainCategoria(id);
         }
 
+        public List<Category_Class> Categories()
+        {
+            Category_CAD category = new Category_CAD();
+            List<Category_Class> lista = new List<Category_Class>();
+            lista = category.Categories();
 
+            return lista;
+        }
         public override string ToString()
         {
             string str;
