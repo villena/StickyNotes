@@ -8,7 +8,7 @@ using StickyNotesClass;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace WebApplication1.Aux_asp_forms
+namespace WebApplication1
 {
     public partial class Category_Notes : System.Web.UI.Page
     {
@@ -22,10 +22,11 @@ namespace WebApplication1.Aux_asp_forms
             }
             else
             {
+                String id = Request.QueryString["id"];
                 String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
                 SqlConnection con = new SqlConnection(connection);
                 con.Open();
-                string sql = "SELECT * FROM NOTES WHERE ID = " + int.Parse(Request.QueryString["id"]) + "ORDER BY ID DESC";
+                string sql = "SELECT * FROM NOTES WHERE CATEGORY_ID = " + id;
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 StringBuilder htmlStr = new StringBuilder("");
@@ -54,7 +55,6 @@ namespace WebApplication1.Aux_asp_forms
                     lb = new HyperLink();
 
 
-                    string id = reader["ID"].ToString();
 
                     p.ID = "p" + id;
                     p.CssClass = "postitnotes";
@@ -83,7 +83,7 @@ namespace WebApplication1.Aux_asp_forms
                     p.Controls.Add(le);
                     p.Controls.Add(lb);
 
-                    Panel1.Controls.Add(p);
+                    Panelnota.Controls.Add(p);
                 }
 
                 reader.Close();
@@ -93,6 +93,22 @@ namespace WebApplication1.Aux_asp_forms
 
             }
         }
+        protected void Create_Note(object sender, EventArgs e)
+        {
+
+            /* Create note with the button 'New Note' */
+            Note_Class note = new Note_Class();
+            note.Text = DescripcionNota.Text;
+            note.Date = DateTime.Now.ToShortDateString();
+
+            /* Add note in the Database */
+            note.addNote(1);
+            Response.AppendHeader("Refresh", "0;URL=Notes.aspx");
+
+        }
+
+
+        public HyperLink le { get; set; }
     }
 
 

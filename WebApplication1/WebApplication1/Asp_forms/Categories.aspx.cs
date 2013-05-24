@@ -71,7 +71,7 @@ namespace WebApplication1
             Button profile = new Button();
             profile.Text = "Notes";
             profile.Attributes.Add("style", "float:right; clear:both;");
-            profile.PostBackUrl = "../Aux_asp_forms/Category_Notes.aspx?id=" + id.ToString();
+            profile.PostBackUrl = "Category_Notes.aspx?id=" + id.ToString();
 
             return profile;
         }

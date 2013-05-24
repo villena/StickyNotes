@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Aux_asp_forms {
+namespace WebApplication1 {
     
     
     public partial class Category_Notes {
-
+        
         /// <summary>
         /// Control DescripcionNota.
         /// </summary>
@@ -20,7 +20,7 @@ namespace WebApplication1.Aux_asp_forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DescripcionNota;
-
+        
         /// <summary>
         /// Control CreateNoteButton.
         /// </summary>
@@ -29,7 +29,7 @@ namespace WebApplication1.Aux_asp_forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CreateNoteButton;
-
+        
         /// <summary>
         /// Control placeholder.
         /// </summary>
@@ -38,7 +38,7 @@ namespace WebApplication1.Aux_asp_forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl placeholder;
-
+        
         /// <summary>
         /// Control NotasPrueba.
         /// </summary>
@@ -47,14 +47,14 @@ namespace WebApplication1.Aux_asp_forms {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label NotasPrueba;
-
+        
         /// <summary>
-        /// Control Panel1.
+        /// Control Panelnota.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel Panelnota;
     }
 }
