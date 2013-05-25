@@ -104,6 +104,19 @@ namespace StickyNotesClass
             return note;
         }
 
+        public List<Note_Class> getNotesUser(int id)
+        {
+            Note_CAD cadNote = new Note_CAD();
+
+            return cadNote.notesUser(id);
+        }
+
+        public List<Note_Class> getNotesGroup(int id_group)
+        {
+            Note_CAD cadNote = new Note_CAD();
+
+            return cadNote.notesGroups(id_group);
+        }
         //Show all the data
         public override string ToString()
         {

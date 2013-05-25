@@ -10,6 +10,8 @@ namespace WebApplication1.Asp_forms
 {
     public partial class Editnotes : System.Web.UI.Page
     {
+        Note_Class note = new Note_Class();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             String s;
@@ -19,22 +21,21 @@ namespace WebApplication1.Asp_forms
             {
 
                 int id = Int32.Parse(s);
-
-
-
-                Note_Class note = new Note_Class();
+             
 
                 note.Id = id;
 
                 note = note.getNote(id);
 
-                TextBox1.Text = note.Text;
+                Label2.Text=note.Text;
+                //TextBox1.Text = note.Text;
+               
             }
         }
 
         protected void Send(object sender, EventArgs e)
         {
-            String s;
+            /*String s;
             s = Request.QueryString["ID"];
 
             if (s != null)
@@ -48,7 +49,7 @@ namespace WebApplication1.Asp_forms
 
                 note.Id = id;
 
-                note = note.getNote(id);
+                note = note.getNote(id);*/
 
                 note.Text = TextBox1.Text;
                 if (note.modifyNote(note))
@@ -60,7 +61,7 @@ namespace WebApplication1.Asp_forms
                     Panel1.Controls.Add(l);
 
                 }
-            }
+            //}
         }
     }
 }

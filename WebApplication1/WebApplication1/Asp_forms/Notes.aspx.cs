@@ -49,6 +49,7 @@ namespace WebApplication1
                 con.Close();
                 NotasPrueba.Text = htmlStr.ToString();
                  * */
+            /*
             String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
             SqlConnection con = new SqlConnection(connection);
             con.Open();
@@ -56,6 +57,7 @@ namespace WebApplication1
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader reader = cmd.ExecuteReader();
             StringBuilder htmlStr = new StringBuilder("");
+             * */
 
             //Panel p = new Panel();
             Panel p = new Panel();
@@ -70,7 +72,17 @@ namespace WebApplication1
             HyperLink lb = new HyperLink();
             Button b = new Button();
             
-            while (reader.Read())
+            Note_CAD notaTemp = new Note_CAD();
+            List<Note_Class> notes = new List<Note_Class>();
+
+            User_Class userTemp = new User_Class();
+            userTemp = userTemp.getUser(userCookie.Value);
+
+            notes = notaTemp.notesUser(userTemp.Id);
+
+            int i = notes.Count() - 1;
+
+            while (i >=0)
             {
                 p = new Panel();
 
@@ -81,7 +93,7 @@ namespace WebApplication1
                 lb = new HyperLink();
            
 
-                string id = reader["ID"].ToString();
+                string id = notes[i].Id.ToString();
 
                 p.ID = "p" + id;
                 p.CssClass = "postitnotes";
@@ -99,9 +111,9 @@ namespace WebApplication1
               
                 
                // le.Controls.Add(ie);
-                le.NavigateUrl = "~/Asp_forms/Editnotes.aspx?ID=" + reader["ID"].ToString();
-                lb.NavigateUrl = "~/Asp_forms/Deletenote.aspx?ID=" + reader["ID"].ToString();
-                t.Text=reader["TEXT"].ToString() + "<BR>";
+                le.NavigateUrl = "~/Asp_forms/Editnotes.aspx?ID=" + notes[i].Id.ToString();
+                lb.NavigateUrl = "~/Asp_forms/Deletenote.aspx?ID=" + notes[i].Id.ToString();
+                t.Text=notes[i].Text.ToString() + "<BR>";
 
                 //f.Text =reader["CREATION_DATE"].ToString();
 
@@ -111,10 +123,14 @@ namespace WebApplication1
                 p.Controls.Add(lb);
 
                 Panel1.Controls.Add(p);
+
+                i--;
             }
 
+            /*
             reader.Close();
             con.Close();
+             * */
             //NotasPrueba.Text = htmlStr.ToString();
 
             
@@ -130,7 +146,11 @@ namespace WebApplication1
             note.Date = DateTime.Now.ToShortDateString();
 
             /* Add note in the Database */
-            note.addNote(1);
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+            User_Class userTemp = new User_Class();
+            userTemp = userTemp.getUser(userCookie.Value);
+            note.addNote(userTemp.Id);
             Response.AppendHeader("Refresh", "0;URL=Notes.aspx");
             
         }

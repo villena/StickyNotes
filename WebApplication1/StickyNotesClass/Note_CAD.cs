@@ -30,7 +30,7 @@ namespace StickyNotesClass
             {
                 con.Open();
                 string sql1 = "INSERT INTO NOTES (KIND,CREATION_DATE,TEXT)  VALUES (" + "'a'" + "," + "'" + notec.Date + "'" + "," + "'" + notec.Text + "'" + ")";
-                int note_id = getIDfromDB() +1;
+                int note_id = getIDfromDB() + 1;
                 string sql2 = "INSERT INTO US_NO_REL (UID,NID) VALUES (" + id + "," + note_id + ")";
                 SqlCommand cmd1 = new SqlCommand(sql1, con);
                 SqlCommand cmd2 = new SqlCommand(sql2, con);
@@ -119,7 +119,7 @@ namespace StickyNotesClass
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader rd = cmd.ExecuteReader();
 
-                while(rd.Read())
+                while (rd.Read())
                 {
                     id = int.Parse(rd["ID"].ToString());
                 }
@@ -167,10 +167,83 @@ namespace StickyNotesClass
                 con.Close();
             }
             return note;
-
-
-
-
         }
+
+        public List<Note_Class> notesUser(int id)
+        {
+            List<Note_Class> notesList = new List<Note_Class>();
+
+            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+           String sql = "SELECT * FROM NOTES WHERE ID IN (SELECT NID FROM US_NO_REL WHERE UID = " + id + ")";
+           // string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                Note_Class notaTemp = new Note_Class();
+
+                while (reader.Read())
+                {
+                    notaTemp = new Note_Class();
+
+                    notaTemp.Id = int.Parse(reader["ID"].ToString());
+                    notaTemp.Text = reader["TEXT"].ToString();
+                    notaTemp.Date = reader["CREATION_DATE"].ToString();
+                    notaTemp.Type = Convert.ToChar(reader["KIND"]);
+                   
+
+                    notesList.Add(notaTemp);
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                con.Close();
+            }
+
+
+            return notesList;
+        }
+
+        public List<Note_Class> notesGroups(int id_group)
+        {
+            List<Note_Class> notesList = new List<Note_Class>();
+
+            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+            String sql = "SELECT * FROM NOTES WHERE ID = " + id_group;
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                Note_Class notaTemp = new Note_Class();
+
+                while (reader.Read())
+                {
+                    notaTemp = new Note_Class();
+
+                    notaTemp.Id = int.Parse(reader["ID"].ToString());
+                    notaTemp.Text = reader["TEXT"].ToString();
+                    notaTemp.Date = reader["CREATION_DATE"].ToString();
+                    notaTemp.Type = Convert.ToChar(reader["KIND"]);
+
+                    notesList.Add(notaTemp);
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                con.Close();
+            }
+
+
+            return notesList;
+        }
+
     }
 }
