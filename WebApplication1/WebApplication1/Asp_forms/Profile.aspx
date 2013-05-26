@@ -27,7 +27,7 @@
         <br />
     </div>
     <div style="float:center; clear:both">
-        <asp:Button ID="Button1" runat="server" ssClass="cssbutton" Text="Edit Profile" PostBackUrl="~/Aux_asp_forms/ChangePassword.aspx" />
+        <asp:Button ID="Button1" runat="server" ssClass="cssbutton" Text="Edit Profile" PostBackUrl="~/Aux_asp_forms/ChangeAccountData.aspx" />
         <asp:Button ID="Button2" runat="server" ssClass="cssbutton" Text="Change Password" PostBackUrl="~/Aux_asp_forms/ChangePassword.aspx" />
     </div>
     </asp:Panel>

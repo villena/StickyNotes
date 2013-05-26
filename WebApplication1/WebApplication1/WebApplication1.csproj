@@ -67,6 +67,7 @@
     <Content Include="Asp_forms\Notes.aspx" />
     <Content Include="Asp_forms\Profile.aspx" />
     <Content Include="Asp_forms\Category_Notes.aspx" />
+    <Content Include="Aux_asp_forms\ChangeAccountData.aspx" />
     <Content Include="Aux_asp_forms\Friend_Profile.aspx" />
     <Content Include="Aux_asp_forms\User_Added.aspx" />
     <Content Include="Aux_asp_forms\User_Deleted.aspx" />
@@ -149,6 +150,13 @@
     </Compile>
     <Compile Include="Asp_forms\Category_Notes.aspx.designer.cs">
       <DependentUpon>Category_Notes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aux_asp_forms\ChangeAccountData.aspx.cs">
+      <DependentUpon>ChangeAccountData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aux_asp_forms\ChangeAccountData.aspx.designer.cs">
+      <DependentUpon>ChangeAccountData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aux_asp_forms\Friend_Profile.aspx.cs">
       <DependentUpon>Friend_Profile.aspx</DependentUpon>
