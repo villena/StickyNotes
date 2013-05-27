@@ -101,5 +101,32 @@ namespace StickyNotesClass
             }
             return list;
         }
+
+        public int getCategoryId(string category)
+        {
+            int a = 0;
+            SqlConnection c = new SqlConnection(conection);
+            try
+            {
+                c.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM CATEGORY", c);
+                SqlDataReader reader = com.ExecuteReader();
+
+                while (reader.Read())
+                {
+                   
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                c.Close();
+            }
+
+            return a;
+            
+        }
+
+
     }
 }
