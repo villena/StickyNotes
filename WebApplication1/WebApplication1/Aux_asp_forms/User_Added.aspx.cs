@@ -12,8 +12,10 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
             User_Class usuario_sesion = new User_Class();
-            usuario_sesion = usuario_sesion.getUser(1);
+            usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
             if (usuario_sesion.addFriend(int.Parse(Request.QueryString["id"])))
             {
