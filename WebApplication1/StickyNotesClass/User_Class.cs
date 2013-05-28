@@ -120,6 +120,10 @@ namespace StickyNotesClass
             entry_date = "";
             birth_date = "";
             image_url = "";
+            notes = new List<Note_Class>();
+            parties = new List<Party_Class>();
+            friends = new List<User_Class>();
+            events = new List<Events_Class>();
         }
 
         //Add new friend

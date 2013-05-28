@@ -9,9 +9,9 @@
 
     <asp:Panel ID="Panel1" CssClass="default_panel" runat="server">
         <p align="Right">
-        <asp:Button ID="Button1" runat="server" CssClass="button" Text="Add Event" />
+        <asp:Button ID="Button1" runat="server" CssClass="button" Text="New Event" PostBackUrl = "AddEvents.aspx"/>
             &nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox3" CssClass="search_textbox" runat="server"></asp:TextBox>
+         <!--<asp:TextBox ID="TextBox3" CssClass="search_textbox" runat="server"></asp:TextBox>-->
         </p>
     </asp:Panel>
 

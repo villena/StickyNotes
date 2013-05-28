@@ -57,6 +57,12 @@ namespace StickyNotesClass
 
             return lista;
         }
+
+        public int getCategoryId()
+        {
+            Category_CAD cad = new Category_CAD();
+            return cad.getCategoryId(this.Nombre);
+        }
         public override string ToString()
         {
             string str;

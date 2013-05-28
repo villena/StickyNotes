@@ -101,5 +101,66 @@ namespace StickyNotesClass
             }
             return list;
         }
+
+        public int getCategoryId(string category)
+        {
+            int id = 0;
+            SqlConnection c = new SqlConnection(conection);
+            try
+            {
+                
+                SqlCommand cmd1 = new SqlCommand("SELECT COUNT(*) AS Expr1 FROM CATEGORY WHERE NAME LIKE '" + category + "'", c);
+                cmd1.Connection.Open();
+                SqlDataReader reader = cmd1.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    if (Int32.Parse(reader["Expr1"].ToString()) > 0)
+                    {
+                        cmd1.Connection.Close();
+                        SqlCommand cmd2 = new SqlCommand("SELECT ID FROM CATEGORY WHERE (NAME LIKE '" + category + "')", c);
+                        cmd2.Connection.Open();
+                        SqlDataReader reader2 = cmd2.ExecuteReader();
+
+                        if (reader2.Read())
+                        {
+                            id = Int32.Parse(reader2["ID"].ToString());
+
+                        }
+
+                        cmd2.Connection.Close();
+                    }
+                    else
+                    {
+                        cmd1.Connection.Close();
+                        SqlCommand cmd3 = new SqlCommand("INSERT INTO CATEGORY (NAME) OUTPUT INSERTED.ID VALUES ('" + category + "')", c);
+                        cmd3.Connection.Open();
+                        SqlDataReader reader3 = cmd3.ExecuteReader();
+
+                        if (reader3.Read())
+                        {
+                            id = Int32.Parse(reader3["ID"].ToString());
+                        }
+                        cmd3.Connection.Close();
+                    }
+
+                }
+                else
+                {
+                    cmd1.Connection.Close();
+                }
+
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                
+            }
+
+            return id;
+            
+        }
+
+
     }
 }
