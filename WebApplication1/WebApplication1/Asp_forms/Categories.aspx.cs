@@ -26,12 +26,8 @@ namespace WebApplication1
 
                 List<Category_Class> lista = new List<Category_Class>();
                 Category_Class category = new Category_Class();
+                lista = category.Categories();
 
-                if (Request.QueryString["cadena"] != null)
-                    lista = filterCategories(Request.QueryString["cadena"], category.Categories());
-                else
-                    lista = category.Categories();
-                
                 if (lista.Count() == 0)
                 {
                     Label label = new Label();
@@ -78,24 +74,6 @@ namespace WebApplication1
             profile.PostBackUrl = "Category_Notes.aspx?id=" + id.ToString();
 
             return profile;
-        }
-
-        protected List<Category_Class> filterCategories(string string_comp, List<Category_Class> lista)
-        {
-            List<Category_Class> resultado = new List<Category_Class>();
-            for (int i = 0; i < lista.Count(); i++)
-            {
-                string cadena_comp;
-                cadena_comp = lista.ElementAt(i).Nombre;
-                if (cadena_comp.Contains(string_comp)) resultado.Add(lista.ElementAt(i));
-            }
-
-            return resultado;
-        }
-
-        protected void searchCategory(object sender, EventArgs e)
-        {
-            Response.Redirect("./Categories.aspx?cadena=" + SearchBox.Text);
         }
     }
 }

@@ -101,31 +101,5 @@ namespace StickyNotesClass
             }
             return list;
         }
-
-        public List<Category_Class> Categories(string name)
-        {
-            List<Category_Class> list = new List<Category_Class>();
-            SqlConnection c = new SqlConnection(conection);
-            try
-            {
-                c.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM CATEGORY WHERE NOMBRE = " + name, c);
-                SqlDataReader reader = com.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Category_Class category = new Category_Class();
-                    category.Id = int.Parse(reader["ID"].ToString());
-                    category.Nombre = reader["NAME"].ToString();
-                    list.Add(category);
-                }
-            }
-            catch (Exception ex) { }
-            finally
-            {
-                c.Close();
-            }
-            return list;
-        }
     }
 }

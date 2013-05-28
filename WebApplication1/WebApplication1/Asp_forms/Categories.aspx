@@ -9,8 +9,7 @@
 
     <asp:Panel ID="Panel1" CssClass="default_panel" runat="server">
         <p align="Right">
-        <asp:TextBox ID="SearchBox" CssClass="search_textbox" runat="server"></asp:TextBox>
-        <asp:Button ID="SearchButton" CssClass="search_button" runat="server" OnClick="searchCategory" Text="Buscar"/>
+        <asp:TextBox ID="TextBox3" CssClass="search_textbox" runat="server"></asp:TextBox>
         </p>
         <p align="right">
             &nbsp;</p>
