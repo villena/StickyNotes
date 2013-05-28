@@ -7,7 +7,7 @@
        Search
     </h2>
 
-    <asp:Panel ID="Panel1" CssClass="default_panel" DefaultButton="Button2" runat="server">
+    <asp:Panel ID="myPanel" CssClass="default_panel" DefaultButton="Button2" runat="server">
         <p align="Right">
             <asp:Button ID="Button3" runat="server" CssClass="button" Text="My Events" PostBackUrl = "Events.aspx"/>
             <asp:Button ID="Button1" runat="server" CssClass="button" Text="New Event" PostBackUrl = "AddEvents.aspx"/>
