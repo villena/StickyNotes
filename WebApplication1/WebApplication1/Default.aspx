@@ -7,12 +7,13 @@
     <h2>
         welcome
     </h2>
-    <asp:Panel ID="Panel1" CssClass="default_panel" runat="server">
-          Recent changes
-    </asp:Panel>
-
-    <asp:Panel ID="Panel2" runat="server" CssClass="tablon">
-    </asp:Panel>
+    <div id="placeholder" runat="server" class="tablon">
+   <!-- <asp:Label ID="NotasPrueba" runat="server"></asp:Label> -->
+        <asp:Panel ID="Panel1" runat="server" CssClass="defaultPanel">
+           
+        </asp:Panel>
+    <!-- here is where the dinamically created elements will be placed -->
+    </div>
    
     
 </asp:Content>

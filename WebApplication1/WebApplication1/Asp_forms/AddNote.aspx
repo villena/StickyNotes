@@ -18,13 +18,15 @@
             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
         <br />
             <asp:Label ID="Label2" runat="server" Text="Kind: "></asp:Label>
-            <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
+            <asp:ListBox ID="ListBox1" runat="server" Rows="2"></asp:ListBox>
         <br />
             <asp:Label ID="Label3" runat="server" Text="Add Users: "></asp:Label>
             <asp:ListBox ID="ListBox2" runat="server" AutoPostBack="false" SelectionMode="Multiple"></asp:ListBox>
             <asp:Button ID="Button2" runat="server" Text="Add" OnClick="Add" AutoPostBack="false" />
             <asp:ListBox ID="ListBox3" runat="server"></asp:ListBox>
     <asp:Button ID="Button1" runat="server" Text="Send" OnClick="Send" CssClass="button white" />
+    <br />
+            <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
     </asp:Panel>
     </asp:Panel>
         

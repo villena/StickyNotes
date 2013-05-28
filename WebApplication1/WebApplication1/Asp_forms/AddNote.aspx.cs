@@ -29,6 +29,8 @@ namespace WebApplication1.Asp_forms
                     ListBox2.Items.Clear();
                     ListBox3.Items.Clear();
                     ListBox1.Width = 100;
+                    ListBox1.Height= 35;
+                   // ListBox1.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
                     ListBox2.Width = 100;
                     ListBox3.Width = 100;
 
@@ -48,6 +50,12 @@ namespace WebApplication1.Asp_forms
                         ListBox2.Items.Add(l);
                         i++;
                     }
+
+                    ListItem o = new ListItem("Public", "0");
+                    ListItem p = new ListItem("Private", "1");
+                    ListBox1.Items.Add(o);
+                    ListBox1.Items.Add(p);
+                    
                 }
 
             }
@@ -59,7 +67,7 @@ namespace WebApplication1.Asp_forms
         {
             ListItem l = new ListItem();
 
-            foreach (ListItem li in ListBox1.Items)
+            foreach (ListItem li in ListBox2.Items)
             {
                 if (li.Selected == true)
                 {
@@ -88,9 +96,40 @@ namespace WebApplication1.Asp_forms
             note.Text = TextBox1.Text;
             note.Date = DateTime.Now.ToShortDateString();
 
-            Category_Class category = new Category_Class();
+            foreach (ListItem li in ListBox1.Items)
+            {
+                if (li.Selected == true)
+                {
+                    if (Int32.Parse(li.Value) == 0)
+                    {
+                        note.Type = 'O';
+                    }
+                    else if (Int32.Parse(li.Value) == 1)
+                    {
+                        note.Type = 'P';
+                    }                 
+
+                }
+            }
             
-            //note.Category = TextBox2.Text;
+
+            Category_Class category = new Category_Class();
+            category.Nombre = TextBox2.Text;
+            note.Category = category.getCategoryId();
+
+            List<User_Class> users = new List<User_Class>();
+            int indice = 0;
+            foreach (ListItem li in ListBox2.Items)
+            {
+                indice = Int32.Parse(li.Value);
+                users.Add(user.Friends[indice]);
+            }
+
+            if (note.Type!=' ' && note.addNote(user.Id, users))
+                Response.Redirect("../Asp_forms/Notes.aspx");
+            else
+                Label4.Text = "An error has occurred";
+
 
         }
     }

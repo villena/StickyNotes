@@ -141,17 +141,19 @@ namespace WebApplication1
         {
             
             /* Create note with the button 'New Note' */
-            Note_Class note = new Note_Class();
+           /* Note_Class note = new Note_Class();
             note.Text = DescripcionNota.Text;
-            note.Date = DateTime.Now.ToShortDateString();
+            note.Date = DateTime.Now.ToShortDateString();*/
 
             /* Add note in the Database */
-            HttpCookie userCookie;
+           /* HttpCookie userCookie;
             userCookie = Request.Cookies["UserID"];
             User_Class userTemp = new User_Class();
             userTemp = userTemp.getUser(userCookie.Value);
             note.addNote(userTemp.Id);
-            Response.AppendHeader("Refresh", "0;URL=Notes.aspx");
+            Response.AppendHeader("Refresh", "0;URL=Notes.aspx");*/
+
+            Response.Redirect("../Asp_forms/AddNote.aspx");
             
         }
 

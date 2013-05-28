@@ -67,6 +67,19 @@ namespace StickyNotesClass
                 return false;
             }
         }
+
+        public bool addNote(int authorid, List<User_Class> users)
+        {
+            Note_CAD u = new Note_CAD();
+            if (u.addNote(this, authorid, users))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         //Delete friend
         public bool deleteNote()
         {
@@ -109,6 +122,27 @@ namespace StickyNotesClass
             Note_CAD cadNote = new Note_CAD();
 
             return cadNote.notesUser(id);
+        }
+
+        public List<Note_Class> getNotesUserOpen(int id)
+        {
+            Note_CAD cadNote = new Note_CAD();
+
+            return cadNote.notesUserOpen(id);
+        }
+
+        public List<Note_Class> getNotesUserPrivate(int id)
+        {
+            Note_CAD cadNote = new Note_CAD();
+
+            return cadNote.notesUserPrivate(id);
+        }
+
+        public List<Note_Class> getNotesOpen()
+        {
+            Note_CAD cadNote = new Note_CAD();
+
+            return cadNote.notesOpen();
         }
 
         public List<Note_Class> getNotesGroup(int id_group)
