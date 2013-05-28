@@ -16,7 +16,7 @@
     </p>
   
        
-        <asp:Panel ID="Panel1" runat="server" CssClass="default_panel">
+        <asp:Panel ID="Panel1" DefaultButton="LoginButton" runat="server" CssClass="default_panel">
            
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup"/>

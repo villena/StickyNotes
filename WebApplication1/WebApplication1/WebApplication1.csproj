@@ -58,6 +58,7 @@
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="Asp_forms\AddEvents.aspx" />
     <Content Include="Asp_forms\AddNote.aspx" />
     <Content Include="Asp_forms\Categories.aspx" />
     <Content Include="Asp_forms\Deletenote.aspx" />
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="Account\Register2.aspx.designer.cs">
       <DependentUpon>Register2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asp_forms\AddEvents.aspx.cs">
+      <DependentUpon>AddEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asp_forms\AddEvents.aspx.designer.cs">
+      <DependentUpon>AddEvents.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asp_forms\AddNote.aspx.cs">
       <DependentUpon>AddNote.aspx</DependentUpon>
