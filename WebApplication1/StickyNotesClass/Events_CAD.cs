@@ -147,18 +147,22 @@ namespace StickyNotesClass
         {
             SqlConnection con = new SqlConnection(connection);
             string sql = "SELECT * FROM EVENTS WHERE ID = " + id;
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader reader = cmd.ExecuteReader();
+            Events_Class events = new Events_Class();
 
             try
             {
+                SqlCommand cmd = new SqlCommand(sql, con);
                 con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                
                 while (reader.Read())
                 {
-                    myEvent.Id = id;
-                    myEvent.Date = reader["DATE"].ToString();
-                    myEvent.Location = reader["LOCATION"].ToString();
-                    myEvent.Description = reader["DESCRIPTION"].ToString();
+                    events = new Events_Class();
+                    events.Id = int.Parse(reader["ID"].ToString());
+                    events.Date = reader["DATE"].ToString();
+                    events.Description = reader["DESCRIPTION"].ToString();
+                    events.Location = reader["LOCATION"].ToString();
                 }
             }
             catch (Exception ex)
@@ -169,7 +173,7 @@ namespace StickyNotesClass
                 con.Close();
             }
 
-            return myEvent;
+            return events;
         }
 
         public List<Events_Class> userEvents(int userID)
@@ -181,6 +185,44 @@ namespace StickyNotesClass
             {
 
                 string sql = "SELECT * FROM EVENTS WHERE ID IN(SELECT EID FROM US_EV_REL WHERE UID = " + userID + ")";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                Events_Class events = new Events_Class();
+
+                while (reader.Read())
+                {
+                    events = new Events_Class();
+                    events.Id = int.Parse(reader["ID"].ToString());
+                    events.Date = reader["DATE"].ToString();
+                    events.Description = reader["DESCRIPTION"].ToString();
+                    events.Location = reader["LOCATION"].ToString();
+
+                    eventsList.Add(events);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return eventsList;
+        }
+
+        public List<Events_Class> searchEvents(string myDescription)
+        {
+            SqlConnection con = new SqlConnection(connection);
+            List<Events_Class> eventsList = new List<Events_Class>();
+
+            try
+            {
+
+                string sql = "SELECT * FROM EVENTS WHERE DESCRIPTION LIKE '%" + myDescription + "%'";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();

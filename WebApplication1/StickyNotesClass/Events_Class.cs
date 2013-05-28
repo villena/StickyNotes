@@ -77,6 +77,12 @@ namespace StickyNotesClass
             return item.obtainEvent(myId);
         }
 
+        public List<Events_Class> searchEvents(string description)
+        {
+            Events_CAD item = new Events_CAD();
+            return item.searchEvents(description);
+        }
+
         public List<Events_Class> userEvents(int userID)
         {
             Events_CAD eventsCad = new Events_CAD();
