@@ -57,6 +57,15 @@ namespace StickyNotesClass
 
             return lista;
         }
+
+        public List<Category_Class> Categories(string name)
+        {
+            Category_CAD category = new Category_CAD();
+            List<Category_Class> lista = new List<Category_Class>();
+            lista = category.Categories(name);
+
+            return lista;
+        }
         public override string ToString()
         {
             string str;
