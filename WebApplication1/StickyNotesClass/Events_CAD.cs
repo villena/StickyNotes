@@ -116,6 +116,35 @@ namespace StickyNotesClass
 
         }
 
+        public bool deleteUser(User_Class userm, int eventID)
+        {
+            bool deleted;
+
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                con.Open();
+                string sql = "DELETE FROM US_EV_REL WHERE UID = " + userm.Id + "AND EID=" + eventID;
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+
+                deleted = true;
+
+            }
+            catch (Exception ex)
+            {
+                deleted = false;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return deleted;
+
+        }
+
         public bool deleteEvent(Events_Class item)
         {
             bool borrado;
@@ -214,7 +243,7 @@ namespace StickyNotesClass
             return eventsList;
         }
 
-        public List<Events_Class> searchEvents(string myDescription)
+        public List<Events_Class> userNewEvents(int userID)
         {
             SqlConnection con = new SqlConnection(connection);
             List<Events_Class> eventsList = new List<Events_Class>();
@@ -222,7 +251,45 @@ namespace StickyNotesClass
             try
             {
 
-                string sql = "SELECT * FROM EVENTS WHERE DESCRIPTION LIKE '%" + myDescription + "%'";
+                string sql = "SELECT * FROM EVENTS WHERE ID NOT IN(SELECT EID FROM US_EV_REL WHERE UID = " + userID + ")";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                Events_Class events = new Events_Class();
+
+                while (reader.Read())
+                {
+                    events = new Events_Class();
+                    events.Id = int.Parse(reader["ID"].ToString());
+                    events.Date = reader["DATE"].ToString();
+                    events.Description = reader["DESCRIPTION"].ToString();
+                    events.Location = reader["LOCATION"].ToString();
+
+                    eventsList.Add(events);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return eventsList;
+        }
+
+        public List<Events_Class> searchEvents(string myDescription, int userID)
+        {
+            SqlConnection con = new SqlConnection(connection);
+            List<Events_Class> eventsList = new List<Events_Class>();
+
+            try
+            {
+
+                string sql = "SELECT * FROM EVENTS WHERE DESCRIPTION LIKE '%" + myDescription + "%' AND ID NOT IN(SELECT EID FROM US_EV_REL WHERE UID = " + userID + ")";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();

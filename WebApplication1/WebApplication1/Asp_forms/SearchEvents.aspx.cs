@@ -31,10 +31,16 @@ namespace WebApplication1
 
         protected void Search(object sender, EventArgs e)
         {
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+
+            User_Class myUser = new User_Class();
+            myUser = myUser.getUser(userCookie.Value);
+
             Events_Class events = new Events_Class();
             List<Events_Class> eventsList = new List<Events_Class>();
 
-            eventsList = events.searchEvents(TextBox1.Text);
+            eventsList = events.searchEvents(TextBox1.Text, myUser.Id);
 
             int totalEvents = eventsList.Count();
             int counter = 0;
@@ -68,10 +74,16 @@ namespace WebApplication1
 
         protected void ShowAll(object sender, EventArgs e)
         {
+            HttpCookie userCookie;
+            userCookie = Request.Cookies["UserID"];
+
+            User_Class myUser = new User_Class();
+            myUser = myUser.getUser(userCookie.Value);
+
             Events_Class events = new Events_Class();
             List<Events_Class> eventsList = new List<Events_Class>();
 
-            eventsList = events.searchEvents("");
+            eventsList = events.userNewEvents(myUser.Id);
 
             int totalEvents = eventsList.Count();
             int counter = 0;

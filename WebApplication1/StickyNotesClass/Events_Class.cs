@@ -77,10 +77,10 @@ namespace StickyNotesClass
             return item.obtainEvent(myId);
         }
 
-        public List<Events_Class> searchEvents(string description)
+        public List<Events_Class> searchEvents(string myDescription, int myId)
         {
             Events_CAD item = new Events_CAD();
-            return item.searchEvents(description);
+            return item.searchEvents(myDescription, myId);
         }
 
         public List<Events_Class> userEvents(int userID)
@@ -90,11 +90,25 @@ namespace StickyNotesClass
             return eventsCad.userEvents(userID);
         }
 
+        public List<Events_Class> userNewEvents(int userID)
+        {
+            Events_CAD eventsCad = new Events_CAD();
+
+            return eventsCad.userNewEvents(userID);
+        }
+
         public void addUser(User_Class myUser)
         {
             Events_CAD eventsCad = new Events_CAD();
 
             bool correcto = eventsCad.addUser(myUser, Id);
+        }
+
+        public void removeUser(User_Class myUser)
+        {
+            Events_CAD eventsCad = new Events_CAD();
+
+            bool correcto = eventsCad.deleteUser(myUser, Id);
         }
 
         public override string ToString()
@@ -103,5 +117,7 @@ namespace StickyNotesClass
             str = date.ToString() + "\n" + description + "\n" + location;
             return str;
         }
+
+
     }
 }

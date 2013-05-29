@@ -35,19 +35,25 @@ namespace WebApplication1
                 int counter = 0;
                 Panel p = new Panel();
                 Label t = new Label();
+                HyperLink le = new HyperLink();
 
                 while (counter < totalEvents)
                 {
                     string id = eventsList[counter].Id.ToString();
                     p = new Panel();
                     t = new Label();
+                    le = new HyperLink();
 
                     p.ID = "panel" + id;
                     t.ID = "t" + id;
+                    le.ID = "le" + id;
 
-                    t.Text = eventsList[counter].ToString();
+                    t.Text = eventsList[counter].ToString() + "<BR>";
+                    le.Text = "REMOVE";
+                    le.NavigateUrl = "~/Asp_forms/RemoveUserFromEvents.aspx?ID=" + eventsList[counter].Id;
 
                     p.Controls.Add(t);
+                    p.Controls.Add(le);
                     Panel2.Controls.Add(p);
 
                     counter++;
