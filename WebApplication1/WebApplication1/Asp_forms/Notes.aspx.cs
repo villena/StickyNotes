@@ -66,12 +66,12 @@ namespace WebApplication1
             Label f = new Label();
             Image ie=new Image();
             ie.ImageUrl = "../Images/editButton.png";
-            
+            ImageButton imgbuttone = new ImageButton();
+            ImageButton imgbuttonb = new ImageButton();
 
-            HyperLink le = new HyperLink();
-            HyperLink lb = new HyperLink();
-            Button b = new Button();
-            
+            Panel psub = new Panel();
+
+
             Note_CAD notaTemp = new Note_CAD();
             List<Note_Class> notes = new List<Note_Class>();
 
@@ -85,43 +85,45 @@ namespace WebApplication1
             while (i >=0)
             {
                 p = new Panel();
+                psub = new Panel();
 
                 t = new Label();
                 f = new Label();
 
-                le = new HyperLink();
-                lb = new HyperLink();
+                imgbuttone = new ImageButton();
+                imgbuttonb = new ImageButton();
+
+                imgbuttone.ImageUrl = "../Images/editButton.png";
+                imgbuttone.PostBackUrl = "~/Asp_forms/Editnotes.aspx?ID=" + notes[i].Id.ToString();
+                imgbuttone.Width = 30;
+
+                imgbuttonb.ImageUrl = "../Images/deleteButton.png";
+                imgbuttonb.PostBackUrl = "~/Asp_forms/Deletenote.aspx?ID=" + notes[i].Id.ToString();
+
+                imgbuttonb.Width = 30;
+
+                psub.CssClass = "default_panel";
+                psub.HorizontalAlign = HorizontalAlign.Right;
+
+                psub.Controls.Add(imgbuttonb);
+                psub.Controls.Add(imgbuttone);
+                
            
 
                 string id = notes[i].Id.ToString();
 
                 p.ID = "p" + id;
                 p.CssClass = "postitnotes";
-                t.ID = "t" + id;
-                
+                t.ID = "t" + id;               
                 f.ID = "f" + id;
-                le.ID = "l" + id;
-                le.Text = "Editar" + "<BR>";
-                lb.Text = "Borrar";
-
-
-               // le.CssClass = "editButton";
-               //le.ImageUrl = "../Images/editButton.png";
                
-              
-                
-               // le.Controls.Add(ie);
-                le.NavigateUrl = "~/Asp_forms/Editnotes.aspx?ID=" + notes[i].Id.ToString();
-                lb.NavigateUrl = "~/Asp_forms/Deletenote.aspx?ID=" + notes[i].Id.ToString();
                 t.Text=notes[i].Text.ToString() + "<BR>";
-
-                //f.Text =reader["CREATION_DATE"].ToString();
 
                 p.Controls.Add(t);
                 p.Controls.Add(f);
-                p.Controls.Add(le);
-                p.Controls.Add(lb);
 
+
+                p.Controls.Add(psub);
                 Panel1.Controls.Add(p);
 
                 i--;
