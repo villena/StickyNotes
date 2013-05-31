@@ -15,11 +15,12 @@ namespace WebApplication1
             Panel p = new Panel();
 
             Label t = new Label();
-            Label f = new Label();
+            Label a = new Label();
             
             Note_CAD notaTemp = new Note_CAD();
             List<Note_Class> notes = new List<Note_Class>();
-
+            User_Class user = new User_Class();
+            
             notes = notaTemp.notesOpen();
 
             int i = notes.Count() - 1;
@@ -30,20 +31,22 @@ namespace WebApplication1
                 p = new Panel();
 
                 t = new Label();
-                f = new Label();
-
-                p = new Panel();
+                a = new Label();
 
                 string id = notes[i].Id.ToString();
 
                 p.ID = "p" + id;
                 p.CssClass = "postitnotes";
                 t.ID = "t" + id;
+                a.Text = "a" + id;
 
                 t.Text = notes[i].Text.ToString() + "<BR>";
+                a.Text = user.getUser(notes[i].Author).Name;
+
+
 
                 p.Controls.Add(t);
-                p.Controls.Add(f);
+                p.Controls.Add(a);
 
                 Panel1.Controls.Add(p);
 

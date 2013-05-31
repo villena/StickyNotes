@@ -72,6 +72,7 @@ namespace WebApplication1
                     Password.Visible = false;
                     Button1.Visible = false;
                     Button2.Visible = true;
+                    Response.Redirect("../Default.aspx");
 
                 }
                 else

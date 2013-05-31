@@ -13,6 +13,9 @@ namespace WebApplication1
     {        
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Cuando refresca la pagina, mantiene el cursor en la posicion en la que estaba.
+            Page.MaintainScrollPositionOnPostBack = true;
+
             HttpCookie userCookie;
             userCookie = Request.Cookies["UserID"];
 
@@ -80,7 +83,7 @@ namespace WebApplication1
             }
 
             events.addEvent();
-            Response.Redirect("Events.aspx");
+            Response.Redirect("Events.aspx", true);
 
         }
 

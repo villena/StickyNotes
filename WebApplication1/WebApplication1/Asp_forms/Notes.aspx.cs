@@ -96,11 +96,12 @@ namespace WebApplication1
                 imgbuttone.ImageUrl = "../Images/editButton.png";
                 imgbuttone.PostBackUrl = "~/Asp_forms/Editnotes.aspx?ID=" + notes[i].Id.ToString();
                 imgbuttone.Width = 30;
+                imgbuttone.ToolTip = "Edit";
 
                 imgbuttonb.ImageUrl = "../Images/deleteButton.png";
                 imgbuttonb.PostBackUrl = "~/Asp_forms/Deletenote.aspx?ID=" + notes[i].Id.ToString();
-
                 imgbuttonb.Width = 30;
+                imgbuttonb.ToolTip = "Delete";
 
                 psub.CssClass = "default_panel";
                 psub.HorizontalAlign = HorizontalAlign.Right;

@@ -12,6 +12,7 @@ namespace StickyNotesClass
         private int category;
         private string text;
         private string date;
+        private int author;
 
         //Constructor
         public Note_Class()
@@ -52,6 +53,12 @@ namespace StickyNotesClass
         {
             get { return date; }
             set { date = value; }
+        }
+
+        public int Author
+        {
+            get { return author; }
+            set { author = value; }
         }
 
         //Add new note

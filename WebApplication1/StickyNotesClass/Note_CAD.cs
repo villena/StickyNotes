@@ -237,6 +237,7 @@ namespace StickyNotesClass
                     note.Type = Convert.ToChar(dr["KIND"]);
                     note.Date = dr["CREATION_DATE"].ToString();
                     note.Text = dr["TEXT"].ToString();
+                    note.Author = Convert.ToInt32(dr["AUTHOR"]);
                 }
             }
             catch (Exception ex) { }
@@ -302,19 +303,19 @@ namespace StickyNotesClass
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                Note_Class notaTemp = new Note_Class();
+                Note_Class noteTemp = new Note_Class();
 
                 while (reader.Read())
                 {
-                    notaTemp = new Note_Class();
+                    noteTemp = new Note_Class();
 
-                    notaTemp.Id = int.Parse(reader["ID"].ToString());
-                    notaTemp.Text = reader["TEXT"].ToString();
-                    notaTemp.Date = reader["CREATION_DATE"].ToString();
-                    notaTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Id = int.Parse(reader["ID"].ToString());
+                    noteTemp.Text = reader["TEXT"].ToString();
+                    noteTemp.Date = reader["CREATION_DATE"].ToString();
+                    noteTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Author = Convert.ToInt32(reader["AUTHOR"]);
 
-
-                    notesList.Add(notaTemp);
+                    notesList.Add(noteTemp);
                 }
             }
             catch (Exception ex) { }
@@ -341,19 +342,19 @@ namespace StickyNotesClass
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                Note_Class notaTemp = new Note_Class();
+                Note_Class noteTemp = new Note_Class();
 
                 while (reader.Read())
                 {
-                    notaTemp = new Note_Class();
+                    noteTemp = new Note_Class();
 
-                    notaTemp.Id = int.Parse(reader["ID"].ToString());
-                    notaTemp.Text = reader["TEXT"].ToString();
-                    notaTemp.Date = reader["CREATION_DATE"].ToString();
-                    notaTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Id = int.Parse(reader["ID"].ToString());
+                    noteTemp.Text = reader["TEXT"].ToString();
+                    noteTemp.Date = reader["CREATION_DATE"].ToString();
+                    noteTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Author = Convert.ToInt32(reader["AUTHOR"]);
 
-
-                    notesList.Add(notaTemp);
+                    notesList.Add(noteTemp);
                 }
             }
             catch (Exception ex) { }
@@ -419,19 +420,20 @@ namespace StickyNotesClass
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                Note_Class notaTemp = new Note_Class();
+                Note_Class noteTemp = new Note_Class();
 
                 while (reader.Read())
                 {
-                    notaTemp = new Note_Class();
+                    noteTemp = new Note_Class();
 
-                    notaTemp.Id = int.Parse(reader["ID"].ToString());
-                    notaTemp.Text = reader["TEXT"].ToString();
-                    notaTemp.Date = reader["CREATION_DATE"].ToString();
-                    notaTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Id = int.Parse(reader["ID"].ToString());
+                    noteTemp.Text = reader["TEXT"].ToString();
+                    noteTemp.Date = reader["CREATION_DATE"].ToString();
+                    noteTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Author = Convert.ToInt32(reader["AUTHOR"]);
 
 
-                    notesList.Add(notaTemp);
+                    notesList.Add(noteTemp);
                 }
             }
             catch (Exception ex) { }
@@ -457,18 +459,19 @@ namespace StickyNotesClass
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                Note_Class notaTemp = new Note_Class();
+                Note_Class noteTemp = new Note_Class();
 
                 while (reader.Read())
                 {
-                    notaTemp = new Note_Class();
+                    noteTemp = new Note_Class();
 
-                    notaTemp.Id = int.Parse(reader["ID"].ToString());
-                    notaTemp.Text = reader["TEXT"].ToString();
-                    notaTemp.Date = reader["CREATION_DATE"].ToString();
-                    notaTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Id = int.Parse(reader["ID"].ToString());
+                    noteTemp.Text = reader["TEXT"].ToString();
+                    noteTemp.Date = reader["CREATION_DATE"].ToString();
+                    noteTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Author = Convert.ToInt32(reader["AUTHOR"]);
 
-                    notesList.Add(notaTemp);
+                    notesList.Add(noteTemp);
                 }
             }
             catch (Exception ex) { }
