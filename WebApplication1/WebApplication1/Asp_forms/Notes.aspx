@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Acerca de nosotros" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="My Notes" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Notes.aspx.cs"  Inherits="WebApplication1.Notes"%>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

@@ -68,7 +68,7 @@
                       <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
                         <Items>
                              <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Notes.aspx" Text="Notes"/>
+                                    <asp:MenuItem NavigateUrl="~/Asp_forms/Notes.aspx" Text="My Notes"/>
                                     <asp:MenuItem NavigateUrl="~/Asp_forms/Friends.aspx" Text="Friends"/>
                                     <asp:MenuItem NavigateUrl="~/Asp_forms/Groups.aspx" Text="Groups"/>
                                     <asp:MenuItem NavigateUrl="~/Asp_forms/Events.aspx" Text="Events"/>

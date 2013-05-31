@@ -35,12 +35,14 @@ namespace StickyNotesClass
             get {return name;}
             set {name = value;}
         }
-        
+
         //Constructor
-        public Party_Class(int id)
+        public Party_Class()
         {
             id = -1;
             name = "";
+            Users = new List<User_Class>();
+            Notes = new List<Note_Class>();
         }
 
         //Destructor
@@ -53,6 +55,29 @@ namespace StickyNotesClass
             this.update();
         }
 
+        public bool addNote(Note_Class note, int author_id)
+        {
+            Party_CAD cad = new Party_CAD();
+            return cad.addNote(note, this.Id, author_id);
+        }
+
+        public void getName()
+        {
+            Party_CAD cad=new Party_CAD();
+            name = cad.getName(id);
+            
+        }
+
+
+        public void obtainNotes()
+        {
+            Party_CAD cad = new Party_CAD();
+            this.Notes = new List<Note_Class>();
+
+            this.notes = cad.obtainNotes(this.Id);
+        }
+
+
         public void update()
         {
             Party_CAD item = new Party_CAD();
@@ -62,16 +87,24 @@ namespace StickyNotesClass
         }
 
         //Crear grupo
-        public void createParty()
+        public bool createParty()
         {
             Party_CAD item = new Party_CAD();
-            item.createParty(this);
+            return item.createParty(this);
         }
 
-        public void deleteParty()
+        public bool deleteParty()
         {
             Party_CAD item = new Party_CAD();
-            item.deleteParty(this);
+            return item.deleteParty(this);
+        }
+
+        //Obtener los grupos 
+        public List<Party_Class> userGroups(int id)
+        {
+            Party_CAD partyCad = new Party_CAD();
+
+            return partyCad.userGroups(id);
         }
 
         public override string ToString()
