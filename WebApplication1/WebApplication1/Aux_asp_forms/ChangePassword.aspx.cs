@@ -13,16 +13,35 @@ namespace WebApplication1.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
+
             userCookie = Request.Cookies["UserID"];
-            User_Class usuario_sesion = new User_Class();
-            usuario_sesion = usuario_sesion.getUser(userCookie.Value);
-            CompareValidator pass = new CompareValidator();
-            pass.ID = "CorrectPasswordCompare";
-            pass.ValueToCompare = usuario_sesion.Pass;
-            pass.ControlToValidate = "CurrentPassword";
-            pass.CssClass = "failureNotification";
-            pass.ErrorMessage = "*</br>The passwords is not correct.";
-            CurrentPasswordRequired.Controls.Add(pass);
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
+            {
+                Response.Redirect("../Account/Login.aspx");
+            }
+            else
+            {
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
+
+                if (usuario_sesion.Pass == passCookie.Value)
+                {
+                    CompareValidator pass = new CompareValidator();
+                    pass.ID = "CorrectPasswordCompare";
+                    pass.ValueToCompare = usuario_sesion.Pass;
+                    pass.ControlToValidate = "CurrentPassword";
+                    pass.CssClass = "failureNotification";
+                    pass.ErrorMessage = "*</br>The passwords is not correct.";
+                    CurrentPasswordRequired.Controls.Add(pass);
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
+                }
+            }
         }
 
         protected void Change_Pass(object sender, EventArgs e)

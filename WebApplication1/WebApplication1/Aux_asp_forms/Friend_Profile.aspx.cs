@@ -13,8 +13,12 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
+
             userCookie = Request.Cookies["UserID"];
-            if (userCookie == null)
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
@@ -22,21 +26,30 @@ namespace WebApplication1
             {
                 User_Class usuario_sesion = new User_Class();
                 usuario_sesion = usuario_sesion.getUser(userCookie.Value);
-                if (!usuario_sesion.isFriend(int.Parse(Request.QueryString["id"]))) { Response.Redirect("../Asp_forms/Friends.aspx?all=yes"); }
-                User_Class usuario_friend = new User_Class();
-                usuario_friend = usuario_friend.getUser(int.Parse(Request.QueryString["id"]));
 
-                Image1.ImageUrl = usuario_friend.Image_url;
-                Label1.Text = usuario_friend.Nick;
-                Label2.Text = usuario_friend.Name;
-                Label3.Text = usuario_friend.Surname;
-                Label4.Text = usuario_friend.Email;
-                Label5.Text = usuario_friend.Gender.ToString();
-                Label6.Text = usuario_friend.Entry_date;
-                Label7.Text = usuario_friend.Birth_date;
+                if (usuario_sesion.Pass == passCookie.Value)
+                {
+                    if (!usuario_sesion.isFriend(int.Parse(Request.QueryString["id"]))) 
+                    {
+                        Response.Redirect("../Asp_forms/Friends.aspx?all=yes"); 
+                    }
+                    User_Class usuario_friend = new User_Class();
+                    usuario_friend = usuario_friend.getUser(int.Parse(Request.QueryString["id"]));
+
+                    Image1.ImageUrl = usuario_friend.Image_url;
+                    Label1.Text = usuario_friend.Nick;
+                    Label2.Text = usuario_friend.Name;
+                    Label3.Text = usuario_friend.Surname;
+                    Label4.Text = usuario_friend.Email;
+                    Label5.Text = usuario_friend.Gender.ToString();
+                    Label6.Text = usuario_friend.Entry_date;
+                    Label7.Text = usuario_friend.Birth_date;
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
+                }
             }
-
-
         }
     }
 }

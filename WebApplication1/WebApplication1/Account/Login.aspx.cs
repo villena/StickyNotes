@@ -21,10 +21,16 @@ namespace WebApplication1.Account
         protected void Login_Click(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
+
             userCookie = Request.Cookies["UserID"];
-            if (userCookie != null)
+            passCookie = Request.Cookies["UserPass"];
+            
+            if (userCookie != null || passCookie != null)
             {
                 userCookie.Expires = DateTime.Now.AddMonths(-1);
+                passCookie.Expires = DateTime.Now.AddMonths(-1);
+                Response.Cookies.Add(userCookie);
                 Response.Cookies.Add(userCookie);
             }
             else
@@ -46,8 +52,11 @@ namespace WebApplication1.Account
                 {
 
                     userCookie = new HttpCookie("UserID", myUser.Nick);
+                    passCookie = new HttpCookie("UserPass", myUser.Pass);
                     userCookie.Expires = DateTime.Now.AddMonths(1);
+                    passCookie.Expires = DateTime.Now.AddMonths(1);
                     Response.Cookies.Add(userCookie);
+                    Response.Cookies.Add(passCookie);
                     Label1.Text = (string)refUrl;
                     //Label1.Text = userCookie.Value;
                     if (refUrl != null)

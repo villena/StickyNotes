@@ -15,48 +15,61 @@ namespace WebApplication1
             // Events_Class event = new Events_Class();
 
             HttpCookie userCookie;
-            userCookie = Request.Cookies["UserID"];
+            HttpCookie passCookie;
 
-            if (userCookie == null)
+            userCookie = Request.Cookies["UserID"];
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
             else
             {
-                User_Class myUser = new User_Class();
-                myUser = myUser.getUser(userCookie.Value);
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
-                Events_Class events = new Events_Class();
-                List<Events_Class> eventsList = new List<Events_Class>();
-
-                eventsList = events.userEvents(myUser.Id);
-
-                int totalEvents = eventsList.Count();
-                int counter = 0;
-                Panel p = new Panel();
-                Label t = new Label();
-                HyperLink le = new HyperLink();
-
-                while (counter < totalEvents)
+                if (usuario_sesion.Pass == passCookie.Value)
                 {
-                    string id = eventsList[counter].Id.ToString();
-                    p = new Panel();
-                    t = new Label();
-                    le = new HyperLink();
+                    User_Class myUser = new User_Class();
+                    myUser = myUser.getUser(userCookie.Value);
 
-                    p.ID = "panel" + id;
-                    t.ID = "t" + id;
-                    le.ID = "le" + id;
+                    Events_Class events = new Events_Class();
+                    List<Events_Class> eventsList = new List<Events_Class>();
 
-                    t.Text = eventsList[counter].ToString() + "<BR>";
-                    le.Text = "REMOVE";
-                    le.NavigateUrl = "~/Asp_forms/RemoveUserFromEvents.aspx?ID=" + eventsList[counter].Id;
+                    eventsList = events.userEvents(myUser.Id);
 
-                    p.Controls.Add(t);
-                    p.Controls.Add(le);
-                    Panel2.Controls.Add(p);
+                    int totalEvents = eventsList.Count();
+                    int counter = 0;
+                    Panel p = new Panel();
+                    Label t = new Label();
+                    HyperLink le = new HyperLink();
 
-                    counter++;
+                    while (counter < totalEvents)
+                    {
+                        string id = eventsList[counter].Id.ToString();
+                        p = new Panel();
+                        t = new Label();
+                        le = new HyperLink();
+
+                        p.ID = "panel" + id;
+                        t.ID = "t" + id;
+                        le.ID = "le" + id;
+
+                        t.Text = eventsList[counter].ToString() + "<BR>";
+                        le.Text = "REMOVE";
+                        le.NavigateUrl = "~/Asp_forms/RemoveUserFromEvents.aspx?ID=" + eventsList[counter].Id;
+
+                        p.Controls.Add(t);
+                        p.Controls.Add(le);
+                        Panel2.Controls.Add(p);
+
+                        counter++;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
                 }
             }
         }

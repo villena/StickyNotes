@@ -15,32 +15,45 @@ namespace WebApplication1.Asp_forms
             // Events_Class event = new Events_Class();
 
             HttpCookie userCookie;
-            userCookie = Request.Cookies["UserID"];
+            HttpCookie passCookie;
 
-            if (userCookie == null)
+            userCookie = Request.Cookies["UserID"];
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
             else
             {
-                String s;
-                s = Request.QueryString["ID"];
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
-                if (s != null)
+                if (usuario_sesion.Pass == passCookie.Value)
                 {
+                    String s;
+                    s = Request.QueryString["ID"];
 
-                    int id = Int32.Parse(s);
+                    if (s != null)
+                    {
 
-                    User_Class myUser = new User_Class();
-                    myUser = myUser.getUser(userCookie.Value);
+                        int id = Int32.Parse(s);
 
-                    Events_Class events = new Events_Class();
-                    events = events.getEvent(id);
-                    events.addUser(myUser);
-                    Label1.Text = events.ToString();
-                    Response.Redirect("..//Asp_forms/Events.aspx");
+                        User_Class myUser = new User_Class();
+                        myUser = myUser.getUser(userCookie.Value);
+
+                        Events_Class events = new Events_Class();
+                        events = events.getEvent(id);
+                        events.addUser(myUser);
+                        Label1.Text = events.ToString();
+                        Response.Redirect("..//Asp_forms/Events.aspx");
 
 
+                    }
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
                 }
             }
         }

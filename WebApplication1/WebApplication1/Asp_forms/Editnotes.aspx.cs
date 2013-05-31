@@ -14,22 +14,45 @@ namespace WebApplication1.Asp_forms
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            String s;
-            s=Request.QueryString["ID"];
+            HttpCookie userCookie;
+            HttpCookie passCookie;
 
-            if (s != null)
+            userCookie = Request.Cookies["UserID"];
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
+                Response.Redirect("../Account/Login.aspx");
+            }
+            else
+            {
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
-                int id = Int32.Parse(s);
-             
+                if (usuario_sesion.Pass == passCookie.Value)
+                {
+                    String s;
+                    s = Request.QueryString["ID"];
 
-                note.Id = id;
+                    if (s != null)
+                    {
 
-                note = note.getNote(id);
+                        int id = Int32.Parse(s);
 
-                Label2.Text=note.Text;
-                //TextBox1.Text = note.Text;
-               
+
+                        note.Id = id;
+
+                        note = note.getNote(id);
+
+                        Label2.Text = note.Text;
+                        //TextBox1.Text = note.Text;
+
+                    }
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
+                }
             }
         }
 

@@ -14,8 +14,12 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
+
             userCookie = Request.Cookies["UserID"];
-            if (userCookie == null)
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
@@ -24,30 +28,38 @@ namespace WebApplication1
                 User_Class usuario_sesion = new User_Class();
                 usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
-                List<Category_Class> lista = new List<Category_Class>();
-                Category_Class category = new Category_Class();
-
-                if (Request.QueryString["cadena"] != null)
-                    lista = filterCategories(Request.QueryString["cadena"], category.Categories());
-                else
-                    lista = category.Categories();
-                
-                if (lista.Count() == 0)
+                if (usuario_sesion.Pass == passCookie.Value)
                 {
-                    Label label = new Label();
-                    label.Attributes.Add("style", "float:center; margin-left:50px;");
-                    label.ID = "LabelX";
-                    label.Text = "<h2> No categories found! </h2>";
-                    Panel2.Controls.Add(label);
+
+                    List<Category_Class> lista = new List<Category_Class>();
+                    Category_Class category = new Category_Class();
+
+                    if (Request.QueryString["cadena"] != null)
+                        lista = filterCategories(Request.QueryString["cadena"], category.Categories());
+                    else
+                        lista = category.Categories();
+
+                    if (lista.Count() == 0)
+                    {
+                        Label label = new Label();
+                        label.Attributes.Add("style", "float:center; margin-left:50px;");
+                        label.ID = "LabelX";
+                        label.Text = "<h2> No categories found! </h2>";
+                        Panel2.Controls.Add(label);
+                    }
+
+                    for (int j = 0; j < lista.Count(); j++)
+                    {
+                        Panel p = createPanel();
+                        p.Controls.Add(createLabel(lista.ElementAt(j).Nombre));
+                        p.Controls.Add(createNotesButton(lista.ElementAt(j).Id));
+                        Panel2.Controls.Add(p);
+
+                    }
                 }
-
-                for (int j = 0; j < lista.Count(); j++)
+                else
                 {
-                    Panel p = createPanel();
-                    p.Controls.Add(createLabel(lista.ElementAt(j).Nombre));
-                    p.Controls.Add(createNotesButton(lista.ElementAt(j).Id));
-                    Panel2.Controls.Add(p);
-
+                    Response.Redirect("../Account/Login.aspx");
                 }
             }
         }

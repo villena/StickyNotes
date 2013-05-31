@@ -15,82 +15,96 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
+
             userCookie = Request.Cookies["UserID"];
-            if (userCookie == null)
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
             else
             {
-                String id = Request.QueryString["id"];
-                String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
-                SqlConnection con = new SqlConnection(connection);
-                con.Open();
-                string sql = "SELECT * FROM NOTES WHERE CATEGORY_ID = " + id;
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                StringBuilder htmlStr = new StringBuilder("");
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
-                //Panel p = new Panel();
-                Panel p = new Panel();
-
-                Label t = new Label();
-                Label f = new Label();
-                Image ie = new Image();
-                ie.ImageUrl = "../Images/editButton.png";
-
-
-                HyperLink le = new HyperLink();
-                HyperLink lb = new HyperLink();
-                Button b = new Button();
-
-                while (reader.Read())
+                if (usuario_sesion.Pass == passCookie.Value)
                 {
-                    p = new Panel();
+                    String id = Request.QueryString["id"];
+                    String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+                    SqlConnection con = new SqlConnection(connection);
+                    con.Open();
+                    string sql = "SELECT * FROM NOTES WHERE CATEGORY_ID = " + id;
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    StringBuilder htmlStr = new StringBuilder("");
 
-                    t = new Label();
-                    f = new Label();
+                    //Panel p = new Panel();
+                    Panel p = new Panel();
 
-                    le = new HyperLink();
-                    lb = new HyperLink();
-
-
-
-                    p.ID = "p" + id;
-                    p.CssClass = "postitnotes";
-                    t.ID = "t" + id;
-
-                    f.ID = "f" + id;
-                    le.ID = "l" + id;
-                    le.Text = "Editar" + "<BR>";
-                    lb.Text = "Borrar";
+                    Label t = new Label();
+                    Label f = new Label();
+                    Image ie = new Image();
+                    ie.ImageUrl = "../Images/editButton.png";
 
 
-                    // le.CssClass = "editButton";
-                    //le.ImageUrl = "../Images/editButton.png";
+                    HyperLink le = new HyperLink();
+                    HyperLink lb = new HyperLink();
+                    Button b = new Button();
+
+                    while (reader.Read())
+                    {
+                        p = new Panel();
+
+                        t = new Label();
+                        f = new Label();
+
+                        le = new HyperLink();
+                        lb = new HyperLink();
 
 
 
-                    // le.Controls.Add(ie);
-                    le.NavigateUrl = "~/Asp_forms/Editnotes.aspx?ID=" + reader["ID"].ToString();
-                    lb.NavigateUrl = "~/Asp_forms/Deletenote.aspx?ID=" + reader["ID"].ToString();
-                    t.Text = reader["TEXT"].ToString() + "<BR>";
+                        p.ID = "p" + id;
+                        p.CssClass = "postitnotes";
+                        t.ID = "t" + id;
 
-                    //f.Text =reader["CREATION_DATE"].ToString();
+                        f.ID = "f" + id;
+                        le.ID = "l" + id;
+                        le.Text = "Editar" + "<BR>";
+                        lb.Text = "Borrar";
 
-                    p.Controls.Add(t);
-                    p.Controls.Add(f);
-                    p.Controls.Add(le);
-                    p.Controls.Add(lb);
 
-                    Panelnota.Controls.Add(p);
+                        // le.CssClass = "editButton";
+                        //le.ImageUrl = "../Images/editButton.png";
+
+
+
+                        // le.Controls.Add(ie);
+                        le.NavigateUrl = "~/Asp_forms/Editnotes.aspx?ID=" + reader["ID"].ToString();
+                        lb.NavigateUrl = "~/Asp_forms/Deletenote.aspx?ID=" + reader["ID"].ToString();
+                        t.Text = reader["TEXT"].ToString() + "<BR>";
+
+                        //f.Text =reader["CREATION_DATE"].ToString();
+
+                        p.Controls.Add(t);
+                        p.Controls.Add(f);
+                        p.Controls.Add(le);
+                        p.Controls.Add(lb);
+
+                        Panelnota.Controls.Add(p);
+                    }
+
+                    reader.Close();
+                    con.Close();
+                    //NotasPrueba.Text = htmlStr.ToString();
+
+
                 }
-
-                reader.Close();
-                con.Close();
-                //NotasPrueba.Text = htmlStr.ToString();
-
-
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
+                }
             }
         }
         protected void Create_Note(object sender, EventArgs e)

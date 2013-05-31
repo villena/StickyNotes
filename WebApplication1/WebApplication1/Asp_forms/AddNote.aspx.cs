@@ -16,46 +16,60 @@ namespace WebApplication1.Asp_forms
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
+
             userCookie = Request.Cookies["UserID"];
-            if (userCookie == null)
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
             else
             {
-                if (!IsPostBack)
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
+
+                if (usuario_sesion.Pass == passCookie.Value)
                 {
-                    ListBox1.Items.Clear();
-                    ListBox2.Items.Clear();
-                    ListBox3.Items.Clear();
-                    ListBox1.Width = 100;
-                    ListBox1.Height= 35;
-                   // ListBox1.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
-                    ListBox2.Width = 100;
-                    ListBox3.Width = 100;
-
-                    user = new User_Class();
-                    user = user.getUser(userCookie.Value);
-                    user.getFriends();
-
-                    int i = 0;
-
-                    ListItem l = new ListItem();
-                    while (i < user.Friends.Count)
+                    if (!IsPostBack)
                     {
-                        l = new ListItem();
+                        ListBox1.Items.Clear();
+                        ListBox2.Items.Clear();
+                        ListBox3.Items.Clear();
+                        ListBox1.Width = 100;
+                        ListBox1.Height = 35;
+                        // ListBox1.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
+                        ListBox2.Width = 100;
+                        ListBox3.Width = 100;
 
-                        l.Text = user.Friends[i].Name;
-                        l.Value = i.ToString();
-                        ListBox2.Items.Add(l);
-                        i++;
+                        user = new User_Class();
+                        user = user.getUser(userCookie.Value);
+                        user.getFriends();
+
+                        int i = 0;
+
+                        ListItem l = new ListItem();
+                        while (i < user.Friends.Count)
+                        {
+                            l = new ListItem();
+
+                            l.Text = user.Friends[i].Name;
+                            l.Value = i.ToString();
+                            ListBox2.Items.Add(l);
+                            i++;
+                        }
+
+                        ListItem o = new ListItem("Public", "0");
+                        ListItem p = new ListItem("Private", "1");
+                        ListBox1.Items.Add(o);
+                        ListBox1.Items.Add(p);
+
                     }
-
-                    ListItem o = new ListItem("Public", "0");
-                    ListItem p = new ListItem("Private", "1");
-                    ListBox1.Items.Add(o);
-                    ListBox1.Items.Add(p);
-                    
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
                 }
 
             }

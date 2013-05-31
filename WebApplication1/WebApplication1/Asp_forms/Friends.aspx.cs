@@ -13,84 +13,97 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
+
             userCookie = Request.Cookies["UserID"];
-            if (userCookie == null)
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
             else
             {
-                if (Request.QueryString["all"] == "yes") RadioButtonList1.Items[1].Selected = true;
-                else RadioButtonList1.Items[0].Selected = true;
                 User_Class usuario_sesion = new User_Class();
                 usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
-                if(RadioButtonList1.Text == "Only my friends") {
-                    List<User_Class> lista = new List<User_Class>();
-                    usuario_sesion.getFriends();
-
-                    if (Request.QueryString["cadena"] != null)
-                    {
-                        lista = filterFriends(Request.QueryString["cadena"], usuario_sesion.Friends);
-                    }
-                    else
-                    {
-                        lista = usuario_sesion.Friends;
-                    }
-
-                    if (lista.Count() == 0)
-                    {
-                        Label label = new Label();
-                        label.Attributes.Add("style", "float:center; margin-left:50px;");
-                        label.ID = "LabelX";
-                        label.Text = "<h2> No friends found! </h2>";
-                        Panel2.Controls.Add(label);
-                    }
-
-                    for (int j = 0; j < lista.Count(); j++)
-                    {
-                        Panel p = createPanel();
-                        Panel2.Controls.Add(p);
-                        p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
-                        p.Controls.Add(createLabel(lista.ElementAt(j).Name));
-                        p.Controls.Add(createPrfButton(lista.ElementAt(j).Id));
-                        p.Controls.Add(createDelButton(lista.ElementAt(j).Id));
-                    }
-                }
-
-                else if (RadioButtonList1.Text == "All Users")
+                if (usuario_sesion.Pass == passCookie.Value)
                 {
-                    List<User_Class> lista = new List<User_Class>();
-                    if (Request.QueryString["cadena"] != null)
-                    {
-                        lista = filterFriends(Request.QueryString["cadena"], usuario_sesion.getAllUser());
-                    }
-                    else
-                    {
-                        lista = usuario_sesion.getAllUser();
-                    }
+                    if (Request.QueryString["all"] == "yes") RadioButtonList1.Items[1].Selected = true;
+                    else RadioButtonList1.Items[0].Selected = true;                  
 
-                    for (int j = 0; j < lista.Count(); j++)
+                    if (RadioButtonList1.Text == "Only my friends")
                     {
-                        Panel p = createPanel();
-                        Panel2.Controls.Add(p);
-                        p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
-                        p.Controls.Add(createLabel(lista.ElementAt(j).Name));
+                        List<User_Class> lista = new List<User_Class>();
+                        usuario_sesion.getFriends();
 
-                        if (usuario_sesion.isFriend(lista.ElementAt(j).Id))
+                        if (Request.QueryString["cadena"] != null)
                         {
-                            p.Controls.Add(createPrfButton(lista.ElementAt(j).Id));
-                        }
-
-                        if (!usuario_sesion.isFriend(lista.ElementAt(j).Id))
-                        {
-                            p.Controls.Add(createAddButton(lista.ElementAt(j).Id));
+                            lista = filterFriends(Request.QueryString["cadena"], usuario_sesion.Friends);
                         }
                         else
                         {
+                            lista = usuario_sesion.Friends;
+                        }
+
+                        if (lista.Count() == 0)
+                        {
+                            Label label = new Label();
+                            label.Attributes.Add("style", "float:center; margin-left:50px;");
+                            label.ID = "LabelX";
+                            label.Text = "<h2> No friends found! </h2>";
+                            Panel2.Controls.Add(label);
+                        }
+
+                        for (int j = 0; j < lista.Count(); j++)
+                        {
+                            Panel p = createPanel();
+                            Panel2.Controls.Add(p);
+                            p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
+                            p.Controls.Add(createLabel(lista.ElementAt(j).Name));
+                            p.Controls.Add(createPrfButton(lista.ElementAt(j).Id));
                             p.Controls.Add(createDelButton(lista.ElementAt(j).Id));
                         }
                     }
+
+                    else if (RadioButtonList1.Text == "All Users")
+                    {
+                        List<User_Class> lista = new List<User_Class>();
+                        if (Request.QueryString["cadena"] != null)
+                        {
+                            lista = filterFriends(Request.QueryString["cadena"], usuario_sesion.getAllUser());
+                        }
+                        else
+                        {
+                            lista = usuario_sesion.getAllUser();
+                        }
+
+                        for (int j = 0; j < lista.Count(); j++)
+                        {
+                            Panel p = createPanel();
+                            Panel2.Controls.Add(p);
+                            p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
+                            p.Controls.Add(createLabel(lista.ElementAt(j).Name));
+
+                            if (usuario_sesion.isFriend(lista.ElementAt(j).Id))
+                            {
+                                p.Controls.Add(createPrfButton(lista.ElementAt(j).Id));
+                            }
+
+                            if (!usuario_sesion.isFriend(lista.ElementAt(j).Id))
+                            {
+                                p.Controls.Add(createAddButton(lista.ElementAt(j).Id));
+                            }
+                            else
+                            {
+                                p.Controls.Add(createDelButton(lista.ElementAt(j).Id));
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
                 }
             }
         }

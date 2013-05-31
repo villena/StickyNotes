@@ -17,40 +17,53 @@ namespace WebApplication1
             Page.MaintainScrollPositionOnPostBack = true;
 
             HttpCookie userCookie;
-            userCookie = Request.Cookies["UserID"];
+            HttpCookie passCookie;
 
-            if (userCookie == null)
+            userCookie = Request.Cookies["UserID"];
+            passCookie = Request.Cookies["UserPass"];
+
+            if (userCookie == null || passCookie == null)
             {
                 Response.Redirect("../Account/Login.aspx");
             }
             else
             {
-                if (!IsPostBack)
+                User_Class usuario_sesion = new User_Class();
+                usuario_sesion = usuario_sesion.getUser(userCookie.Value);
+
+                if (usuario_sesion.Pass == passCookie.Value)
                 {
-                    User_Class myUser = new User_Class();
-                    myUser = myUser.getUser(userCookie.Value);
-
-                    Events_Class events = new Events_Class();
-
-                    myUser.getFriends();
-
-                    ListBox1.Items.Clear();
-                    ListBox1.Width = 100;
-                    ListBox2.Width = 100;
-
-                    int i = 0;
-
-                    ListItem l = new ListItem();
-
-                    while (i < myUser.Friends.Count)
+                    if (!IsPostBack)
                     {
-                        l = new ListItem();
+                        User_Class myUser = new User_Class();
+                        myUser = myUser.getUser(userCookie.Value);
 
-                        l.Text = myUser.Friends[i].Name;
-                        l.Value = i.ToString();
-                        ListBox1.Items.Add(l);
-                        i++;
+                        Events_Class events = new Events_Class();
+
+                        myUser.getFriends();
+
+                        ListBox1.Items.Clear();
+                        ListBox1.Width = 100;
+                        ListBox2.Width = 100;
+
+                        int i = 0;
+
+                        ListItem l = new ListItem();
+
+                        while (i < myUser.Friends.Count)
+                        {
+                            l = new ListItem();
+
+                            l.Text = myUser.Friends[i].Name;
+                            l.Value = i.ToString();
+                            ListBox1.Items.Add(l);
+                            i++;
+                        }
                     }
+                }
+                else
+                {
+                    Response.Redirect("../Account/Login.aspx");
                 }
             }
         }
