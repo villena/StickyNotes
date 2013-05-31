@@ -23,12 +23,6 @@
                        
                             
                             <p>
-                                <asp:Label ID="NickLabel" runat="server" AssociatedControlID="Nick">Nick</asp:Label>
-                            </p>
-                            <p>
-                                <asp:TextBox ID="Nick" runat="server" CssClass="textEntry"></asp:TextBox>
-                            </p>
-                            <p>
                                 <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail</asp:Label>
                             </p>
                             <p>

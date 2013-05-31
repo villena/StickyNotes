@@ -31,8 +31,6 @@ namespace WebApplication1
             User_Class usuario_sesion = new User_Class();
             usuario_sesion = usuario_sesion.getUser(userCookie.Value);
 
-            if(Nick.Text != "")
-            usuario_sesion.Nick = Nick.Text;
             if (Email.Text != "")
             usuario_sesion.Email = Email.Text;
             if (Name.Text != "")
