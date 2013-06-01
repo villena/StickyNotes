@@ -15,22 +15,25 @@
    
     <asp:Panel ID="Panel1" runat="server" CssClass="default_panel" >
 
-        <asp:Panel ID="Panel2" runat="server" CssClass="postit" Width="310px" HorizontalAlign="Center" DefaultButton="Button1">
+        <asp:Panel ID="Panel2" runat="server" CssClass="postit" Width="543px" 
+            HorizontalAlign="Center" DefaultButton="Button1">
         
             <asp:TextBox ID="TextBox1" runat="server" Height="100px" MaxLength="100"
-            Rows="5" Style="resize:none;" TextMode="Multiline" Width="300px"/>
+            Rows="5" Style="resize:none;" TextMode="Multiline" Width="300px" CssClass="textarea"/>
         
         <br />
             <asp:Label ID="Label1" runat="server" Text="Set Gategory: "></asp:Label>
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-        <br />
+            <asp:TextBox ID="TextBox2" runat="server" CssClass="textareasingle"></asp:TextBox>
+            &nbsp;&nbsp;
             <asp:Label ID="Label2" runat="server" Text="Kind: "></asp:Label>
-            <asp:ListBox ID="ListBox1" runat="server" Rows="2"></asp:ListBox>
-        <br />
+            <asp:ListBox ID="ListBox1" runat="server" Rows="2" CssClass="textarea"></asp:ListBox>
+            <br />
+            <br />
             <asp:Label ID="Label3" runat="server" Text="Add Users: "></asp:Label>
-            <asp:ListBox ID="ListBox2" runat="server" AutoPostBack="false" SelectionMode="Multiple"></asp:ListBox>
-            <asp:Button ID="Button2" runat="server" Text="Add" OnClick="Add" AutoPostBack="false" />
-            <asp:ListBox ID="ListBox3" runat="server"></asp:ListBox>
+            <br />
+            <asp:ListBox ID="ListBox2" runat="server" AutoPostBack="false" SelectionMode="Multiple" CssClass="textarea"></asp:ListBox>
+            <asp:Button ID="Button2" runat="server" Text="Add" OnClick="Add" AutoPostBack="false" CssClass="button white"/>
+            <asp:ListBox ID="ListBox3" runat="server" CssClass="textarea"></asp:ListBox>
     <asp:Button ID="Button1" runat="server" Text="Send" OnClick="Send" CssClass="button white" />
     <br />
             <asp:Label ID="Label4" runat="server" Text=""></asp:Label>

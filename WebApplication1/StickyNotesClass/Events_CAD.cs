@@ -26,9 +26,14 @@ namespace StickyNotesClass
 
             try
             {
+                if(item.Description.Length>=50)
+                    item.Description=item.Description.ToString().Substring(0,50);
+                if (item.Location.Length >= 50)
+                    item.Location=item.Location.ToString().Substring(0, 50); 
 
+                    
                 SqlConnection con = new SqlConnection(connection);
-                string sql = "INSERT INTO EVENTS (DATE,DESCRIPTION,LOCATION) OUTPUT INSERTED.ID VALUES ('" + item.Date.ToString() + "', '" + item.Description.ToString().Substring(0,50) + "', '" + item.Location.ToString().Substring(0,50) + "')";
+                string sql = "INSERT INTO EVENTS (DATE,DESCRIPTION,LOCATION) OUTPUT INSERTED.ID VALUES ('" + item.Date.ToString() + "', '" + item.Description.ToString() + "', '" + item.Location.ToString()+ "')";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();

@@ -38,10 +38,10 @@ namespace WebApplication1.Asp_forms
                         ListBox2.Items.Clear();
                         ListBox3.Items.Clear();
                         ListBox1.Width = 100;
-                        ListBox1.Height = 35;
+                        ListBox1.Height = 60;
                         // ListBox1.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
-                        ListBox2.Width = 100;
-                        ListBox3.Width = 100;
+                        ListBox2.Width = 150;
+                        ListBox3.Width = 150;
 
                         user = new User_Class();
                         user = user.getUser(userCookie.Value);
@@ -54,7 +54,7 @@ namespace WebApplication1.Asp_forms
                         {
                             l = new ListItem();
 
-                            l.Text = user.Friends[i].Name;
+                            l.Text = user.Friends[i].Nick;
                             l.Value = i.ToString();
                             ListBox2.Items.Add(l);
                             i++;
