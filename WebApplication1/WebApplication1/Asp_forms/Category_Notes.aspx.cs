@@ -31,75 +31,87 @@ namespace WebApplication1
 
                 if (usuario_sesion.Pass == passCookie.Value)
                 {
-                    String id = Request.QueryString["id"];
-                    String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
-                    SqlConnection con = new SqlConnection(connection);
-                    con.Open();
-                    string sql = "SELECT * FROM NOTES WHERE CATEGORY_ID = " + id;
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    StringBuilder htmlStr = new StringBuilder("");
-
-                    //Panel p = new Panel();
+                    int categoryid = int.Parse(Request.QueryString["id"]);
+                    Category_Class category = new Category_Class();
+                    category = category.getCategoria(categoryid);
+                    
+                    CategoryLabel.Text = category.Nombre + " Notes";
                     Panel p = new Panel();
 
                     Label t = new Label();
                     Label f = new Label();
                     Image ie = new Image();
                     ie.ImageUrl = "../Images/editButton.png";
+                    ImageButton imgbuttone = new ImageButton();
+                    ImageButton imgbuttonb = new ImageButton();
+
+                    Panel psub = new Panel();
 
 
-                    HyperLink le = new HyperLink();
-                    HyperLink lb = new HyperLink();
-                    Button b = new Button();
+                    Note_CAD notaTemp = new Note_CAD();
+                    List<Note_Class> notes = new List<Note_Class>();
 
-                    while (reader.Read())
+                    User_Class userTemp = new User_Class();
+                    userTemp = userTemp.getUser(userCookie.Value);
+
+                    notes = notaTemp.notesCategory(userTemp.Id, category.Id);
+
+                    int i = notes.Count() - 1;
+                    if (notes.Count() == 0)
                     {
-                        p = new Panel();
-
-                        t = new Label();
-                        f = new Label();
-
-                        le = new HyperLink();
-                        lb = new HyperLink();
-
-
-
-                        p.ID = "p" + id;
-                        p.CssClass = "postitnotes";
-                        t.ID = "t" + id;
-
-                        f.ID = "f" + id;
-                        le.ID = "l" + id;
-                        le.Text = "Editar" + "<BR>";
-                        lb.Text = "Borrar";
-
-
-                        // le.CssClass = "editButton";
-                        //le.ImageUrl = "../Images/editButton.png";
-
-
-
-                        // le.Controls.Add(ie);
-                        le.NavigateUrl = "~/Asp_forms/Editnotes.aspx?ID=" + reader["ID"].ToString();
-                        lb.NavigateUrl = "~/Asp_forms/Deletenote.aspx?ID=" + reader["ID"].ToString();
-                        t.Text = reader["TEXT"].ToString() + "<BR>";
-
-                        //f.Text =reader["CREATION_DATE"].ToString();
-
-                        p.Controls.Add(t);
-                        p.Controls.Add(f);
-                        p.Controls.Add(le);
-                        p.Controls.Add(lb);
-
-                        Panelnota.Controls.Add(p);
+                        noCategories.Text = "No " + category.Nombre + " notes found. Start creating one up here!";
                     }
+                    else
+                    {
+                        while (i >= 0)
+                        {
+                            p = new Panel();
+                            psub = new Panel();
 
-                    reader.Close();
-                    con.Close();
-                    //NotasPrueba.Text = htmlStr.ToString();
+                            t = new Label();
+                            f = new Label();
+
+                            imgbuttone = new ImageButton();
+                            imgbuttonb = new ImageButton();
+
+                            imgbuttone.ImageUrl = "../Images/editButton.png";
+                            imgbuttone.PostBackUrl = "~/Asp_forms/Editnotes.aspx?ID=" + notes[i].Id.ToString();
+                            imgbuttone.Width = 30;
+                            imgbuttone.ToolTip = "Edit";
+
+                            imgbuttonb.ImageUrl = "../Images/deleteButton.png";
+                            imgbuttonb.PostBackUrl = "~/Asp_forms/Deletenote.aspx?ID=" + notes[i].Id.ToString();
+                            imgbuttonb.Width = 30;
+                            imgbuttonb.ToolTip = "Delete";
+
+                            psub.CssClass = "default_panel";
+                            psub.HorizontalAlign = HorizontalAlign.Right;
+
+                            psub.Controls.Add(imgbuttonb);
+                            psub.Controls.Add(imgbuttone);
 
 
+
+                            string id = notes[i].Id.ToString();
+
+                            p.ID = "p" + id;
+                            p.CssClass = "postitnotes";
+                            t.ID = "t" + id;
+                            f.ID = "f" + id;
+
+                            t.Text = notes[i].Text.ToString() + "<BR>";
+
+                            p.Controls.Add(t);
+                            p.Controls.Add(f);
+
+
+                            p.Controls.Add(psub);
+                            Panelnota.Controls.Add(p);
+
+                            i--;
+                        }
+
+                    }
                 }
                 else
                 {
@@ -107,17 +119,24 @@ namespace WebApplication1
                 }
             }
         }
+
         protected void Create_Note(object sender, EventArgs e)
         {
 
             /* Create note with the button 'New Note' */
-            Note_Class note = new Note_Class();
-            note.Text = DescripcionNota.Text;
-            note.Date = DateTime.Now.ToShortDateString();
+            /* Note_Class note = new Note_Class();
+             note.Text = DescripcionNota.Text;
+             note.Date = DateTime.Now.ToShortDateString();*/
 
             /* Add note in the Database */
-            note.addNote(1);
-            Response.AppendHeader("Refresh", "0;URL=Notes.aspx");
+            /* HttpCookie userCookie;
+             userCookie = Request.Cookies["UserID"];
+             User_Class userTemp = new User_Class();
+             userTemp = userTemp.getUser(userCookie.Value);
+             note.addNote(userTemp.Id);
+             Response.AppendHeader("Refresh", "0;URL=Notes.aspx");*/
+
+            Response.Redirect("../Asp_forms/AddNote.aspx");
 
         }
 

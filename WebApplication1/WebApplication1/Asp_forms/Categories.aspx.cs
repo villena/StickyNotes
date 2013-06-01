@@ -76,8 +76,7 @@ namespace WebApplication1
         protected Panel createPanel()
         {
             Panel p = new Panel();
-            p.CssClass = "postit";
-            p.Height = 100;
+            p.CssClass = "postitnotes";
 
             return p;
         }

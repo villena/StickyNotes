@@ -10,7 +10,7 @@
     <asp:Panel ID="Panel1" CssClass="default_panel" DefaultButton="SearchButton" runat="server">
         <p align="Right">
         <asp:TextBox ID="SearchBox" CssClass="search_textbox" runat="server"></asp:TextBox>
-        <asp:Button ID="SearchButton" CssClass="search_button" runat="server" OnClick="searchCategory" Text="Buscar"/>
+        <asp:Button ID="SearchButton" CssClass="button" runat="server" OnClick="searchCategory" Text="Search"/>
         </p>
         <p align="right">
             &nbsp;</p>

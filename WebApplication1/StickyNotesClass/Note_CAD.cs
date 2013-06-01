@@ -484,5 +484,44 @@ namespace StickyNotesClass
             return notesList;
         }
 
+        public List<Note_Class> notesCategory(int id, int categoryid)
+        {
+            List<Note_Class> notesList = new List<Note_Class>();
+
+            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
+            String sql = "SELECT * FROM NOTES WHERE ID IN (SELECT NID FROM US_NO_REL WHERE UID = " + id + ") AND CATEGORY_ID = "+ categoryid + " UNION SELECT * FROM NOTES WHERE KIND = 'O' AND CATEGORY_ID = " + categoryid;
+            SqlConnection con = new SqlConnection(connection);
+
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                Note_Class noteTemp = new Note_Class();
+
+                while (reader.Read())
+                {
+                    noteTemp = new Note_Class();
+
+                    noteTemp.Id = int.Parse(reader["ID"].ToString());
+                    noteTemp.Text = reader["TEXT"].ToString();
+                    noteTemp.Date = reader["CREATION_DATE"].ToString();
+                    noteTemp.Type = Convert.ToChar(reader["KIND"]);
+                    noteTemp.Author = Convert.ToInt32(reader["AUTHOR"]);
+
+                    notesList.Add(noteTemp);
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                con.Close();
+            }
+
+
+            return notesList;
+        }
+
     }
 }

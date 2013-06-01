@@ -13,6 +13,15 @@ namespace WebApplication1 {
     public partial class Category_Notes {
         
         /// <summary>
+        /// Control CategoryLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CategoryLabel;
+        
+        /// <summary>
         /// Control DescripcionNota.
         /// </summary>
         /// <remarks>
@@ -56,5 +65,14 @@ namespace WebApplication1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panelnota;
+        
+        /// <summary>
+        /// Control noCategories.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label noCategories;
     }
 }
