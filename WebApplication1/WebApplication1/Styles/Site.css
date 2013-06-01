@@ -748,3 +748,45 @@ div.accountInfo
 	-webkit-box-shadow: 0px 4px 6px #333;
 }
 
+.calheader 
+{
+    
+     background-image: url("../Images/calheader.png");
+      background-repeat: no-repeat;
+         /*background-size: 380px;*/
+         background-size: 300px;
+}
+
+.calfooter 
+{
+        background-image: url("../Images/calfooter.png");
+        
+       
+        
+        
+      background-repeat: no-repeat;
+         background-size: 300px; 
+}
+
+.calcontent 
+{
+    
+    min-height: 100px;   
+}
+
+.caldefault 
+{
+       margin-left: 30px;
+   margin-right: 30px;
+ 
+}
+
+.cal
+{
+    display: inline-block;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+
