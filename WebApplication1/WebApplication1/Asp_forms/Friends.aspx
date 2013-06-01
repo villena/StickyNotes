@@ -1,8 +1,12 @@
 ﻿<%@ Page Title="Friends" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Friends.aspx.cs" Inherits="WebApplication1.Formulario_web1" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Asp_forms/Friends.aspx">Friends</asp:HyperLink>
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
  <h2>
             My Friends

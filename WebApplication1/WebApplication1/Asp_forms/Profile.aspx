@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="My Profile" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" inherits="WebApplication1.Formulario_web13" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Asp_forms/Profile.aspx">Profile</asp:HyperLink>
+
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>

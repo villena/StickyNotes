@@ -1,5 +1,12 @@
 ﻿<%@ Page Language="C#" Title="New Note" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="AddNote.aspx.cs" Inherits="WebApplication1.Asp_forms.AddNote" %>
 
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Asp_forms/Notes.aspx">My Notes</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Asp_forms/AddNote.aspx">New Note</asp:HyperLink>
+</asp:Content>
+
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
        <h2>

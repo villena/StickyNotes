@@ -123,7 +123,10 @@ namespace WebApplication1
                         string id = notes[i].Id.ToString();
 
                         p.ID = "p" + id;
-                        p.CssClass = "postitnotes";
+                        if (notes[i].Type == 'O')
+                            p.CssClass = "postitnotes";
+                        else if (notes[i].Type == 'P')
+                            p.CssClass = "postitnotespink";
                         t.ID = "t" + id;
                         f.ID = "f" + id;
 

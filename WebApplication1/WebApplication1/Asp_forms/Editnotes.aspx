@@ -2,6 +2,12 @@
 Inherits="WebApplication1.Asp_forms.Editnotes" %>
 
 
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Asp_forms/Notes.aspx">My Notes</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Asp_forms/Editnotes.aspx">Editor</asp:HyperLink>
+</asp:Content>
+
 
 
 

@@ -14,6 +14,9 @@ namespace WebApplication1.Asp_forms
     {
          protected void Page_Load(object sender, EventArgs e)
         {
+
+            Page.MaintainScrollPositionOnPostBack = true;
+
             HttpCookie userCookie;
             userCookie = Request.Cookies["UserID"];
             if (userCookie == null)
@@ -28,11 +31,15 @@ namespace WebApplication1.Asp_forms
                 string s = Request.QueryString["ID"];
                 if (s != null && s!="")
                 {
+
                     Party_Class party = new Party_Class();
                     party.Id = Int32.Parse(s);
                     party.obtainNotes();
                     party.getName();
                     Label1.Text = party.Name;
+
+                    HyperLink3.NavigateUrl = "~/Asp_forms/Groups_Notes.aspx?ID=" + party.Id;
+                    HyperLink3.Text = party.Name;
 
 
                     Panel p = new Panel();
@@ -150,7 +157,10 @@ namespace WebApplication1.Asp_forms
                  note.Date = DateTime.Now.ToShortDateString();
 
                  if (party.addNote(note, user.Id))
+                 {
+                     Page.MaintainScrollPositionOnPostBack = true;
                      Response.Redirect("~/Asp_forms/Groups_Notes.aspx?ID=" + party.Id);
+                 }
                  else
                      Label2.Text = "An error has occurred";
              }

@@ -1,6 +1,14 @@
 ﻿<%@ Page Language="C#" Title="New Group" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Create_Group.aspx.cs" Inherits="WebApplication1.Asp_forms.Create_Group" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+
+
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="HeadContent">
+<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Asp_forms/Groups.aspx">Groups</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Asp_forms/Create_Group.aspx">New Group</asp:HyperLink>
+
+
+
     <style type="text/css">
         .style1
         {

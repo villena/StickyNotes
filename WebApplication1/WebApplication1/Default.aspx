@@ -2,6 +2,7 @@
     CodeBehind="Default.aspx.cs" Inherits="WebApplication1._Default" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>

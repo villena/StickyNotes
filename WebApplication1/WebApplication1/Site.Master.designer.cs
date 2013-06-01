@@ -13,15 +13,6 @@ namespace WebApplication1 {
     public partial class SiteMaster {
         
         /// <summary>
-        /// Control HeadContent.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
-        
-        /// <summary>
         /// Control Panel2.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace WebApplication1 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
+        
+        /// <summary>
+        /// Control HeadContent.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
         
         /// <summary>
         /// Control NavigationMenu.
