@@ -789,4 +789,26 @@ div.accountInfo
     margin-bottom: 30px;
 }
 
+.cal_location
+{
+    font-family: 'Segoe UI Light';
+    font-weight: bold;
+    font-size: medium;
+    
+}
+
+.cal_description
+{
+    font-family: 'Segoe UI Light';
+}
+
+.cal_date
+{
+    font-family: 'Segoe UI Light';
+    font-weight:bold;
+    text-align:right;
+    color: White;
+    
+}
+
 

@@ -184,12 +184,12 @@ namespace StickyNotesClass
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                
+
                 while (reader.Read())
                 {
                     events = new Events_Class();
                     events.Id = int.Parse(reader["ID"].ToString());
-                    events.Date = reader["DATE"].ToString();
+                    events.Date = DateTime.Parse(reader["DATE"].ToString()).ToShortDateString();
                     events.Description = reader["DESCRIPTION"].ToString();
                     events.Location = reader["LOCATION"].ToString();
                 }
@@ -224,7 +224,7 @@ namespace StickyNotesClass
                 {
                     events = new Events_Class();
                     events.Id = int.Parse(reader["ID"].ToString());
-                    events.Date = reader["DATE"].ToString();
+                    events.Date = DateTime.Parse(reader["DATE"].ToString()).ToShortDateString();
                     events.Description = reader["DESCRIPTION"].ToString();
                     events.Location = reader["LOCATION"].ToString();
 
