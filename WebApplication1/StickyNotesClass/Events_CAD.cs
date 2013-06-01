@@ -28,7 +28,7 @@ namespace StickyNotesClass
             {
 
                 SqlConnection con = new SqlConnection(connection);
-                string sql = "INSERT INTO EVENTS (DATE,DESCRIPTION,LOCATION) OUTPUT INSERTED.ID VALUES ('" + item.Date.ToString() + "', '" + item.Description + "', '" + item.Location + "')";
+                string sql = "INSERT INTO EVENTS (DATE,DESCRIPTION,LOCATION) OUTPUT INSERTED.ID VALUES ('" + item.Date.ToString() + "', '" + item.Description.ToString().Substring(0,50) + "', '" + item.Location.ToString().Substring(0,50) + "')";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
