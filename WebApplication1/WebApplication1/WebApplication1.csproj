@@ -74,6 +74,7 @@
     <Content Include="Asp_forms\Category_Notes.aspx" />
     <Content Include="Asp_forms\RemoveUserFromEvents.aspx" />
     <Content Include="Asp_forms\SearchEvents.aspx" />
+    <Content Include="Asp_forms\UserTable.aspx" />
     <Content Include="Aux_asp_forms\ChangeAccountData.aspx" />
     <Content Include="Aux_asp_forms\Friend_Profile.aspx" />
     <Content Include="Aux_asp_forms\User_Added.aspx" />
@@ -206,6 +207,13 @@
     </Compile>
     <Compile Include="Asp_forms\SearchEvents.aspx.designer.cs">
       <DependentUpon>SearchEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asp_forms\UserTable.aspx.cs">
+      <DependentUpon>UserTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asp_forms\UserTable.aspx.designer.cs">
+      <DependentUpon>UserTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aux_asp_forms\ChangeAccountData.aspx.cs">
       <DependentUpon>ChangeAccountData.aspx</DependentUpon>

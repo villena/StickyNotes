@@ -55,12 +55,18 @@ namespace WebApplication1
                             Panel2.Controls.Add(label);
                         }
 
+                        HyperLink link = new HyperLink();
+
                         for (int j = 0; j < lista.Count(); j++)
                         {
+                            link=new HyperLink();
+                            link.Text=lista.ElementAt(j).Name;
+                            link.NavigateUrl="~//Asp_forms/UserTable.aspx/?ID="+lista.ElementAt(j).Id.ToString();
+                            link.Attributes.Add("style", "clear:both; margin-left:50px;");
                             Panel p = createPanel();
                             Panel2.Controls.Add(p);
                             p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
-                            p.Controls.Add(createLabel(lista.ElementAt(j).Name));
+                            p.Controls.Add(link);
                             p.Controls.Add(createPrfButton(lista.ElementAt(j).Id));
                             p.Controls.Add(createDelButton(lista.ElementAt(j).Id));
                         }
@@ -78,12 +84,19 @@ namespace WebApplication1
                             lista = usuario_sesion.getAllUser();
                         }
 
+                        HyperLink link = new HyperLink();
+
                         for (int j = 0; j < lista.Count(); j++)
                         {
+                            link = new HyperLink();
+                            link.Text = lista.ElementAt(j).Name;
+                            link.NavigateUrl = "~//Asp_forms/UserTable.aspx/?ID=" + lista.ElementAt(j).Id.ToString();
+                            link.Attributes.Add("style", "clear:both; margin-left:50px;");
+
                             Panel p = createPanel();
                             Panel2.Controls.Add(p);
                             p.Controls.Add(createImage(lista.ElementAt(j).Image_url));
-                            p.Controls.Add(createLabel(lista.ElementAt(j).Name));
+                            p.Controls.Add(link);
 
                             if (usuario_sesion.isFriend(lista.ElementAt(j).Id))
                             {
@@ -107,6 +120,8 @@ namespace WebApplication1
                 }
             }
         }
+
+        
 
         protected Label createLabel(string name)
         {

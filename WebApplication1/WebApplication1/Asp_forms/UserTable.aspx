@@ -1,19 +1,19 @@
-﻿<%@ Page Title="My Notes" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Notes.aspx.cs"  Inherits="WebApplication1.Notes"%>
+﻿<%@ Page Language="C#" Title="" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="UserTable.aspx.cs" Inherits="WebApplication1.Asp_forms.UserTable" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink> > 
-<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Asp_forms/Notes.aspx">My Notes</asp:HyperLink>
+<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Asp_forms/Friends.aspx">Friends</asp:HyperLink> > 
+<asp:HyperLink ID="HyperLink3" runat="server"></asp:HyperLink>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        My Notes
+        <asp:Label ID="Name" runat="server" ></asp:Label>
+         <asp:Label ID="Nick" runat="server" Font-Size="0.8em" Font-Bold="false" Font-Names="Segoe UI Light"></asp:Label>
     </h2>
-   <p>
-      <!-- <asp:TextBox ID="DescripcionNota" TextMode = "multiline" CssClass="textarea" runat="server"></asp:TextBox> -->
-       <asp:Button ID="CreateNoteButton" runat="server" Text="New Note" CssClass="button white" OnClick="Create_Note"/>
+    <h3>
        
-    </p>
+    </h3>
+   
 
     <div id="placeholder" runat="server" class="tablon">
    <!-- <asp:Label ID="NotasPrueba" runat="server"></asp:Label> -->
@@ -23,6 +23,3 @@
     <!-- here is where the dinamically created elements will be placed -->
     </div>
 </asp:Content>
-
-
-

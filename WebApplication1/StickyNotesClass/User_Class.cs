@@ -190,6 +190,7 @@ namespace StickyNotesClass
         public User_Class getUser(int id)
         {
             User_CAD u = new User_CAD();
+
             return u.getUserCAD(id);
         }
         //Recovery pass

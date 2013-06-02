@@ -339,8 +339,9 @@ namespace StickyNotesClass
 
             try
             {
-                con.Open();
+               // con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 Note_Class noteTemp = new Note_Class();
 
@@ -356,11 +357,13 @@ namespace StickyNotesClass
 
                     notesList.Add(noteTemp);
                 }
+
+                cmd.Connection.Close();
             }
             catch (Exception ex) { }
             finally
             {
-                con.Close();
+               
             }
 
 

@@ -707,7 +707,8 @@ div.accountInfo
 }
 
 .postitnotesblue {
-	background: #93f6ff;
+	/*background: #93f6ff;*/
+	background: #CEECEE;
 	padding: 15px;
 	font-family: 'Gloria Hallelujah', cursive;
 	font-size: 15px;
@@ -726,7 +727,8 @@ div.accountInfo
 
 
 .postitnotespink {
-	background: #FF96BE;
+	/*background: #FF96BE;*/
+	background: #FABAD6;
 	padding: 15px;
 	font-family: 'Gloria Hallelujah', cursive;
 	font-size: 15px;
@@ -808,4 +810,11 @@ div.accountInfo
     
 }
 
+.noteauthor
+{
+    font-family: "Segoe UI";
+    color: #B1B1B1;
+    font-size: 14px;   
+    margin-top: 0px;
+}
 

@@ -15,6 +15,8 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            Page.MaintainScrollPositionOnPostBack = true;
             HttpCookie userCookie;
             HttpCookie passCookie;
 
@@ -77,6 +79,8 @@ namespace WebApplication1
                     ie.ImageUrl = "../Images/editButton.png";
                     ImageButton imgbuttone = new ImageButton();
                     ImageButton imgbuttonb = new ImageButton();
+                    User_Class userNote = new User_Class();
+                    Label a = new Label();
 
                     Panel psub = new Panel();
 
@@ -98,6 +102,8 @@ namespace WebApplication1
 
                         t = new Label();
                         f = new Label();
+                        a = new Label();
+                        userNote = new User_Class();
 
                         imgbuttone = new ImageButton();
                         imgbuttonb = new ImageButton();
@@ -115,8 +121,13 @@ namespace WebApplication1
                         psub.CssClass = "default_panel";
                         psub.HorizontalAlign = HorizontalAlign.Right;
 
+                        a.Text = "<br/>" +userNote.getUser(notes[i].Author).Nick;
+                        a.CssClass = "noteauthor";
+
+
                         psub.Controls.Add(imgbuttonb);
                         psub.Controls.Add(imgbuttone);
+                        psub.Controls.Add(a);
 
 
 

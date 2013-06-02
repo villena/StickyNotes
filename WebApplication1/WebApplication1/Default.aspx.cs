@@ -13,7 +13,7 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel p = new Panel();
-
+            Panel psub = new Panel();
             Label t = new Label();
             Label a = new Label();
             
@@ -32,8 +32,12 @@ namespace WebApplication1
 
                 t = new Label();
                 a = new Label();
+                psub = new Panel();
 
                 string id = notes[i].Id.ToString();
+
+                psub.CssClass = "default_panel";
+                psub.HorizontalAlign = HorizontalAlign.Right;
 
                 p.ID = "p" + id;
                 p.CssClass = "postitnotes";
@@ -41,12 +45,14 @@ namespace WebApplication1
                 a.Text = "a" + id;
 
                 t.Text = notes[i].Text.ToString() + "<BR>";
-                a.Text = user.getUser(notes[i].Author).Name;
+                a.Text = user.getUser(notes[i].Author).Nick;
+                a.CssClass = "noteauthor";
 
-
+                psub.Controls.Add(a);
 
                 p.Controls.Add(t);
-                p.Controls.Add(a);
+                p.Controls.Add(psub);
+                
 
                 Panel1.Controls.Add(p);
 

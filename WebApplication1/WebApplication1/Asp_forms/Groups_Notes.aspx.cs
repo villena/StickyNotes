@@ -106,6 +106,7 @@ namespace WebApplication1.Asp_forms
                        
                         t.Text = note.Text.ToString() + "<BR><BR>";
                         a.Text = "<BR>"+userNote.getUser(note.Author).Nick;
+                        a.CssClass = "noteauthor";
 
 
                         p.Controls.Add(t);
