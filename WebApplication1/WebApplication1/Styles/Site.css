@@ -818,3 +818,63 @@ div.accountInfo
     margin-top: 0px;
 }
 
+
+.categories {
+	background: brown;
+	padding: 5px;
+	width: 25%;
+	font-size: 30px;
+	font-family: 'Gloria Hallelujah', cursive;
+    color: BlanchedAlmond;
+	display: inline-block;
+	margin-left: 30px;
+	margin-right: 30px; 
+	margin-bottom: 30px;
+	margin-top: 30px;
+	height: 100px;
+
+	-moz-box-shadow: 0px 4px 6px #333;
+	-webkit-box-shadow: 0px 4px 6px #333;
+	 /* Bordes redondeados para Mozilla */
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    -webkit-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    /* Bordes redondeados para Mozilla */
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    /* Bordes redondeados para webkit */
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+}
+
+.categories:hover {
+	background: BlanchedAlmond;
+	padding: 5px;
+	width: 25%;
+	font-size: 30px;
+	color: brown;
+	font-family: 'Gloria Hallelujah', cursive;
+	display: inline-block;
+	margin-left: 30px;
+	margin-right: 30px; 
+	margin-bottom: 30px;
+	margin-top: 30px;
+	height: 100px;
+
+	-moz-box-shadow: 0px 4px 6px #333;
+	-webkit-box-shadow: 0px 4px 6px #333;
+	 /* Bordes redondeados para Mozilla */
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    -webkit-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    /* Bordes redondeados para Mozilla */
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    /* Bordes redondeados para webkit */
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+}

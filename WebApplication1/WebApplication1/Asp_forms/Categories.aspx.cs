@@ -42,7 +42,6 @@ namespace WebApplication1
                     if (lista.Count() == 0)
                     {
                         Label label = new Label();
-                        label.Attributes.Add("style", "float:center; margin-left:50px;");
                         label.ID = "LabelX";
                         label.Text = "<h2> No categories found! </h2>";
                         Panel2.Controls.Add(label);
@@ -50,10 +49,7 @@ namespace WebApplication1
 
                     for (int j = 0; j < lista.Count(); j++)
                     {
-                        Panel p = createPanel();
-                        p.Controls.Add(createLabel(lista.ElementAt(j).Nombre));
-                        p.Controls.Add(createNotesButton(lista.ElementAt(j).Id));
-                        Panel2.Controls.Add(p);
+                        Panel2.Controls.Add(createNotesButton(lista.ElementAt(j).Id, lista.ElementAt(j).Nombre));
 
                     }
                 }
@@ -64,29 +60,13 @@ namespace WebApplication1
             }
         }
 
-        protected Label createLabel(string name)
-        {
-            Label label = new Label();
-            label.Attributes.Add("style", "clear:both; margin-left:50px;");
-            label.Text = name + "<br />";
-
-            return label;
-        }
-
-        protected Panel createPanel()
-        {
-            Panel p = new Panel();
-            p.CssClass = "postitnotes";
-
-            return p;
-        }
-
-        protected Button createNotesButton(int id)
+        protected Button createNotesButton(int id, string nombre)
         {
             Button profile = new Button();
-            profile.Text = "Notes";
-            profile.Attributes.Add("style", "float:right; clear:both;");
             profile.PostBackUrl = "Category_Notes.aspx?id=" + id.ToString();
+            profile.ToolTip = "Notes";
+            profile.Text = nombre;
+            profile.CssClass = "categories";
 
             return profile;
         }
