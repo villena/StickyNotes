@@ -32,6 +32,7 @@ namespace StickyNotesWeb
                     PasswordLabel.Visible = false;
                     Password.Visible = false;
                     Button1.Visible = false;
+                    Button3.Visible = false;
                     Button2.Visible = true;
                 }
                 else
@@ -88,6 +89,7 @@ namespace StickyNotesWeb
                     PasswordLabel.Visible = false;
                     Password.Visible = false;
                     Button1.Visible = false;
+                    Button3.Visible = false;
                     Button2.Visible = true;
 
                     if (HttpContext.Current.Request.Url.LocalPath == "/default.aspx" || HttpContext.Current.Request.Url.LocalPath == "/Default.aspx" || HttpContext.Current.Request.Url.LocalPath == "/About.aspx")
@@ -133,7 +135,13 @@ namespace StickyNotesWeb
             PasswordLabel.Visible = true;
             Password.Visible = true;
             Button1.Visible = true;
+            Button3.Visible = true;
             Button2.Visible = false;
+        }
+
+        protected void SignUp(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Account/Register2.aspx");
         }
     }
 }
