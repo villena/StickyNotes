@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using StickyNotesClass;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+
 
 namespace StickyNotesWeb
 {
@@ -78,6 +82,24 @@ namespace StickyNotesWeb
             if (!newUser.existeUsuario(newUser.Nick))
             {
                 newUser.addUser();
+
+                string subject = "[Thanks for signing up Sticky Notes]";
+                MailMessage mail = new MailMessage();
+                mail.To.Add(Email.Text);
+                mail.From = new MailAddress("stickynotes.hada@gmail.com");
+                mail.Subject = subject;
+                mail.Body = "Thanks by have been registered in Sticky Notes.\n\nYour User information is:\nUser: " + UserName.Text + "\nPass: " + Password.Text + "\n\nI hope you enjoy our social network.\nSticky Notes’ team.";
+                mail.IsBodyHtml = false;
+                mail.Priority = MailPriority.Normal;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Credentials = new NetworkCredential("stickynotes.hada@gmail.com", "projecthada");
+                smtp.Send(mail);
+
+                Response.Redirect("..//Account/Login.aspx");
+
                 Response.Redirect("..//Account/Login.aspx");
             }
             else
