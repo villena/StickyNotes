@@ -12,7 +12,7 @@ namespace StickyNotesWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-HttpCookie userCookie;
+            HttpCookie userCookie;
             HttpCookie passCookie;
 
             userCookie = Request.Cookies["UserID"];

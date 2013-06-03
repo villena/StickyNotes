@@ -5,13 +5,13 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Cambiar contraseña
+        Change password
     </h2>
     <p>
-        Use el formulario siguiente para cambiar la contraseña.
+        Use the following form to change the password
     </p>
     <p>
-        Las contraseñas nuevas deben tener una longitud mínima de 6 caracteres.
+        New password must have at least 6 characters.
     </p>
             <div class="accountInfo">
                     <legend>Información de cuenta</legend>

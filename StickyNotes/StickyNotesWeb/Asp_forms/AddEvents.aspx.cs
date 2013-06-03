@@ -13,7 +13,7 @@ namespace StickyNotesWeb
     {        
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Cuando refresca la pagina, mantiene el cursor en la posicion en la que estaba.
+            //When the page reloads keeps the cursor on the same position
             Page.MaintainScrollPositionOnPostBack = true;
 
             HttpCookie userCookie;

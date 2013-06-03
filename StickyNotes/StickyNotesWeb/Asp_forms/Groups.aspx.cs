@@ -32,21 +32,9 @@ namespace StickyNotesWeb
                 
 
                 partyList = party.userGroups(myUser.Id);
-
-               
-
-                //partyList.ForEach(mostrar);
-
-
-                
-               // Label l = new Label();
-               // l.Text = "hola";
-
              
                 
                 HyperLink link = new HyperLink();
-
-                //Button link = new Button();
                 Panel p = new Panel();
 
                 int i = partyList.Count() - 1;

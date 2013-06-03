@@ -111,7 +111,6 @@ namespace StickyNotesWeb.Asp_forms
 
                         p.Controls.Add(t);
                         p.Controls.Add(f);
-                        //p.Controls.Add(a);
 
                         psub.Controls.Add(a);
                         p.Controls.Add(psub);

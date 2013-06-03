@@ -12,8 +12,6 @@ namespace StickyNotesWeb.Asp_forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Events_Class event = new Events_Class();
-
             HttpCookie userCookie;
             HttpCookie passCookie;
 

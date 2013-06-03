@@ -39,7 +39,6 @@ namespace StickyNotesWeb.Asp_forms
                         ListBox3.Items.Clear();
                         ListBox1.Width = 100;
                         ListBox1.Height = 60;
-                        // ListBox1.SetValue(ScrollViewer.HorizontalScrollBarVisibilityProperty, ScrollBarVisibility.Disabled);
                         ListBox2.Width = 150;
                         ListBox3.Width = 150;
 

@@ -18,7 +18,6 @@
         <p align="Left">
             <p>
                 <asp:Label ID="LabelDate" runat="server" Text="Date:"></asp:Label>
-                <!--<asp:TextBox ID="TextBoxDate" runat="server" EnableTheming="True"></asp:TextBox>-->
                 <asp:Calendar ID="Calendar1" runat="server" CssClass="button white" Width="230" ></asp:Calendar>
             </p>
             <p>

@@ -15,8 +15,6 @@ Inherits="StickyNotesWeb.Asp_forms.Editnotes" %>
 
    
     <asp:Panel ID="Panel1" runat="server" CssClass="default_panel" >
-
-     <!--<asp:Label ID="Label1" runat="server" Text="Old text: "></asp:Label>-->
         <asp:Panel ID="Panel3" runat="server" CssClass="postitnotes">
         
              <asp:Label ID="Label2" runat="server"></asp:Label>

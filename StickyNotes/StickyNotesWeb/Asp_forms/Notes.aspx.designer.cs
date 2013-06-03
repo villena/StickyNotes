@@ -31,15 +31,6 @@ namespace StickyNotesWeb {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
         
         /// <summary>
-        /// Control DescripcionNota.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DescripcionNota;
-        
-        /// <summary>
         /// Control CreateNoteButton.
         /// </summary>
         /// <remarks>
@@ -56,15 +47,6 @@ namespace StickyNotesWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl placeholder;
-        
-        /// <summary>
-        /// Control NotasPrueba.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NotasPrueba;
         
         /// <summary>
         /// Control Panel1.

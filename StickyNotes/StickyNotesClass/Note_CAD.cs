@@ -215,7 +215,7 @@ namespace StickyNotesClass
 
             return id;
 
-        }// Este creo que ya no hace falta[Victor]
+        }
 
 
         public Note_Class getNote(int id)
@@ -247,46 +247,6 @@ namespace StickyNotesClass
             }
             return note;
         }
-
-        //Old version
-       /* public List<Note_Class> notesUser(int id)
-        {
-            List<Note_Class> notesList = new List<Note_Class>();
-
-            String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
-           String sql = "SELECT * FROM NOTES WHERE ID IN (SELECT NID FROM US_NO_REL WHERE UID = " + id + ")";
-           // string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
-            SqlConnection con = new SqlConnection(connection);
-
-            try
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                Note_Class notaTemp = new Note_Class();
-
-                while (reader.Read())
-                {
-                    notaTemp = new Note_Class();
-
-                    notaTemp.Id = int.Parse(reader["ID"].ToString());
-                    notaTemp.Text = reader["TEXT"].ToString();
-                    notaTemp.Date = reader["CREATION_DATE"].ToString();
-                    notaTemp.Type = Convert.ToChar(reader["KIND"]);
-                   
-
-                    notesList.Add(notaTemp);
-                }
-            }
-            catch (Exception ex) { }
-            finally
-            {
-                con.Close();
-            }
-
-
-            return notesList;
-        }*/
 
 
         public List<Note_Class> notesUser(int id)
@@ -334,12 +294,10 @@ namespace StickyNotesClass
 
             String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
             String sql = "SELECT * FROM NOTES WHERE KIND = 'O' AND ID IN (SELECT NID FROM US_NO_REL WHERE UID = " + id + ")";
-            // string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
             SqlConnection con = new SqlConnection(connection);
 
             try
             {
-               // con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -376,7 +334,6 @@ namespace StickyNotesClass
 
             String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
             String sql = "SELECT * FROM NOTES WHERE KIND = 'P' AND ID IN (SELECT NID FROM US_NO_REL WHERE UID = " + id + ")";
-            // string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
             SqlConnection con = new SqlConnection(connection);
 
             try
@@ -415,7 +372,6 @@ namespace StickyNotesClass
 
             String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
             String sql = "SELECT * FROM NOTES WHERE KIND = 'O'";
-            // string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
             SqlConnection con = new SqlConnection(connection);
 
             try

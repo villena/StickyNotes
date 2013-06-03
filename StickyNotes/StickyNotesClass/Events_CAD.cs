@@ -56,9 +56,6 @@ namespace StickyNotesClass
                     cmd1.ExecuteNonQuery();
                     cmd1.Connection.Close();
                 }
-
-                //con.Open();
-                //cmd.ExecuteNonQuery();
                 añadido = true;
             }
             catch (Exception ex)
@@ -67,7 +64,6 @@ namespace StickyNotesClass
             }
             finally
             {
-                //con.Close();
             }
 
             return añadido;

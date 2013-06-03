@@ -348,13 +348,8 @@ namespace StickyNotesClass
             {
                 con.Open();
                 string sql1 = "INSERT INTO NOTES (KIND,CREATION_DATE,TEXT,PARTY_ID,AUTHOR)  VALUES ('G', '" + note.Date.ToString() + "', '" + note.Text + "'," + g_id +", "+author_id+ ")";
-                // int note_id = getIDfromDB() + 1;
-                // string sql2 = "INSERT INTO US_NO_REL (UID,NID) VALUES (" + id + "," + note_id + ")";
                 SqlCommand cmd1 = new SqlCommand(sql1, con);
-                //SqlCommand cmd2 = new SqlCommand(sql2, con);
                 cmd1.ExecuteNonQuery();
-                //cmd2.ExecuteNonQuery();
-
                 insertado = true;
             }
             catch (Exception ex)

@@ -12,8 +12,6 @@ namespace StickyNotesWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Events_Class event = new Events_Class();
-
             HttpCookie userCookie;
             HttpCookie passCookie;
 
@@ -45,9 +43,6 @@ namespace StickyNotesWeb
                     Label t = new Label();
                     HyperLink le = new HyperLink();
 
-                    //--------------------------
-                    //NO BORRAR DECLARACIONES
-
                     Panel header = new Panel();
                     Panel content = new Panel();
                     Panel footer = new Panel();
@@ -55,45 +50,6 @@ namespace StickyNotesWeb
                     Panel cal = new Panel();
                     Panel textcontent = new Panel();
                     Label texto2 = new Label();
-                    //-----
-
-                  /*
-                    footer.CssClass = "calfooter";
-                    header.CssClass = "calheader";
-                    content.CssClass = "calcontent";
-                    textcontent.CssClass = "caldefault";
-                    content.BackColor = System.Drawing.Color.White;
-
-                    header.Height = 82;
-                    header.Width = 300;
-                    footer.Height = 50;
-
-                  
-
-                    Label texto = new Label();
-                    texto.Text = "Evento nuevo";
-                    
-                    texto2.Text = "Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2";
-                    Label texto3 = new Label();
-                    texto3.Text = "Evento nuevo2";
-                    //header.Controls.Add(texto);
-                    textcontent.Controls.Add(texto2);
-                    //footer.Controls.Add(texto3);
-
-                    content.Controls.Add(textcontent);
-
-                    cal.Controls.Add(header);
-                    cal.Controls.Add(content);
-                    cal.Controls.Add(footer);
-
-                    cal.Width=300;
-                    cal.Height = 500;
-
-                    Panel2.Controls.Add(cal);*/
-                    //Panel2.Controls.Add(header);
-
-
-                    //-----------------------------
 
                     while (counter < totalEvents)
                     {
@@ -116,19 +72,11 @@ namespace StickyNotesWeb
                         t2.CssClass = "cal_description";
                         t3.CssClass = "cal_date";
 
-                        //le.Text = "REMOVE";
                         removeButton.ToolTip = "Remove";
                         removeButton.ImageUrl = "../Images/deleteButton.png";
                         removeButton.PostBackUrl = "~/Asp_forms/RemoveUserFromEvents.aspx?ID=" + eventsList[counter].Id;
                         removeButton.Width = 20;
-                        //le.NavigateUrl = "~/Asp_forms/RemoveUserFromEvents.aspx?ID=" + eventsList[counter].Id;
 
-                        // p.Controls.Add(t);
-                        //p.Controls.Add(le);
-                        //Panel2.Controls.Add(p);
-
-
-                        //--------------------------
 
                         header = new Panel();
                         content = new Panel();
@@ -163,14 +111,6 @@ namespace StickyNotesWeb
                         textcontent.Controls.Add(le);
                         textcontent.Controls.Add(removeButton);
 
-
-                        // texto2 = new Label();
-                        // texto2.Text = "Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2 Evento nuevo 2";
-
-                        //header.Controls.Add(texto);
-                        //textcontent.Controls.Add(texto2);
-                        //footer.Controls.Add(texto3);
-
                         content.Controls.Add(textcontent);
 
                         cal.Controls.Add(header);
@@ -178,10 +118,8 @@ namespace StickyNotesWeb
                         cal.Controls.Add(footer);
 
                         cal.Width = 300;
-                        // cal.Height = 500;
 
                         Panel2.Controls.Add(cal);
-                        //Panel2.Controls.Add(header);
 
                         counter++;
                     }

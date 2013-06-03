@@ -45,7 +45,6 @@ namespace StickyNotesWeb.Asp_forms
                         note = note.getNote(id);
 
                         Label2.Text = note.Text;
-                        //TextBox1.Text = note.Text;
 
                     }
                 }
@@ -58,22 +57,6 @@ namespace StickyNotesWeb.Asp_forms
 
         protected void Send(object sender, EventArgs e)
         {
-            /*String s;
-            s = Request.QueryString["ID"];
-
-            if (s != null)
-            {
-
-                int id = Int32.Parse(s);
-
-
-
-                Note_Class note = new Note_Class();
-
-                note.Id = id;
-
-                note = note.getNote(id);*/
-
                 note.Text = TextBox1.Text;
                 if (note.modifyNote(note))
                     Response.Redirect("..//Asp_forms/Notes.aspx");

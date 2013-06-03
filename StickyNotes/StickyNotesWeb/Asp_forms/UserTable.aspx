@@ -16,10 +16,8 @@
    
 
     <div id="placeholder" runat="server" class="tablon">
-   <!-- <asp:Label ID="NotasPrueba" runat="server"></asp:Label> -->
         <asp:Panel ID="Panel1" runat="server" CssClass="defaultPanel">
            
         </asp:Panel>
-    <!-- here is where the dinamically created elements will be placed -->
     </div>
 </asp:Content>

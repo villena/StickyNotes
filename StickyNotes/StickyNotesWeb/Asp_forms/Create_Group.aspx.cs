@@ -10,8 +10,6 @@ namespace StickyNotesWeb.Asp_forms
 {
     public partial class Create_Group : System.Web.UI.Page
     {
-
-        //int last = 0;
         User_Class user;
         List<User_Class> usersToAdd=new List<User_Class>();
 
@@ -28,7 +26,6 @@ namespace StickyNotesWeb.Asp_forms
             {
                 if (!IsPostBack)
                 {
-                    //ListBox ListBox1 = new ListBox();
                     ListBox1.Items.Clear();
                     ListBox1.Width = 150;
                     ListBox1.Height = 200;
@@ -55,10 +52,6 @@ namespace StickyNotesWeb.Asp_forms
                         ListBox1.Items.Add(l);
                         i++;
                     }
-
-
-                    //  this.Controls.Add(ListBox1);
-
                 }
             }
 

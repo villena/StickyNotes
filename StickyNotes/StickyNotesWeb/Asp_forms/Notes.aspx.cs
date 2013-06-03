@@ -34,43 +34,6 @@ namespace StickyNotesWeb
 
                 if (usuario_sesion.Pass == passCookie.Value)
                 {
-
-                    /* Falta implementar las notas del usuario */
-                    /*
-                    String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
-                    SqlConnection con = new SqlConnection(connection);
-                    con.Open();
-                    string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    StringBuilder htmlStr = new StringBuilder("");
-
-                    while (reader.Read())
-                    {
-                        htmlStr.Append("<div class = 'postit'>");
-                        htmlStr.Append(reader["TEXT"]);
-                        htmlStr.Append("<br><br>");
-                        htmlStr.Append("<b>");
-                        htmlStr.Append(reader["CREATION_DATE"]);
-                        htmlStr.Append("</b>");
-                        htmlStr.Append("</div>");
-                    }
-
-                    reader.Close();
-                    con.Close();
-                    NotasPrueba.Text = htmlStr.ToString();
-                     * */
-                    /*
-                    String connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\Database.mdf;User Instance=true";
-                    SqlConnection con = new SqlConnection(connection);
-                    con.Open();
-                    string sql = "SELECT * FROM NOTES ORDER BY ID DESC";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    StringBuilder htmlStr = new StringBuilder("");
-                     * */
-
-                    //Panel p = new Panel();
                     Panel p = new Panel();
 
                     Label t = new Label();
@@ -152,15 +115,7 @@ namespace StickyNotesWeb
 
                         i--;
                     }
-
-                    /*
-                    reader.Close();
-                    con.Close();
-                     * */
-                    //NotasPrueba.Text = htmlStr.ToString();
-
-
-                }
+               }
                 else
                 {
                     Response.Redirect("../Account/Login.aspx");
@@ -170,22 +125,7 @@ namespace StickyNotesWeb
 
         protected void Create_Note(object sender, EventArgs e)
         {
-            
-            /* Create note with the button 'New Note' */
-           /* Note_Class note = new Note_Class();
-            note.Text = DescripcionNota.Text;
-            note.Date = DateTime.Now.ToShortDateString();*/
-
-            /* Add note in the Database */
-           /* HttpCookie userCookie;
-            userCookie = Request.Cookies["UserID"];
-            User_Class userTemp = new User_Class();
-            userTemp = userTemp.getUser(userCookie.Value);
-            note.addNote(userTemp.Id);
-            Response.AppendHeader("Refresh", "0;URL=Notes.aspx");*/
-
             Response.Redirect("../Asp_forms/AddNote.aspx");
-            
         }
 
 

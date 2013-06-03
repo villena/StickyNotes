@@ -8,8 +8,7 @@ body
     background-attachment:fixed;
     background-size: cover;
     font-size: .80em;
-    /*font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
-   */
+
      margin: 0px;
     padding: 0px;
     color: #696969;
@@ -95,16 +94,16 @@ h5, h6
 {
     
     border: 1px solid #2EFE2E;
-     /* Bordes redondeados para Mozilla */
+     /* Rounded borders for Mozilla */
     -moz-border-radius-bottomleft: 10px;
     -moz-border-radius-bottomright: 10px;
-    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    /* Rounded borders for webkit (Chrome, Safari...) */
     -webkit-border-bottom-left-radius: 10px;
     -webkit-border-bottom-right-radius: 10px;
-     /* Bordes redondeados para Mozilla */
+     /* Rounded borders for Mozilla */
     -moz-border-radius-topleft: 10px;
     -moz-border-radius-topright: 10px;
-    /* Bordes redondeados para webkit */
+    /* Rounded borders for webkit */
     -webkit-border-top-left-radius: 10px;
     -webkit-border-top-right-radius: 10px;
 
@@ -205,16 +204,16 @@ h3:hover
     min-width: 500px;
     overflow: inherit;
 
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-bottomleft: 10px;
     -moz-border-radius-bottomright: 10px;
-    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    /* Rounded borders for webkit (Chrome, Safari...) */
     -webkit-border-bottom-left-radius: 10px;
     -webkit-border-bottom-right-radius: 10px;
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-topleft: 10px;
     -moz-border-radius-topright: 10px;
-    /* Bordes redondeados para webkit */
+    /* Rounded borders for webkit */
     -webkit-border-top-left-radius: 10px;
     -webkit-border-top-right-radius: 10px;
 
@@ -231,16 +230,16 @@ h3:hover
     min-height: 420px;
     position: fixed;
 
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-bottomleft: 5px;
     -moz-border-radius-bottomright: 5px;
-    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    /* Rounded borders for webkit (Chrome, Safari...) */
     -webkit-border-bottom-left-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-topleft: 5px;
     -moz-border-radius-topright: 5px;
-    /* Bordes redondeados para webkit */
+    /* Rounded borders for webkit */
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
 
@@ -280,16 +279,16 @@ h3:hover
     padding-bottom: 2%;
     
 
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-bottomleft: 3px;
     -moz-border-radius-bottomright: 3px;
-    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    /* Rounded borders for webkit (Chrome, Safari...) */
     -webkit-border-bottom-left-radius: 3px;
     -webkit-border-bottom-right-radius: 3px;
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-topleft: 3px;
     -moz-border-radius-topright: 3px;
-    /* Bordes redondeados para webkit */
+    /* Rounded borders for webkit */
     -webkit-border-top-left-radius: 3px;
     -webkit-border-top-right-radius: 3px;
 
@@ -375,7 +374,6 @@ div.menu
     background-color:#ffffff;
     outline-style: none;
     outline: none;
-    /*font-family: 'Gloria Hallelujah', Cursive;*/
    
     margin-top: 0px;
     background-color: #EFEDDF;
@@ -390,7 +388,6 @@ div.menu ul
     outline-style: none;
     outline: none;
     list-style: none;
-  /*  font-family: 'Gloria Hallelujah', Cursive;*/
     
     background-color: #EFEDDF;  
    
@@ -405,7 +402,6 @@ div.menu ul li a, div.menu ul li a:visited
     font-family: "Segoe UI";
     background-color: transparent;
     border-bottom: 2px solid #000000;
-    /*font-family: 'Bandy';*/
     font-family: "Segoe UI Semibold";
     font-weight: bold;
     font-size: 20px;
@@ -432,14 +428,6 @@ div.menu ul li a:hover
 
     transition: width 2s;
     
-   /* background: -moz-linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 1%, rgba(255,255,255,1) 99%, rgba(255,255,255,1) 100%);
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(1%,rgba(255,255,255,0)), color-stop(99%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
-    background: -webkit-linear-gradient(-45deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,1) 99%,rgba(255,255,255,1) 100%);
-    background: -o-linear-gradient(-45deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,1) 99%,rgba(255,255,255,1) 100%);
-    background: -ms-linear-gradient(-45deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,1) 99%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,1) 99%,rgba(255,255,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
-    */
 }
 
 div.menu ul li a:active
@@ -574,7 +562,7 @@ div.accountInfo
     padding-right: 10px;
 }
 
-/* DISEÑO NOTAS */
+/* Notes design */
 
 .postit {
 	margin: 30px;
@@ -588,9 +576,9 @@ div.accountInfo
 	-webkit-box-shadow: 0px 4px 6px #333;
 }
 
-/* DISEÑO BOTONES */
+/* Buttons design*/
 
-.button { /* clase general */
+.button { /* general class */
   border: 1px solid #dedede;
   border-radius: 3px;
   color: #555;
@@ -727,7 +715,6 @@ div.accountInfo
 
 
 .postitnotespink {
-	/*background: #FF96BE;*/
 	background: #FABAD6;
 	padding: 15px;
 	font-family: 'Gloria Hallelujah', cursive;
@@ -835,16 +822,16 @@ div.accountInfo
 
 	-moz-box-shadow: 0px 4px 6px #333;
 	-webkit-box-shadow: 0px 4px 6px #333;
-	 /* Bordes redondeados para Mozilla */
+	 /* Rounded borders for Mozilla */
     -moz-border-radius-bottomleft: 10px;
     -moz-border-radius-bottomright: 10px;
-    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    /* Rounded borders for webkit (Chrome, Safari...) */
     -webkit-border-bottom-left-radius: 10px;
     -webkit-border-bottom-right-radius: 10px;
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-topleft: 10px;
     -moz-border-radius-topright: 10px;
-    /* Bordes redondeados para webkit */
+    /* Rounded borders for webkit */
     -webkit-border-top-left-radius: 10px;
     -webkit-border-top-right-radius: 10px;
 }
@@ -865,16 +852,16 @@ div.accountInfo
 
 	-moz-box-shadow: 0px 4px 6px #333;
 	-webkit-box-shadow: 0px 4px 6px #333;
-	 /* Bordes redondeados para Mozilla */
+	 /* Rounded borders for Mozilla */
     -moz-border-radius-bottomleft: 10px;
     -moz-border-radius-bottomright: 10px;
-    /* Bordes redondeados para webkit (Chrome, Safari...) */
+    /* Rounded borders for webkit (Chrome, Safari...) */
     -webkit-border-bottom-left-radius: 10px;
     -webkit-border-bottom-right-radius: 10px;
-    /* Bordes redondeados para Mozilla */
+    /* Rounded borders for Mozilla */
     -moz-border-radius-topleft: 10px;
     -moz-border-radius-topright: 10px;
-    /* Bordes redondeados para webkit */
+    /* Rounded borders for webkit */
     -webkit-border-top-left-radius: 10px;
     -webkit-border-top-right-radius: 10px;
 }

@@ -22,7 +22,6 @@
             <asp:Button ID="Button4" runat="server" CssClass="button" Text="Show All" OnClick="ShowAll" />
             
             &nbsp;&nbsp;&nbsp;
-         <!--<asp:TextBox ID="TextBox3" CssClass="search_textbox" runat="server"></asp:TextBox>-->
         </p>
     </asp:Panel>
 

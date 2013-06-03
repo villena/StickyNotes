@@ -16,6 +16,10 @@ namespace StickyNotesWeb.Account
             {
                 if (ViewState["RefUrl"] != null) ViewState["RefUrl"] = Request.UrlReferrer.ToString();
             }
+            else
+            {
+                ViewState["RefUrl"] = "..//Default.aspx";
+            }
         }
 
         protected void Login_Click(object sender, EventArgs e)
@@ -57,12 +61,9 @@ namespace StickyNotesWeb.Account
                     passCookie.Expires = DateTime.Now.AddMonths(1);
                     Response.Cookies.Add(userCookie);
                     Response.Cookies.Add(passCookie);
-                    Label1.Text = (string)refUrl;
-                    //Label1.Text = userCookie.Value;
                     if (refUrl != null)
                     {
                         Response.Redirect((string)refUrl);
-                        //Label1.Text = userCookie.Value;
                     }
                 }
                 else
