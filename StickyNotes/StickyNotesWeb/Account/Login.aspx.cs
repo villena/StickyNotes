@@ -29,13 +29,19 @@ namespace StickyNotesWeb.Account
 
             userCookie = Request.Cookies["UserID"];
             passCookie = Request.Cookies["UserPass"];
-            
+
             if (userCookie != null || passCookie != null)
             {
-                userCookie.Expires = DateTime.Now.AddMonths(-1);
-                passCookie.Expires = DateTime.Now.AddMonths(-1);
-                Response.Cookies.Add(userCookie);
-                Response.Cookies.Add(userCookie);
+                if (userCookie != null)
+                {
+                    userCookie.Expires = DateTime.Now.AddMonths(-1);
+                    Response.Cookies.Add(userCookie);
+                }
+                else
+                {
+                    passCookie.Expires = DateTime.Now.AddMonths(-1);
+                    Response.Cookies.Add(passCookie);
+                }
             }
             else
             {

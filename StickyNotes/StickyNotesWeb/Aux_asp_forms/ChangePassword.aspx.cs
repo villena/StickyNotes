@@ -47,12 +47,23 @@ namespace StickyNotesWeb.Account
         protected void Change_Pass(object sender, EventArgs e)
         {
             HttpCookie userCookie;
+            HttpCookie passCookie;
             userCookie = Request.Cookies["UserID"];
+            passCookie = Request.Cookies["UserPass"];
             User_Class usuario_sesion = new User_Class();
             usuario_sesion = usuario_sesion.getUser(userCookie.Value);
             usuario_sesion.Pass = NewPassword.Text;
             usuario_sesion.changePass(NewPassword.Text);
+            passCookie.Expires = DateTime.Now.AddMonths(-1);
+            Response.Cookies.Add(userCookie);
+
+            passCookie.Value = NewPassword.Text;
+            passCookie.Expires = DateTime.Now.AddMonths(1);
+            Response.Cookies.Add(passCookie);
+
             Response.Redirect("./ChangePasswordSuccess.aspx");
+
+
         }
     }
 }
